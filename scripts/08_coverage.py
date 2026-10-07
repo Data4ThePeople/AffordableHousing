@@ -3,8 +3,7 @@
 By frame: units shown and blank; units taken directly, merged or rebuilt; share of income profile
 values published against estimated from buckets; share of units where the default rent ceiling
 (median household, married with no children, 30% of post-tax income) lands in the open top rent
-bucket; share of units and of renter households marked low reliability; share of 1990 answers the
-Census Bureau imputed; and the gap between our interpolated medians and the published ones.
+bucket; share of units and of rentals marked low reliability; and the gap between our interpolated medians and the published ones.
 Output: data/processed/coverage.csv"""
 import bisect
 import json

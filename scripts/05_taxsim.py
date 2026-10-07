@@ -2,7 +2,7 @@
 
 Federal and state income tax come from NBER TAXSIM35, run offline. Payroll tax is computed here
 from the statutory employee rates and wage bases (Social Security Administration), because
-TAXSIM35's payroll figures do not match the law in 1979 (5.6% against 6.13%) or 2023.
+TAXSIM35's payroll output uses a 2023 wage base of $153,600 against the statutory $160,200.
 Assumptions: all income is wages of one earner aged 40; the spouse, if any, is 40 with no
 earnings; children are 5 and 8; standard deduction; no local income tax.
 The 2020-2024 frame is in 2024 dollars and TAXSIM35 stops at tax year 2023, so those incomes are
@@ -21,10 +21,9 @@ EXE = RAW / "taxsim" / "taxsim35-osx.exe"
 TYPES = [("Single, no children", 1, 0), ("Married, no children", 2, 0), ("Married, two children", 2, 2)]
 # income grid in dollars: 0 and 160 points from $250 to $2,000,000, evenly spaced in ratio
 GRID = [0] + [round(250 * (8000 ** (k / 159))) for k in range(160)]
-# employee payroll tax: (Social Security rate, wage base, Medicare rate). Medicare had the same wage base
-# through 1990 and none from 1994. From 2013 an extra 0.9% applies above $200,000 (single) or $250,000 (joint).
-FICA = {1979: (0.0508, 22900, 0.0105, True), 1989: (0.0606, 48000, 0.0145, True), 1999: (0.062, 72600, 0.0145, False),
-        2009: (0.062, 106800, 0.0145, False), 2014: (0.062, 117000, 0.0145, False), 2019: (0.062, 132900, 0.0145, False),
+# employee payroll tax: (Social Security rate, wage base, Medicare rate, Medicare capped at the wage base).
+# From 2013 an extra 0.9% applies above $200,000 (single) or $250,000 (joint).
+FICA = {2009: (0.062, 106800, 0.0145, False), 2014: (0.062, 117000, 0.0145, False), 2019: (0.062, 132900, 0.0145, False),
         2024: (0.062, 168600, 0.0145, False)}
 
 
@@ -64,8 +63,6 @@ def main():
             detail.append((fk, TYPES[ti][0], inc, round(fed / k), round(sta / k), round(pay), round(100 * tot / inc, 1)))
     (PROC / "tax_grid.json").write_text(json.dumps({"inc": GRID, "types": [t[0] for t in TYPES], "tax": grid}, separators=(",", ":")))
     print(pd.DataFrame(detail, columns=["frame", "type", "income", "federal", "state", "payroll", "pct"]).query("type=='Married, two children'").to_string(index=False))
-    # spot checks against the 1979 and 1999 federal tax tables, worked by hand
-    chk = {(r[0], r[1], r[2]): r for r in detail}
     print(f"rows {len(rows):,}; negative total tax in {sum(v < 0 for f in grid.values() for t in f.values() for s in t.values() for v in s):,} cells")
 
 

@@ -11,13 +11,14 @@
 
   const $ = (id) => document.getElementById(id);
   const TOP_N = 25;
-  // Fixed class breaks (percent of rentals within reach), the same in every period.
-  const BINS = [15, 30, 45, 60, 75, 90];
-  const VARS = ["--s0", "--s1", "--s2", "--s3", "--s4", "--s5", "--s6"];
+  // Fixed class breaks (percent of rentals within reach), the same in every period and setting.
+  // Under 50% the household cannot afford the middle rental in its own county: that is where red and orange end.
+  const BINS = [40, 50, 65, 80];
+  const VARS = ["--d0", "--d1", "--d2", "--d3", "--d4"];
   const PROF = ["20th percentile household", "40th percentile household", "median household", "60th percentile household", "80th percentile household", "median renter household", "household"];
   const PROF_SHORT = ["20th percentile income", "40th percentile income", "Median household income", "60th percentile income", "80th percentile income", "Median renter income", "Income entered"];
   // where each period sits on the trend chart's time axis
-  const MID = { "1980": 1980, "1990": 1990, "2000": 2000, "2009": 2007, "2014": 2012, "2019": 2017, "2024": 2022 };
+  const MID = { "2009": 2007, "2014": 2012, "2019": 2017, "2024": 2022 };
 
   // ---------- data ----------
   async function loadData() {
@@ -82,7 +83,7 @@
   }
 
   // ---------- state ----------
-  const S = { fi: NF - 1, prof: 2, inc: 60000, pct: 30, after: true, ht: 1, st: "", bub: false, sel: null, hover: null, rankTab: 0 };
+  const S = { fi: NF - 1, prof: 2, inc: 60000, pct: 30, after: true, ht: 1, st: "", bub: true, sel: null, hover: null, rankTab: 0 };
   const inState = (u) => !S.st || u.s === S.st;
 
   // Total tax (federal and state income tax plus the employee's payroll tax) on an income, from the grid.
@@ -381,7 +382,7 @@
   }
   function noFigure(u, c, fi) {
     if (c.blank) return `Not shown for ${flabel(fi)}: ${c.blank}, so earlier figures cover a different area.`;
-    if (c.noinc) return S.prof === 5 ? `The Census Bureau publishes no median renter income for this county in ${flabel(fi)}. It is available from 2005-2009 on, and not for joined or rebuilt areas.`
+    if (c.noinc) return S.prof === 5 ? `The Census Bureau publishes no median renter income for this area in ${flabel(fi)}. It is not available for joined or rebuilt areas.`
       : `This income level falls in the open top income bucket for ${flabel(fi)}, so it cannot be estimated here.`;
     return `No rentals paying cash rent are recorded here for ${flabel(fi)}.`;
   }
@@ -458,7 +459,7 @@
     const ys = (v) => t + (1 - v / 100) * (h - t - b);
     const path = (pts) => { let d = "", pen = false; pts.forEach((v, i) => { if (v === null) { pen = false; return; } d += `${pen ? "L" : "M"}${xs(i).toFixed(1)},${ys(v).toFixed(1)}`; pen = true; }); return d; };
     const grid = [0, 50, 100].map((v) => `<line x1="${l}" x2="${w - r}" y1="${ys(v)}" y2="${ys(v)}" stroke="var(--grid)"/><text x="${l - 4}" y="${ys(v) + 3.5}" text-anchor="end" font-size="10" fill="var(--ink-3)">${v}%</text>`).join("");
-    const xl = [0, 2, NF - 1].map((i) => `<text x="${xs(i)}" y="${h - 4}" text-anchor="${i === NF - 1 ? "end" : "middle"}" font-size="10" fill="var(--ink-3)">${i === NF - 1 ? "2020-24" : F[i].label}</text>`).join("");
+    const xl = F.map((f, i) => `<text x="${xs(i)}" y="${h - 4}" text-anchor="middle" font-size="10" fill="var(--ink-3)">${f.label.slice(0, 5)}${f.label.slice(7)}</text>`).join("");
     const up = series[0].pts;
     const dots = up.map((v, i) => (v === null ? "" : `<circle cx="${xs(i).toFixed(1)}" cy="${ys(v).toFixed(1)}" r="${i === S.fi ? 4 : 2.2}" fill="var(--accent)"${i === S.fi ? ' stroke="var(--panel)" stroke-width="2"' : ""}><title>${flabel(i)}: ${pc(v)}</title></circle>`)).join("");
     const last = up[NF - 1];
@@ -476,7 +477,7 @@
     if (c.sh && c.est) out.push(`The Census Bureau does not publish this income level for this county in ${flabel(S.fi)}; we estimated it from the income buckets.`);
     if (c.sh && c.lo) out.push("Few rentals in the sample here. Treat the figure with care.");
     const f = u.f[S.fi];
-    if (u.m > 1) out.push("Several counties or cities are joined here because their boundaries changed after 1980.");
+    if (u.m > 1) out.push("Several counties or cities are joined here because their boundaries changed after 2009.");
     else if (f.h === 2) out.push(`For ${flabel(S.fi)} this area was rebuilt from smaller Census areas to match today's boundaries.`);
     const blank = F.filter((x, i) => u.f[i].x).map((x) => x.label);
     if (blank.length) out.push(`Not shown for ${blank.join(" and ")}: ${u.f.find((x) => x.x).x}.`);
@@ -485,7 +486,7 @@
   }
   function showDetail(u) {
     const el = $("detail");
-    if (!u) { el.innerHTML = `<h2>County</h2><div class="empty">Hover over or tap a county to see its rent ceiling, its rentals by monthly rent, and how the share within reach has changed since 1980.</div>`; return; }
+    if (!u) { el.innerHTML = `<h2>County</h2><div class="empty">Hover over or tap a county to see its rent ceiling, its rentals by monthly rent, and how the share within reach has changed since 2005-2009.</div>`; return; }
     const v = vals.get(u.id), c = v.c;
     let h = `<h2>County</h2><div class="name">${esc(u.n)}</div><div class="meta">${DATA.states[u.s][1]} &middot; ${flabel(S.fi)}</div>`;
     if (!c.sh) h += `<div class="src">${esc(noFigure(u, c, S.fi))}</div>`;
@@ -497,12 +498,11 @@
   // ---------- legend ----------
   function legend() {
     const el = $("legend");
-    let h = `<div><h2>Share of rentals within reach, ${flabel(S.fi)}</h2><div class="unit" style="display:flex;justify-content:space-between"><span>Fewer</span><span>More</span></div>`
+    let h = `<div><h2>Share of rentals within reach, ${flabel(S.fi)}</h2><div class="unit" style="display:flex;justify-content:space-between"><span>Fewer within reach</span><span>More within reach</span></div>`
       + `<div class="strip">${C.seq.map((c) => `<span style="background:${c}"></span>`).join("")}</div>`
       + `<div class="ticks">${BINS.map((t, i) => `<span style="left:${((i + 1) / C.seq.length) * 100}%">${t}%</span>`).join("")}</div></div><div>`;
-    if (S.bub) h += `<div class="row">Bubble size: rentals paying cash rent in the county</div>`;
-    else h += `<div class="row"><span class="sw" style="background:repeating-linear-gradient(135deg,${C.panel} 0 3px,${C.mark} 3px 4px)"></span>Few rentals in the sample, treat with care</div>`;
-    h += `<div class="row"><span class="sw" style="background:repeating-linear-gradient(135deg,transparent 0 3px,${C.hatch} 3px 4.5px),repeating-linear-gradient(45deg,${C.nohist} 0 3px,${C.hatch} 3px 4.5px)"></span>No comparable figure</div>`;
+    h += `<div class="row">Each bubble is a county. Its size is the number of rentals paying cash rent.</div>`
+      + `<div class="row">A county with no bubble has no comparable figure for this view.</div>`;
     el.innerHTML = h + `</div>`;
   }
 
@@ -511,8 +511,7 @@
     const where = S.st ? DATA.states[S.st][1] : "United States";
     const t = total(S.fi, S.st);
     if (!t) {
-      $("sub").textContent = S.prof === 5 ? `${where}, ${flabel(S.fi)}: the Census Bureau publishes median renter income by county only from 2005-2009 on. Pick a later period or another household.`
-        : `${where}, ${flabel(S.fi)}: no counties with a figure for this view.`;
+      $("sub").textContent = `${where}, ${flabel(S.fi)}: no counties with a figure for this view.`;
       return;
     }
     const who = S.prof === 6 ? whose() : `each county's ${PROF[S.prof]}`;
@@ -574,8 +573,6 @@
   $("tAfter").onclick = () => { S.after = true; press("tAfter", "tBefore"); update(); };
   $("tBefore").onclick = () => { S.after = false; press("tBefore", "tAfter"); update(); };
   $("ht").onchange = () => { S.ht = +$("ht").value; update(); };
-  $("vArea").onclick = () => { S.bub = false; press("vArea", "vBub"); update(); };
-  $("vBub").onclick = () => { S.bub = true; press("vBub", "vArea"); update(); };
   const yr = $("year");
   yr.max = NF - 1; yr.value = S.fi;
   yr.oninput = () => { S.fi = +yr.value; update(true); };
@@ -595,7 +592,7 @@
   $("reset").onclick = () => {
     stopPlay(); S.st = ""; stSel.value = ""; S.sel = null; S.hover = null; S.fi = NF - 1; yr.value = S.fi;
     S.prof = 2; $("prof").value = 2; S.pct = 30; $("pct").value = 30; S.after = true; press("tAfter", "tBefore"); S.ht = 1; $("ht").value = 1;
-    S.bub = false; press("vArea", "vBub"); S.inc = 60000; incEl.value = usd(S.inc); S.rankTab = 0; hideTip(); home(); update();
+    S.inc = 60000; incEl.value = usd(S.inc); S.rankTab = 0; hideTip(); home(); update();
   };
   $("more").onclick = () => {
     const open = document.querySelector(".controls").classList.toggle("open");
@@ -642,7 +639,6 @@
   if (hs.get("tax") === "0") { S.after = false; press("tBefore", "tAfter"); }
   if (hs.get("ht") && +hs.get("ht") >= 0 && +hs.get("ht") <= 2) { S.ht = +hs.get("ht"); $("ht").value = S.ht; }
   if (hs.get("st") && DATA.states[hs.get("st")]) { S.st = hs.get("st"); stSel.value = S.st; }
-  if (hs.get("view") === "bubble") { S.bub = true; press("vBub", "vArea"); }
   computeVals();
   $("loading").remove();
   new ResizeObserver(resize).observe(wrap);

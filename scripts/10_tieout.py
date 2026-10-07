@@ -7,7 +7,7 @@ compare with what the built page shows in headless Chrome.
 3. Dayton metro (Greene, Miami, Montgomery): cash-rent units and the share in buckets fully under
    $800 (2015-2019) and $1,100 (2020-2024), against the published Dayton post (116,730 and 49%;
    115,961 and 46%).
-4. Three federal income tax figures worked by hand from the 1979 tax tables.
+4. Two federal income tax figures worked by hand from the 2019 brackets.
 Output: data/processed/tieout.csv; exits with an error on any difference."""
 import base64
 import bisect
@@ -118,8 +118,6 @@ def main():
         Path(d, "p.html").write_text(html)
         for case in cases:
             for fk, label, _, year in FRAMES:
-                if case.get("prof") == 5 and int(fk) < 2009:
-                    continue
                 v, n, under = nation(H, T, cpi, fk, year, **case)
                 h = f"#f={fk}&p={6 if case.get('typed') else case.get('prof', 2)}&pct={case.get('pct', 30)}&tax={int(case.get('after', True))}&ht={case.get('ht', 1)}"
                 h += f"&inc={case['typed']}" if case.get("typed") else ""
@@ -148,22 +146,15 @@ def main():
         bad += not ok
         print(f"3. Dayton {fk}: {sum(r):,} cash-rent units (post: {want_units:,}); {100 * below / sum(r):.1f}% in buckets fully under ${thr:,} (post: {want_pct}%) {'ok' if ok else 'MISMATCH'}")
 
-    # 4. federal tax by hand, 1979 schedules (zero bracket amount in the rate table, $1,000 per exemption)
-    def sched(ti, br):
-        tx = 0
-        for (lo, rate), nxt in zip(br, br[1:] + [(9e9, 0)]):
-            tx += max(0, min(ti, nxt[0]) - lo) * rate
-        return tx
-    joint = [(3400, .14), (5500, .16), (7600, .18), (11900, .21), (16000, .24), (20200, .28), (24600, .32), (29900, .37)]
-    single = [(2300, .14), (3400, .16), (4400, .18), (6500, .19), (8500, .21), (10800, .24), (12900, .26), (15000, .30), (18200, .34)]
+    # 4. federal income tax by hand, 2019 law: standard deduction $12,200 single and $24,400 joint; 10% then 12% brackets
     out = subprocess.run([str(ROOT / "data" / "raw" / "taxsim" / "taxsim35-osx.exe")], capture_output=True, text=True,
-                         input="taxsimid,year,state,mstat,page,sage,depx,age1,age2,pwages\n1,1979,36,2,40,40,2,5,8,16000\n2,1979,36,2,40,40,0,0,0,20000\n3,1979,36,1,40,0,0,0,0,12000\n").stdout
+                         input="taxsimid,year,state,mstat,page,sage,depx,age1,age2,pwages\n1,2019,36,1,40,0,0,0,0,40000\n2,2019,36,2,40,40,0,0,0,80000\n").stdout
     got = [float(ln.split(",")[3]) for ln in out.strip().splitlines()[1:]]
-    hand = [sched(16000 - 4000, joint), sched(20000 - 2000, joint), sched(12000 - 1000, single)]
+    hand = [0.10 * 9700 + 0.12 * (40000 - 12200 - 9700), 0.10 * 19400 + 0.12 * (80000 - 24400 - 19400)]
     for g, h in zip(got, hand):
         ok = abs(g - h) < 1
         bad += not ok
-        print(f"4. 1979 federal income tax: TAXSIM {g:,.0f}, by hand {h:,.0f} {'ok' if ok else 'MISMATCH'}")
+        print(f"4. 2019 federal income tax: TAXSIM {g:,.0f}, by hand {h:,.0f} {'ok' if ok else 'MISMATCH'}")
     print("TIE-OUT", "CLEAN" if not bad else f"FAILED: {bad} differences")
     sys.exit(1 if bad else 0)
 

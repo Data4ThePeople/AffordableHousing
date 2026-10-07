@@ -15,27 +15,21 @@ RAW = ROOT / "data" / "raw"
 PROC = ROOT / "data" / "processed"
 UA = "Mozilla/5.0 (Macintosh) Data4ThePeople research"
 
-# Seven frames that share no sample. key, label, source, income year (also the tax year)
-FRAMES = [("1980", "1980", "nhgis", 1979), ("1990", "1990", "nhgis", 1989), ("2000", "2000", "sf3", 1999),
-          ("2009", "2005-2009", "acs", 2009), ("2014", "2010-2014", "acs", 2014),
+# Four ACS 5-year periods that share no sample. key, label, source, income year (also the tax year)
+FRAMES = [("2009", "2005-2009", "acs", 2009), ("2014", "2010-2014", "acs", 2014),
           ("2019", "2015-2019", "acs", 2019), ("2024", "2020-2024", "acs", 2024)]
 FKEYS = [f[0] for f in FRAMES]
 ACS_VINTAGES = [2009, 2014, 2019, 2024]
 
 # Gross rent buckets: lower edge of every cash-rent bucket, in table order. The last one is open-ended.
-RENT_1980 = [0, 60, 80, 100, 120, 150, 170, 200, 250, 300, 350, 400, 500]
-RENT_1990 = [0, 100, 150, 200, 250, 300, 350, 400, 450, 500, 550, 600, 650, 700, 750, 1000]
 RENT_2000 = [0, 100, 150, 200, 250, 300, 350, 400, 450, 500, 550, 600, 650, 700, 750, 800, 900, 1000, 1250, 1500, 2000]
 RENT_2015 = RENT_2000 + [2500, 3000, 3500]
-RENT_EDGES = {"1980": RENT_1980, "1990": RENT_1990, "2000": RENT_2000, "2009": RENT_2000, "2014": RENT_2000,
+RENT_EDGES = {"2009": RENT_2000, "2014": RENT_2000,
               "2019": RENT_2015, "2024": RENT_2015}
 # Household income buckets: lower edges, last one open-ended
-INC_1980 = [0] + list(range(2500, 30000, 2500)) + [30000, 35000, 40000, 50000, 75000]
-INC_1990 = [0, 5000] + list(range(10000, 50000, 2500)) + [50000, 55000, 60000, 75000, 100000, 125000, 150000]
 INC_2000 = [0] + list(range(10000, 50000, 5000)) + [50000, 60000, 75000, 100000, 125000, 150000, 200000]
-INC_EDGES = {"1980": INC_1980, "1990": INC_1990, **{k: INC_2000 for k in FKEYS[2:]}}
-assert len(RENT_1980) == 13 and len(RENT_1990) == 16 and len(RENT_2000) == 21 and len(RENT_2015) == 24
-assert len(INC_1980) == 17 and len(INC_1990) == 25 and len(INC_2000) == 16
+INC_EDGES = {k: INC_2000 for k in FKEYS}
+assert len(RENT_2000) == 21 and len(RENT_2015) == 24 and len(INC_2000) == 16
 
 STATE_INFO = {"01": ("AL", "Alabama"), "02": ("AK", "Alaska"), "04": ("AZ", "Arizona"), "05": ("AR", "Arkansas"),
               "06": ("CA", "California"), "08": ("CO", "Colorado"), "09": ("CT", "Connecticut"),

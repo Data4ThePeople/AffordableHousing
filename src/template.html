@@ -4,15 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Rentals Within Reach</title>
-<meta name="description" content="Interactive map: the share of rental homes in every U.S. county that a household can afford at 30% of its income, 1980 to 2020-2024. Pick an income profile or enter an income. Census gross rent data, after-tax income from NBER TAXSIM. Free to use. Built by Data 4 The People.">
+<meta name="description" content="Interactive map: the share of rental homes in every U.S. county that a household can afford at 30% of its income, 2005-2009 to 2020-2024. Pick an income profile or enter an income. Census gross rent data, after-tax income from NBER TAXSIM. Free to use. Built by Data 4 The People.">
 <style>
   :root{ color-scheme: light; }
   .ah{
     --paper:#F7F5EF; --panel:#FFFFFF; --ink:#1F2A27; --ink-2:#4E5B57; --ink-3:#7E8A86; --line:#D9D5CC; --grid:#E8E4DB;
     --accent:#085041; --accent-ink:#F7F5EF;
     --edge:rgba(31,42,39,.16); --state:#5E6B67; --hi:#1F2A27;
-    --nohist:#ECE9E2; --hatch:#C9C4B9; --mark:rgba(31,42,39,.5);
-    --s0:#e4f2ee; --s1:#c2e1d9; --s2:#9bcdc1; --s3:#6fb5a7; --s4:#44998b; --s5:#207b6e; --s6:#085041;
+    --nohist:#F1EFE9; --hatch:#C9C4B9; --mark:rgba(31,42,39,.5);
+    --d0:#a8201a; --d1:#f08a3c; --d2:#f7dc6f; --d3:#7cc6a4; --d4:#08606b;
     --st-line:#8A5A00;
     container-type:inline-size; background:var(--paper); color:var(--ink);
     font:14px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
@@ -24,13 +24,13 @@
       --paper:#181A1B; --panel:#202325; --ink:#E4E2DC; --ink-2:#BBBDC0; --ink-3:#8C9094; --line:#33373A; --grid:#2A2E31;
       --accent:#8FBFAF; --accent-ink:#181A1B; --edge:rgba(255,255,255,.14); --state:#9AA5A1; --hi:#FFFFFF;
       --nohist:#232628; --hatch:#3F4447; --mark:rgba(255,255,255,.6);
-      --s0:#1d3a35; --s1:#215047; --s2:#27695d; --s3:#318474; --s4:#4ba08f; --s5:#7dbfb0; --s6:#bfe3d9; --st-line:#E0B45A; }
+      --st-line:#E0B45A; }
   }
   :root[data-theme="dark"] .ah:not(.framed){ color-scheme:dark;
       --paper:#181A1B; --panel:#202325; --ink:#E4E2DC; --ink-2:#BBBDC0; --ink-3:#8C9094; --line:#33373A; --grid:#2A2E31;
       --accent:#8FBFAF; --accent-ink:#181A1B; --edge:rgba(255,255,255,.14); --state:#9AA5A1; --hi:#FFFFFF;
       --nohist:#232628; --hatch:#3F4447; --mark:rgba(255,255,255,.6);
-      --s0:#1d3a35; --s1:#215047; --s2:#27695d; --s3:#318474; --s4:#4ba08f; --s5:#7dbfb0; --s6:#bfe3d9; --st-line:#E0B45A; }
+      --st-line:#E0B45A; }
   body{margin:0; background:#F7F5EF}
   @media (prefers-color-scheme: dark){ :root:where(:not([data-theme="light"])) body{background:#181A1B} }
   :root[data-theme="dark"] body{background:#181A1B}
@@ -172,7 +172,7 @@
 
   <div class="controls">
     <label id="yearCtl" class="wide">Period
-      <span class="yr"><input type="range" id="year" min="0" max="6" step="1" value="6" aria-label="Period"><output id="yearOut"></output>
+      <span class="yr"><input type="range" id="year" min="0" max="3" step="1" value="3" aria-label="Period"><output id="yearOut"></output>
       <button type="button" class="btn" id="play" aria-label="Play through the periods">Play</button></span>
     </label>
     <label>Household
@@ -199,12 +199,6 @@
       <select id="ht"><option value="0">Single, no children</option><option value="1" selected>Married, no children</option><option value="2">Married, two children</option></select>
     </label>
     <label class="sec">Show one state <select id="state"><option value="">All states</option></select></label>
-    <label class="sec">Map
-      <span class="seg" role="group" aria-label="Map style">
-        <button type="button" id="vArea" aria-pressed="true">Counties</button>
-        <button type="button" id="vBub" aria-pressed="false">Bubbles</button>
-      </span>
-    </label>
     <label class="sec wide">Find a county
       <span class="combo"><input type="search" id="q" placeholder="County name" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="lb" aria-autocomplete="list">
       <ul class="lb" id="lb" role="listbox" hidden></ul></span>
@@ -231,7 +225,7 @@
   </div>
 
   <div class="foot">
-    <span>Sources: U.S. Census Bureau, gross rent and household income from the 1980, 1990 and 2000 censuses and the American Community Survey 5-year estimates for 2005-2009, 2010-2014, 2015-2019 and 2020-2024 (tables B25063, B19001, B19013, B19080, B25119). 1980 and 1990 tables from IPUMS NHGIS, University of Minnesota, www.nhgis.org. Income and payroll taxes: NBER TAXSIM (Feenberg and Coutts, 1993) and Social Security Administration rates; no local income taxes. Rentals are occupied units paying cash rent, counted by what the tenant pays. Dollars are not adjusted for inflation, except a typed-in income, which is carried back with the CPI-U.</span>
+    <span>Sources: U.S. Census Bureau, American Community Survey 5-year estimates for 2005-2009, 2010-2014, 2015-2019 and 2020-2024, gross rent and household income (tables B25063, B19001, B19013, B19080, B25119). Income and payroll taxes: NBER TAXSIM (Feenberg and Coutts, 1993) and Social Security Administration rates; no local income taxes. Rentals are occupied units paying cash rent, counted by what the tenant pays. Each period is in its own final-year dollars, except a typed-in income, which is carried back with the CPI-U.</span>
     <span>Built by Data 4 The People</span>
   </div>
 </div>

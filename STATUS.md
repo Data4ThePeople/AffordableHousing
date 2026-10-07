@@ -30,8 +30,7 @@ None.
 
 - 2026-10-07 Step 1 opened. Topic: county map of the share of rental units a
   household can afford at 30% of income, by income profile or a typed-in
-  income, animated over time, with a one-state filter. Start year 1980 (Eric,
-  2026-10-07). Rent from ACS B25063 and the decennial long form.
+  income, animated over time, with a one-state filter. Rent from ACS B25063.
 - 2026-10-07 Plan approved. Seven frames that share no sample: 1980, 1990,
   2000, 2005-2009, 2010-2014, 2015-2019, 2020-2024. Post-tax income by default
   (Eric). Built: DATASETS.md, fetch scripts, 3,120 stable county units, tax
@@ -40,3 +39,10 @@ None.
 - 2026-10-07 Open before the page can be public: IPUMS permission to publish
   the 1980 and 1990 county rent buckets (ipums@umn.edu). Until then
   data/processed/ and dist/ stay out of git and the repo stays private.
+- 2026-10-07 Scope changed by Eric: four ACS periods only (2005-2009,
+  2010-2014, 2015-2019, 2020-2024); the 1980, 1990 and 2000 censuses are
+  dropped because the older distributions did not look comparable. Bubble map
+  only. Traffic-light colors with breaks at 40, 50, 65 and 80%. No IPUMS data
+  is used, so the earlier permission hold is lifted and data/processed/ and
+  dist/ are back in git. Tie-out clean on the four-period build. Target
+  publish date: October 8, 2026.

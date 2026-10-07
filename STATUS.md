@@ -46,3 +46,8 @@ None.
   is used, so the earlier permission hold is lifted and data/processed/ and
   dist/ are back in git. Tie-out clean on the four-period build. Target
   publish date: October 8, 2026.
+- 2026-10-07 Eric spotted Oregon jumping in 2020-2024. Cause: TAXSIM35 in one
+  large batch returned Oregon 2023 state tax about $37,000 too low. Fixed by
+  running each state on its own with an order check. Only Oregon 2020-2024
+  changed (65% within reach before the fix read as 93%; now 61%). National
+  2020-2024 moved from 65.98% to 65.53%.

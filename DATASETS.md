@@ -199,7 +199,12 @@ households, which puts post-tax income above pre-tax income. We take income
 tax only from TAXSIM. The employee's payroll tax is computed in
 `scripts/05_taxsim.py` from the statutory rates and wage bases (Social
 Security Administration), because TAXSIM35's payroll output uses a 2023 wage
-base of $153,600 against the statutory $160,200. Two 2019 federal income tax
+base of $153,600 against the statutory $160,200. TAXSIM35 run as one large batch returned Oregon 2023
+state tax about $37,000 too low on every row (found October 7, 2026, when
+Oregon's 2020-2024 bubbles turned dark green). The same households run alone
+come back normal. Each period, household type and state is now its own TAXSIM
+run, done twice in opposite income order, and the build stops unless the two
+agree to the dollar and state tax is plausible. Two 2019 federal income tax
 figures worked by hand from the brackets match TAXSIM to the dollar
 (`scripts/10_tieout.py`).
 

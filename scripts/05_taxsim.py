@@ -35,27 +35,42 @@ def payroll(year, wages, mstat):
     return t
 
 
+def run(lines):
+    """One TAXSIM process for one group of households. Returns (federal, state) income tax per line."""
+    text = "taxsimid,year,state,mstat,page,sage,depx,age1,age2,pwages\n" + "\n".join(f"{i + 1},{ln}" for i, ln in enumerate(lines)) + "\n"
+    res = subprocess.run([str(EXE)], input=text, capture_output=True, text=True, timeout=600)
+    out = pd.read_csv(io.StringIO(res.stdout))
+    out.columns = [c.strip() for c in out.columns]
+    assert len(out) == len(lines) and list(out.taxsimid.astype(int)) == list(range(1, len(lines) + 1)), res.stdout[-300:]
+    return list(zip(out.fiitax, out.siitax))
+
+
 def main():
     cpi = json.loads((PROC / "cpi.json").read_text())
     soi = {f: i + 1 for i, f in enumerate(sorted(STATE_INFO, key=lambda f: STATE_INFO[f][1]))}   # TAXSIM state codes: alphabetical by name
-    assert soi["39"] == 36 and soi["56"] == 51 and soi["11"] == 9
-    rows, key = [], []
+    assert soi["39"] == 36 and soi["56"] == 51 and soi["11"] == 9 and soi["41"] == 38
+    # Each period, household type and state is its own TAXSIM process, run twice (income rising, then falling).
+    # In one large batch TAXSIM35 returned Oregon 2023 state tax about $37,000 too low on every row; a result
+    # must not depend on what was processed before it, so the two passes have to agree to the dollar.
+    key, taxes = [], []
     for fk, _, _, year in FRAMES:
         law = min(year, 2023)
         k = cpi[str(law)] / cpi[str(year)]
         for ti, (_, mstat, dep) in enumerate(TYPES):
             for st in sorted(STATE_INFO):
-                for gi, inc in enumerate(GRID):
-                    rows.append(f"{len(rows) + 1},{law},{soi[st]},{mstat},40,{40 if mstat == 2 else 0},{dep},{5 if dep else 0},{8 if dep else 0},{inc * k:.2f}")
+                lines = [f"{law},{soi[st]},{mstat},40,{40 if mstat == 2 else 0},{dep},{5 if dep else 0},{8 if dep else 0},{inc * k:.2f}" for inc in GRID]
+                fwd, rev = run(lines), run(lines[::-1])[::-1]
+                assert all(abs(a[0] - b[0]) < 1 and abs(a[1] - b[1]) < 1 for a, b in zip(fwd, rev)), f"TAXSIM result depends on order: {fk} {st} type {ti}"
+                for gi, (inc, (fed, sta)) in enumerate(zip(GRID, fwd)):
+                    # state income tax is never a large refund for a wage earner above $30,000, and never above 15% of income
+                    assert not (inc > 30000 and (sta / k < -5000 or sta / k > 0.15 * inc)), f"implausible state tax: {fk} {st} type {ti} income {inc}: {sta}"
                     key.append((fk, ti, st, gi, year, mstat, inc, k))
-    text = "taxsimid,year,state,mstat,page,sage,depx,age1,age2,pwages\n" + "\n".join(rows) + "\n"
-    res = subprocess.run([str(EXE)], input=text, capture_output=True, text=True, timeout=1800)
-    out = pd.read_csv(io.StringIO(res.stdout))
-    out.columns = [c.strip() for c in out.columns]
-    assert len(out) == len(rows), f"TAXSIM returned {len(out)} of {len(rows)} rows: {res.stdout[-400:]}"
+                    taxes.append((fed, sta))
+        print(f"{fk}: TAXSIM done", flush=True)
+    rows = key
     grid = {}
     detail = []
-    for (fk, ti, st, gi, year, mstat, inc, k), fed, sta in zip(key, out.fiitax, out.siitax):
+    for (fk, ti, st, gi, year, mstat, inc, k), (fed, sta) in zip(key, taxes):
         pay = payroll(year, inc, mstat)
         tot = fed / k + sta / k + pay
         grid.setdefault(fk, {}).setdefault(ti, {}).setdefault(st, []).append(round(tot))

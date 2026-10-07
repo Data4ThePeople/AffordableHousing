@@ -347,6 +347,20 @@ Statistics.
     household, 442 to 727 units per period holding about 1% of rentals), but
     swings inside that margin are not flagged. A 5% change in the rent ceiling moves a typical county's share
     by about 4 points.
+19. The renter pool changes over time, so a rising median renter income does
+    not mean the same renters are doing better. In Cook County, Illinois,
+    with income bands held constant in 2024 dollars, renter households under
+    $25,000 number about 222,000 in both 2015-2019 and 2020-2024, while those
+    at $75,000 and up grew from 233,677 in 2005-2009 to 335,255 in 2020-2024.
+    About 102,000 of the 126,000 renter households the county added are in
+    that top band. Nationally the under-$25,000 count is roughly flat (10.4
+    million to 11.0 million) while the $75,000-and-up group grew from 10.6
+    million to 15.6 million. The data cannot show households that stopped
+    being renter households (moved in with family, left the county, lost
+    housing), so a flat count at the bottom can hide people leaving and others
+    arriving. For change over time, the typed-income view (a fixed income in
+    2024 dollars) is the cleaner read: 57% to 43% nationally for $60,000.
+    Eric sees this less as a limitation than as a follow-up (see section 10).
 
 ## 8. Independent tie-out (fresh agent, October 7, 2026)
 
@@ -387,3 +401,21 @@ median is plus or minus $5,346, 43% of the estimate. The typical county's
 renter median is 62% of its all-household median; 41 units are under 40%.
 These counties now carry the low-reliability mark when the margin is over 25%
 of the estimate, and are left out of the rankings.
+
+## 10. Follow-up research (not in this piece)
+
+- **Who makes up the renter pool, and how it changed.** From Eric, October 7,
+  2026, after Cook County's renter median rose 32% between the last two
+  periods. Questions: how much of the rise in renter income is higher-income
+  households renting where they once would have bought, how much is pay
+  rising for existing renters, and how many low-income households left the
+  renter pool. Starting points: B25118 renter households by income with
+  constant-dollar bands (done for Cook County and the nation, limitation 19);
+  ACS microdata for tenure by age, income and household type; measures of
+  doubling up and of households moving out of a county.
+- **Large Sun Belt suburban counties** (Gwinnett, DeKalb, Clayton GA; Broward
+  FL), where renter incomes are above the national typical and the share
+  within reach is among the lowest. The 2024 GAO report on company ownership
+  of single-family rentals in Atlanta is one lead.
+- **One-employer counties at the top of the list** (Greenlee AZ, Dawson NE),
+  including what the January 2026 Tyson closure in Lexington does to Dawson.

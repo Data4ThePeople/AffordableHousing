@@ -81,3 +81,7 @@ None.
 - 2026-10-07 Step 1 confirmed by Eric. Not covered by the independent agent,
   because they came after it: the income margin-of-error mark and the change
   columns. Claude's own tie-out is clean on the final build (commit 090ab5b).
+- 2026-10-07 After Step 1: instant tooltips in the county panel; limitation 19
+  (the renter pool changes over time) and a follow-up research list added to
+  DATASETS.md at Eric's request. Contact address moved to the central env and
+  removed from this repo's history.

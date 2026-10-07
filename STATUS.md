@@ -5,8 +5,8 @@ Process: ~/.claude/d4tp-process/PROCESS.md
 
 ## Current
 
-Post: none yet (slug to be set in 2a)
-Step: 2a (not started; waiting for the slug and Eric's draft)
+Post: rentals-within-reach
+Step: 2a
 Since: 2026-10-07
 
 ## Steps
@@ -85,3 +85,4 @@ None.
   (the renter pool changes over time) and a follow-up research list added to
   DATASETS.md at Eric's request. Contact address moved to the central env and
   removed from this repo's history.
+- 2026-10-07 Step 2a opened. Slug: rentals-within-reach. posts/rentals-within-reach/POST.md created from the template; waiting for Eric's draft.

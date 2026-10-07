@@ -41,8 +41,8 @@ def num(v):
     return x if x > 0 else None
 
 
-def rec(rent, nocash, inc, mi=None, mr=None, q=None, ri=None, moe=None, alloc=None):
-    return {"r": [int(x) for x in rent], "nc": int(nocash), "i": [int(x) for x in inc], "mi": mi, "mr": mr, "q": q, "ri": ri,
+def rec(rent, nocash, inc, mi=None, mr=None, q=None, ri=None, moe=None, alloc=None, ti=None):
+    return {"r": [int(x) for x in rent], "nc": int(nocash), "i": [int(x) for x in inc], "ti": [int(x) for x in ti], "mi": mi, "mr": mr, "q": q, "ri": ri,
             "moe": moe, "al": alloc, "n": 1}
 
 
@@ -54,6 +54,7 @@ def add(a, b, sign=1):
     moe = None if a["moe"] is None or b["moe"] is None else math.hypot(a["moe"], b["moe"])
     al = None if a["al"] is None or b["al"] is None else [x + sign * y for x, y in zip(a["al"], b["al"])]
     out = {"r": [x + sign * y for x, y in zip(a["r"], b["r"])], "nc": a["nc"] + sign * b["nc"], "i": [x + sign * y for x, y in zip(a["i"], b["i"])],
+           "ti": [x + sign * y for x, y in zip(a["ti"], b["ti"])],
            "mi": None, "mr": None, "q": None, "ri": None, "moe": moe, "al": al, "n": a["n"] + 1}
     assert min(out["r"]) >= 0 and min(out["i"]) >= 0 and out["nc"] >= 0
     return out
@@ -82,7 +83,7 @@ def read_acs(v):
     out = {}
     for level, name in [("us", "us"), ("state", "state"), ("county", "county"), ("town", "cttown")]:
         tabs = {}
-        for g in ["B25063", "B19001", "B19013", "B19080", "B25119", "B25064"]:
+        for g in ["B25063", "B19001", "B19013", "B19080", "B25119", "B25118", "B25064"]:
             p = RAW / "acs" / f"{g}_{v}_{name}.json"
             if not p.exists():
                 continue
@@ -102,7 +103,8 @@ def read_acs(v):
             rows[code] = rec(rent, nocash, [t[f"B19001_{i:03d}E"] for i in range(2, 18)],
                              mi=mi if mi and 2500 < mi < 250000 else None, mr=num(t.get("B25064_001E")),
                              q=q if all(q) else None, ri=(lambda x: x if x and 2500 < x < 250000 else None)(num(t.get("B25119_003E"))),
-                             moe=max(0.0, float(t["B25063_001M"])))
+                             moe=max(0.0, float(t["B25063_001M"])), ti=[t[f"B25118_{i:03d}E"] for i in range(15, 26)])
+            assert sum(rows[code]["ti"]) == int(t["B25118_014E"]), (v, code)
         out[level] = rows
     return out
 

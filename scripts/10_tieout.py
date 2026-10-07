@@ -21,7 +21,7 @@ from pathlib import Path
 
 import pandas as pd
 
-from common import FRAMES, INC_EDGES, PROC, RENT_EDGES, ROOT, STATE_INFO
+from common import FRAMES, INC_EDGES, PROC, RENTER_EDGES, RENT_EDGES, ROOT, STATE_INFO
 
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 PCTS = [0.2, 0.4, 0.5, 0.6, 0.8]
@@ -39,7 +39,7 @@ def percentile(counts, edges, p):
 
 def income(x, fk, prof):
     if prof == 5:
-        return round(x["ri"]) if x["ri"] else None
+        return round(x["ri"]) if x["ri"] else percentile(x["ti"], RENTER_EDGES, 0.5)
     pub = x["mi"] if prof == 2 else (x["q"][{0: 0, 1: 1, 3: 2, 4: 3}[prof]] if x["q"] else None)
     return round(pub) if pub else percentile(x["i"], INC_EDGES[fk], PCTS[prof])
 
@@ -71,7 +71,7 @@ def share(r, edges, c):
     return below / tot
 
 
-def nation(H, T, cpi, fk, year, prof=2, pct=30, after=True, ht=1, typed=None, st=None):
+def nation(H, T, cpi, fk, year, prof=5, pct=30, after=True, ht=1, typed=None, st=None):
     a = t = n = under = 0
     for u, info in H["units"].items():
         x = info["f"][fk]
@@ -112,14 +112,14 @@ def main():
     print(f"1. inlined bucket counts checked: {cells:,} cells, differences: {bad}")
 
     # 2. headline numbers
-    cases = [dict(), dict(prof=0), dict(prof=5, after=False), dict(typed=60000), dict(ht=2, prof=1), dict(st="39"), dict(pct=40, after=False)]
+    cases = [dict(), dict(prof=2), dict(prof=0), dict(after=False), dict(typed=60000), dict(ht=2, prof=1), dict(st="39"), dict(st="09"), dict(pct=40, after=False)]
     rows = []
     with tempfile.TemporaryDirectory() as d:
         Path(d, "p.html").write_text(html)
         for case in cases:
             for fk, label, _, year in FRAMES:
                 v, n, under = nation(H, T, cpi, fk, year, **case)
-                h = f"#f={fk}&p={6 if case.get('typed') else case.get('prof', 2)}&pct={case.get('pct', 30)}&tax={int(case.get('after', True))}&ht={case.get('ht', 1)}"
+                h = f"#f={fk}&p={6 if case.get('typed') else case.get('prof', 5)}&pct={case.get('pct', 30)}&tax={int(case.get('after', True))}&ht={case.get('ht', 1)}"
                 h += f"&inc={case['typed']}" if case.get("typed") else ""
                 h += f"&st={case['st']}" if case.get("st") else ""
                 dom = subprocess.run([CHROME, "--headless=new", "--disable-gpu", "--virtual-time-budget=15000", "--window-size=1200,900", "--dump-dom",

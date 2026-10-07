@@ -74,8 +74,9 @@ American Community Survey 5-year estimates, table B25063.
 **What it is.** B19001: households by income bucket (16 buckets, top $200,000
 or more). B19013: median household income. B19080: upper limits of the first
 four household income quintiles (the 20th, 40th, 60th and 80th percentiles).
-B25119: median household income by tenure (all, owner, renter). B25064, median
-gross rent, is pulled only as a check.
+B25119: median household income by tenure (all, owner, renter). B25118: renter households by income (11 buckets, top $150,000 or more), used
+to estimate a renter median where none is published. B25064, median gross
+rent, is pulled only as a check.
 
 **Where it comes from.** Census API, same endpoint and cache as section 1.
 
@@ -277,3 +278,37 @@ Statistics.
   cash-rent units in 2015-2019 and 115,961 in 2020-2024, with 49.2% and 46.3%
   in buckets fully under $800 and $1,100. These match the published Dayton
   post.
+
+## 7. Limitations to state in the post (accepted by Eric, October 7, 2026)
+
+1. Occupied units, not vacancies. The data says nothing about what is on the
+   market today, and long-tenured or subsidized tenants raise the low-rent
+   counts.
+2. A cheap unit may already be taken by a higher-income household. The tool
+   counts price, not availability.
+3. Unit size is ignored. A studio and a three-bedroom count the same.
+4. Each county is measured against its own household. A higher share does not
+   mean cheaper rents.
+5. Post-tax income is modeled: one wage earner, no other income, no local
+   income taxes. Reach is overstated where local income taxes exist, and tax
+   is overstated for retirees and households on benefits.
+6. 30% of after-tax income is stricter than the usual standard, which uses
+   pre-tax income. The shares are not comparable with published cost-burden
+   figures unless the reader switches to "before taxes".
+7. The 2020-2024 period is taxed under 2023 law and includes 2020, when
+   pandemic disruption cut survey response.
+8. Percentile profiles for 2005-2009 are our estimates. Census published only
+   the median for that file. The renter median is our estimate from renter
+   income buckets in 10 to 29 units per period (Connecticut's rebuilt regions,
+   joined units, and small counties with no published figure); against the
+   published figure elsewhere the estimate runs within 1.1% to 1.6% typically
+   and 5.5% to 7.6% at the 95th percentile.
+9. Inside a rent bucket we assume rents are spread evenly.
+10. These are 5-year averages, each in its own final-year dollars.
+11. Small counties are noisy. About 5% to 6% are marked low reliability; they
+    hold under 0.1% of rentals.
+12. The national and state figures are our sums, not a Census statistic.
+13. The percentile profiles are for all households in the county; only the
+    median is available for renters alone. Comparing profiles shows how reach
+    differs along the income scale, not what happens to one household whose
+    income falls.

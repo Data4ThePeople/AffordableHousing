@@ -1,13 +1,13 @@
 """Pack everything the page needs into data/processed/map_data.json.
 
 Per unit and frame: cash-rent bucket counts, units paying no cash rent, six income profiles
-(20th, 40th, 50th, 60th, 80th percentile of all households; median renter household), which of
+(median renter household; 20th, 40th, 50th, 60th, 80th percentile of all households), which of
 those are published and which we estimated from buckets, and a low-reliability mark.
 Also: state and national records, the tax grid, CPI factors, shapes.
 Output: data/processed/map_data.json"""
 import json
 
-from common import FRAMES, INC_EDGES, PROC, RENT_EDGES, STATE_INFO
+from common import FRAMES, INC_EDGES, PROC, RENTER_EDGES, RENT_EDGES, STATE_INFO
 
 PCTS = [0.2, 0.4, 0.5, 0.6, 0.8]
 MIN_UNITS = 200     # fewer cash-rent units than this: low reliability
@@ -44,7 +44,11 @@ def pack(x, fk):
         else:
             prof.append(est[i])
             mask |= 1 << i
-    prof.append(round(x["ri"]) if x["ri"] else None)
+    if x["ri"]:
+        prof.append(round(x["ri"]))
+    else:                                               # no published renter median: estimate it from renter income buckets
+        prof.append(pctl(x["ti"], RENTER_EDGES, 0.5))
+        mask |= 1 << 5
     cash = sum(x["r"])
     lo = cash < MIN_UNITS
     if x["moe"] is not None and cash + x["nc"] > 0 and (x["moe"] / 1.645) / (cash + x["nc"]) > MAX_CV:

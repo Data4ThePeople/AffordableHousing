@@ -1,5 +1,5 @@
-frame,units_shown,blank,direct,merged,rebuilt,profile_pct_estimated,p80_unavailable,renter_median_units,ceiling_in_top_bucket_units,low_reliability_units_pct,low_reliability_rentals_pct,rent_imputed_pct,income_imputed_pct,median_income_gap_typical_pct,median_income_gap_p95_pct,median_rent_gap_typical_pct,median_rent_gap_p95_pct
-2005-2009,3141,0,3130,2,9,80.1,0,3130,2,5.5,0.07,,,0.31,1.89,0.04,0.09
-2010-2014,3141,0,3131,1,9,0.3,1,3131,6,5.0,0.05,,,0.35,1.86,0.04,0.08
-2015-2019,3141,0,3131,1,9,0.3,1,3121,0,5.2,0.05,,,0.43,2.3,0.03,0.07
-2020-2024,3141,0,3139,2,0,0.1,0,3112,0,6.1,0.05,,,0.64,3.17,0.03,0.06
+frame,units_shown,blank,direct,merged,rebuilt,profile_pct_estimated,p80_unavailable,renter_median_published,renter_median_estimated,renter_median_none,renter_median_gap_typical_pct,renter_median_gap_p95_pct,ceiling_in_top_bucket_units,low_reliability_units_pct,low_reliability_rentals_pct,rent_imputed_pct,income_imputed_pct,median_income_gap_typical_pct,median_income_gap_p95_pct,median_rent_gap_typical_pct,median_rent_gap_p95_pct
+2005-2009,3141,0,3130,2,9,80.1,0,3130,11,0,1.09,5.61,0,5.5,0.07,,,0.31,1.89,0.04,0.09
+2010-2014,3141,0,3131,1,9,0.3,1,3131,10,0,1.05,5.45,0,5.0,0.05,,,0.35,1.86,0.04,0.08
+2015-2019,3141,0,3131,1,9,0.3,1,3121,20,0,1.28,6.31,0,5.2,0.05,,,0.43,2.3,0.03,0.07
+2020-2024,3141,0,3139,2,0,0.1,0,3112,29,0,1.59,7.55,0,6.1,0.05,,,0.64,3.17,0.03,0.06

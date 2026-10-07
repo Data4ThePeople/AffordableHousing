@@ -29,6 +29,8 @@ RENT_EDGES = {"2009": RENT_2000, "2014": RENT_2000,
 # Household income buckets: lower edges, last one open-ended
 INC_2000 = [0] + list(range(10000, 50000, 5000)) + [50000, 60000, 75000, 100000, 125000, 150000, 200000]
 INC_EDGES = {k: INC_2000 for k in FKEYS}
+# Renter household income buckets (B25118, cells 015 to 025): lower edges, last one open-ended
+RENTER_EDGES = [0, 5000, 10000, 15000, 20000, 25000, 35000, 50000, 75000, 100000, 150000]
 assert len(RENT_2000) == 21 and len(RENT_2015) == 24 and len(INC_2000) == 16
 
 STATE_INFO = {"01": ("AL", "Alabama"), "02": ("AK", "Alaska"), "04": ("AZ", "Arizona"), "05": ("AR", "Arkansas"),

@@ -51,3 +51,9 @@ None.
   running each state on its own with an order check. Only Oregon 2020-2024
   changed (65% within reach before the fix read as 93%; now 61%). National
   2020-2024 moved from 65.98% to 65.53%.
+- 2026-10-07 Eric accepted: default profile is the median renter household
+  (B25119; estimated from B25118 buckets where not published); "priced within
+  reach" wording; tax assumptions shown by the control; 13 limitations for the
+  post (DATASETS.md section 7). Color breaks now 30, 40, 50, 65, 80% because
+  the renter default put 86% of rentals in one band. Independent tie-out by a
+  fresh agent started; rule added to CLAUDE.md and PROCESS.md.

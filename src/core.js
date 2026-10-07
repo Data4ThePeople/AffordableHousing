@@ -13,8 +13,9 @@
   const TOP_N = 25;
   // Fixed class breaks (percent of rentals within reach), the same in every period and setting.
   // Under 50% the household cannot afford the middle rental in its own county: that is where red and orange end.
-  const BINS = [40, 50, 65, 80];
-  const VARS = ["--d0", "--d1", "--d2", "--d3", "--d4"];
+  // The reds are split at 30% and 40% because the median renter household sits under 40% in most large counties.
+  const BINS = [30, 40, 50, 65, 80];
+  const VARS = ["--d0", "--d1", "--d2", "--d3", "--d4", "--d5"];
   const PROF = ["20th percentile household", "40th percentile household", "median household", "60th percentile household", "80th percentile household", "median renter household", "household"];
   const PROF_SHORT = ["20th percentile income", "40th percentile income", "Median household income", "60th percentile income", "80th percentile income", "Median renter income", "Income entered"];
   // where each period sits on the trend chart's time axis
@@ -83,7 +84,7 @@
   }
 
   // ---------- state ----------
-  const S = { fi: NF - 1, prof: 2, inc: 60000, pct: 30, after: true, ht: 1, st: "", bub: true, sel: null, hover: null, rankTab: 0 };
+  const S = { fi: NF - 1, prof: 5, inc: 60000, pct: 30, after: true, ht: 1, st: "", bub: true, sel: null, hover: null, rankTab: 0 };
   const inState = (u) => !S.st || u.s === S.st;
 
   // Total tax (federal and state income tax plus the employee's payroll tax) on an income, from the grid.
@@ -122,7 +123,7 @@
     const ceil = (S.pct / 100) * net / 12;
     const sh = shareOf(f.r, F[fi].re, ceil);
     if (!sh) return { norent: true };
-    return { inc, tax, net, ceil, sh, est: S.prof < 5 && !!((f.e >> S.prof) & 1), lo: !!f.lo, f };
+    return { inc, tax, net, ceil, sh, est: S.prof < 6 && !!((f.e >> S.prof) & 1), lo: !!f.lo, f };
   }
   function binOf(v) { let i = 0; while (i < BINS.length && v >= BINS[i]) i++; return i; }
   function value(u, fi) {
@@ -378,11 +379,11 @@
   const whose = () => (S.prof === 6 ? `a household with ${usd(S.inc)} in 2024 dollars` : `the ${PROF[S.prof]}`);
   const setup = () => `${S.pct}% of ${S.after ? "after-tax" : "pre-tax"} income${S.after ? `, taxed as ${DATA.tax.types[S.ht].toLowerCase()}` : ""}`;
   function bigLine(c) {
-    return `${c.sh.top ? "At least " : ""}${pc(100 * c.sh.v)} of rentals within reach`;
+    return `${c.sh.top ? "At least " : ""}${pc(100 * c.sh.v)} of rentals priced within reach`;
   }
   function noFigure(u, c, fi) {
     if (c.blank) return `Not shown for ${flabel(fi)}: ${c.blank}, so earlier figures cover a different area.`;
-    if (c.noinc) return S.prof === 5 ? `The Census Bureau publishes no median renter income for this area in ${flabel(fi)}. It is not available for joined or rebuilt areas.`
+    if (c.noinc) return S.prof === 5 ? `There is no renter income figure for this area in ${flabel(fi)}.`
       : `This income level falls in the open top income bucket for ${flabel(fi)}, so it cannot be estimated here.`;
     return `No rentals paying cash rent are recorded here for ${flabel(fi)}.`;
   }
@@ -474,7 +475,7 @@
   function usTrend() { return usCache || (usCache = F.map((f, i) => { const t = total(i, ""); return t ? t.v : null; })); }
   function notes(u, c) {
     const out = [];
-    if (c.sh && c.est) out.push(`The Census Bureau does not publish this income level for this county in ${flabel(S.fi)}; we estimated it from the income buckets.`);
+    if (c.sh && c.est) out.push(`The Census Bureau does not publish this income figure for this area in ${flabel(S.fi)}; we estimated it from its income buckets.`);
     if (c.sh && c.lo) out.push("Few rentals in the sample here. Treat the figure with care.");
     const f = u.f[S.fi];
     if (u.m > 1) out.push("Several counties or cities are joined here because their boundaries changed after 2009.");
@@ -501,8 +502,8 @@
     let h = `<div><h2>Share of rentals within reach, ${flabel(S.fi)}</h2><div class="unit" style="display:flex;justify-content:space-between"><span>Fewer within reach</span><span>More within reach</span></div>`
       + `<div class="strip">${C.seq.map((c) => `<span style="background:${c}"></span>`).join("")}</div>`
       + `<div class="ticks">${BINS.map((t, i) => `<span style="left:${((i + 1) / C.seq.length) * 100}%">${t}%</span>`).join("")}</div></div><div>`;
-    h += `<div class="row">Each bubble is a county. Its size is the number of rentals paying cash rent.</div>`
-      + `<div class="row">A county with no bubble has no comparable figure for this view.</div>`;
+    h += `<div class="row">Each bubble is a county, sized by its rentals. Rentals are occupied units, counted by what the current tenant pays.</div>`
+      + `<div class="row">Under 50%, orange and red: the household cannot afford the middle rental in its own county.</div>`;
     el.innerHTML = h + `</div>`;
   }
 
@@ -562,6 +563,7 @@
     $("pctOut").textContent = S.pct + "%";
     $("incCtl").hidden = S.prof !== 6;
     $("ht").disabled = !S.after;
+    $("taxnote").hidden = !S.after;
     draw(!!fade);
   }
   $("prof").onchange = () => { S.prof = +$("prof").value; update(); };
@@ -591,7 +593,7 @@
   stSel.onchange = () => { S.st = stSel.value; home(); update(); };
   $("reset").onclick = () => {
     stopPlay(); S.st = ""; stSel.value = ""; S.sel = null; S.hover = null; S.fi = NF - 1; yr.value = S.fi;
-    S.prof = 2; $("prof").value = 2; S.pct = 30; $("pct").value = 30; S.after = true; press("tAfter", "tBefore"); S.ht = 1; $("ht").value = 1;
+    S.prof = 5; $("prof").value = 5; S.pct = 30; $("pct").value = 30; S.after = true; press("tAfter", "tBefore"); S.ht = 1; $("ht").value = 1;
     S.inc = 60000; incEl.value = usd(S.inc); S.rankTab = 0; hideTip(); home(); update();
   };
   $("more").onclick = () => {

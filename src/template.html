@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Rentals Within Reach</title>
-<meta name="description" content="Interactive map: the share of rental homes in every U.S. county that a household can afford at 30% of its income, 2005-2009 to 2020-2024. Pick an income profile or enter an income. Census gross rent data, after-tax income from NBER TAXSIM. Free to use. Built by Data 4 The People.">
+<meta name="description" content="Interactive map: the share of rental homes in every U.S. county that a household can afford at 30% of its income, 2005-2009 to 2020-2024. Starts from the median renter household; pick another income profile or enter an income. Census gross rent data, after-tax income from NBER TAXSIM. Free to use. Built by Data 4 The People.">
 <style>
   :root{ color-scheme: light; }
   .ah{
@@ -12,7 +12,7 @@
     --accent:#085041; --accent-ink:#F7F5EF;
     --edge:rgba(31,42,39,.16); --state:#5E6B67; --hi:#1F2A27;
     --nohist:#F1EFE9; --hatch:#C9C4B9; --mark:rgba(31,42,39,.5);
-    --d0:#a8201a; --d1:#f08a3c; --d2:#f7dc6f; --d3:#7cc6a4; --d4:#08606b;
+    --d0:#7a0f1a; --d1:#cf3b2c; --d2:#f08a3c; --d3:#f7dc6f; --d4:#7cc6a4; --d5:#08606b;
     --st-line:#8A5A00;
     container-type:inline-size; background:var(--paper); color:var(--ink);
     font:14px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
@@ -134,6 +134,7 @@
   .rank .msg{color:var(--ink-3); font-size:12.5px}
   .rank .scope{font-size:11.5px; color:var(--ink-3); margin:0 0 4px}
 
+  .taxnote{margin:-2px 0 8px; font-size:11.5px; color:var(--ink-3)}
   #more{display:none}
   .foot{display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; font-size:11px; color:var(--ink-3); margin-top:6px}
 
@@ -177,10 +178,11 @@
     </label>
     <label>Household
       <select id="prof">
-        <option value="0">20th percentile income</option><option value="1">40th percentile income</option>
-        <option value="2" selected>Median household income</option>
-        <option value="3">60th percentile income</option><option value="4">80th percentile income</option>
-        <option value="5">Median renter household</option><option value="6">Enter an income</option>
+        <option value="5" selected>Median renter household</option>
+        <option value="2">Median of all households</option>
+        <option value="0">20th percentile, all households</option><option value="1">40th percentile, all households</option>
+        <option value="3">60th percentile, all households</option><option value="4">80th percentile, all households</option>
+        <option value="6">Enter an income</option>
       </select>
     </label>
     <label id="incCtl" hidden>Income, 2024 dollars
@@ -206,6 +208,8 @@
     <button type="button" class="btn sec" id="reset">Reset</button>
     <button type="button" class="btn" id="more" aria-expanded="false">More options</button>
   </div>
+
+  <p class="taxnote" id="taxnote">After taxes: federal and state income tax and payroll tax, figured for one wage earner with no other income. Local income taxes are not counted.</p>
 
   <div class="main">
     <div class="mapwrap" id="mapwrap">

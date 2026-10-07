@@ -345,23 +345,20 @@ def main():
     click(38.7)
     scroll(39.1, 39.7, lambda: 0)
     move(39.7, 40.3, lambda: rect("#detail .big"))
-    # beat 7: reset, all households, reset again, then search one county
+    # beat 7: reset, then search one county
     move(41.5, 41.9, lambda: rect("#reset"))
     click(42.0)
-    move(42.3, 42.7, lambda: rect("#prof"))
-    choose(42.9, "prof", 2)
-    move(43.5, 43.9, lambda: rect("#reset"))
-    click(44.0)
-    move(44.2, 44.6, lambda: rect("#q"))
-    click(44.7)
+    move(42.5, 43.0, lambda: rect("#q"))
+    click(43.1)
     for k, c in enumerate(SEARCH_TYPED):
-        at(44.9 + k * 0.08, (lambda c: (lambda: ch.cmd("Input.insertText", text=c)))(c))
-    move(46.2, 46.7, lambda: ch.js(f"""(() => {{ const li = [...document.querySelectorAll('#lb li')].find(l => l.textContent.includes({json.dumps(SEARCH_TYPED)}));
+        at(43.3 + k * 0.1, (lambda c: (lambda: ch.cmd("Input.insertText", text=c)))(c))
+    move(45.0, 45.6, lambda: ch.js(f"""(() => {{ const li = [...document.querySelectorAll('#lb li')].find(l => l.textContent.includes({json.dumps(SEARCH_TYPED)}));
         const r = li.getBoundingClientRect(); return [r.x + 60, r.y + r.height / 2]; }})()"""))
-    click(46.9)
+    click(45.8)
     # the map zooms under the cursor on that click; the page is not told about the cursor again until it
     # reaches the county panel, so no other county gets hovered on the way and the panel keeps the searched one
-    move(47.1, 47.9, lambda: rect("#detail .big"), silent=True)
+    move(46.0, 46.9, lambda: rect("#detail .big"), silent=True)
+    move(48.2, 49.0, lambda: part("#detail .ladder [data-tip]", 8, 10))
     events.sort(key=lambda e: e[0])
     anchors = {}
 
@@ -370,7 +367,7 @@ def main():
             anchors[i] = spec()
         return anchors[i]
 
-    stills = {t: None for t in (2.0, 6.2, 8.0, 10.5, 13.5, 17.2, 20.6, 25.6, 29.3, 32.4, 35.0, 38.6, 40.6, 43.3, 46.0, 50.0)}
+    stills = {t: None for t in (2.0, 6.2, 8.0, 10.5, 13.5, 17.2, 20.6, 25.6, 29.3, 32.4, 35.0, 38.6, 40.6, 44.6, 47.5, 50.0)}
     ff = None
     if not sheet:
         ff = subprocess.Popen([imageio_ffmpeg.get_ffmpeg_exe(), "-y", "-loglevel", "error",

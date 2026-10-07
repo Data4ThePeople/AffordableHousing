@@ -5,15 +5,15 @@ Process: ~/.claude/d4tp-process/PROCESS.md
 
 ## Current
 
-Post: none yet
-Step: 1
+Post: none yet (slug to be set in 2a)
+Step: 2a (not started; waiting for the slug and Eric's draft)
 Since: 2026-10-07
 
 ## Steps
 
 | Step | What | Confirmed | Notes |
 |---|---|---|---|
-| 1  | Exploration and analysis | | |
+| 1  | Exploration and analysis | 2026-10-07 | Tie-out clean; independent tie-out by a fresh agent done; viz live on Pages |
 | 2a | Draft with brackets resolved | | |
 | 2b | Eric's edit, Claude's look-over | | |
 | 2c | Slice markup | | |
@@ -74,3 +74,10 @@ None.
   independent agent's own figure); keep married with no children as the tax
   default. Added a low-reliability mark for median incomes with a margin over
   25% of the estimate, after Eric questioned Webster County WV.
+- 2026-10-07 County panel: line chart replaced by two change columns; the
+  share-over-time chart removed (Eric). Dayton post compared with the tool:
+  the post's 49% to 46% drop comes from the whole-bucket rule in 2020-2024
+  (46% is a floor; interpolated 56%). Eric to decide on a note to that post.
+- 2026-10-07 Step 1 confirmed by Eric. Not covered by the independent agent,
+  because they came after it: the income margin-of-error mark and the change
+  columns. Claude's own tie-out is clean on the final build (commit 090ab5b).

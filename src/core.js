@@ -433,7 +433,7 @@
       const x = l + i * bw, y = ys(r[i]), hh = h - b - y;
       const name = e[i + 1] === undefined ? `${usd(e[i])} or more` : i === 0 ? `Under ${usd(e[1])}` : `${usd(e[i])} to ${usd(e[i + 1] - 1)}`;
       const frac = i < c.sh.bi ? 1 : i > c.sh.bi ? 0 : e[i + 1] === undefined ? 0 : Math.max(0, Math.min(1, (c.ceil - e[i]) / (e[i + 1] - e[i])));
-      bars += `<g><title>${name} a month: ${nf.format(r[i])} rentals</title><rect x="${(x + 1).toFixed(1)}" y="${y.toFixed(1)}" width="${(bw - 2).toFixed(1)}" height="${Math.max(hh, 0.5).toFixed(1)}" fill="var(--hatch)"/>`
+      bars += `<g data-tip="${name} a month: ${nf.format(r[i])} rentals"><rect x="${(x + 1).toFixed(1)}" y="${y.toFixed(1)}" width="${(bw - 2).toFixed(1)}" height="${Math.max(hh, 0.5).toFixed(1)}" fill="var(--hatch)"/>`
         + (frac > 0 ? `<rect x="${(x + 1).toFixed(1)}" y="${y.toFixed(1)}" width="${((bw - 2) * frac).toFixed(1)}" height="${Math.max(hh, 0.5).toFixed(1)}" fill="var(--accent)"/>` : "")
         + `<rect x="${x.toFixed(1)}" y="${t}" width="${bw.toFixed(1)}" height="${h - t - b}" fill="transparent"/></g>`;
     }
@@ -471,7 +471,7 @@
       const up = bar.d >= 0;
       // the value sits beyond the bar's end; the name sits on the other side of the zero line
       const vy = up ? top - 17 : top + hh + 12, ny = up ? y0 + 13 : y0 - 6;
-      g += `<g><title>${bar.name}: ${nf.format(Math.round(bar.from))} in ${flabel(0)}, ${nf.format(Math.round(bar.from + bar.d))} in ${flabel(NF - 1)}</title>`
+      g += `<g data-tip="${bar.name}: ${nf.format(Math.round(bar.from))} in ${flabel(0)}, ${nf.format(Math.round(bar.from + bar.d))} in ${flabel(NF - 1)}">`
         + `<rect x="${cx - bw / 2}" y="${top.toFixed(1)}" width="${bw}" height="${hh.toFixed(1)}" rx="3" fill="${bar.col}"/></g>`
         + `<text x="${cx}" y="${vy.toFixed(1)}" text-anchor="middle" font-size="12" font-weight="600" fill="var(--ink)">${sign(bar.d)}${nf.format(Math.abs(Math.round(bar.d)))}</text>`
         + `<text x="${cx}" y="${(vy + 13).toFixed(1)}" text-anchor="middle" font-size="10.5" fill="var(--ink-2)">${pct}</text>`
@@ -502,7 +502,30 @@
     else h += `<div class="big">${bigLine(c)}</div>` + mathTable(c, S.fi) + `<div class="src">${esc(rangeLine(c))}</div>` + ladder(u, c);
     h += countsChart(u) + `<div class="hist">${esc(notes(u, c))}</div>`;
     el.innerHTML = h;
+    ptip.hidden = true;
   }
+
+  // Tooltips for the charts in the county panel. The browser's own tooltip waits a second or two before it
+  // shows, so these are drawn by the page and follow the pointer at once.
+  const ptip = $("ptip");
+  function panelTip(e) {
+    const g = e.target.closest ? e.target.closest("[data-tip]") : null;
+    if (!g) { ptip.hidden = true; return; }
+    ptip.textContent = g.getAttribute("data-tip");
+    ptip.hidden = false;
+    // positioned inside the page's own box, which is what the tooltip is laid out against
+    const box = root.getBoundingClientRect(), px = e.clientX - box.left, py = e.clientY - box.top;
+    const tw = ptip.offsetWidth, th = ptip.offsetHeight;
+    let x = px + 12, y = py - th - 10;
+    if (x + tw > box.width - 6) x = px - tw - 12;
+    if (y < 4) y = py + 16;
+    ptip.style.left = Math.max(4, x) + "px"; ptip.style.top = y + "px";
+  }
+  const detailEl = $("detail");
+  detailEl.addEventListener("pointermove", panelTip);
+  detailEl.addEventListener("pointerdown", panelTip);
+  detailEl.addEventListener("pointerleave", () => { ptip.hidden = true; });
+  document.querySelector(".side").addEventListener("scroll", () => { ptip.hidden = true; }, { passive: true });
 
   // ---------- legend ----------
   function legend() {

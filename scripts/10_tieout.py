@@ -8,6 +8,7 @@ compare with what the built page shows in headless Chrome.
    $800 (2015-2019) and $1,100 (2020-2024), against the published Dayton post (116,730 and 49%;
    115,961 and 46%).
 4. Two federal income tax figures worked by hand from the 2019 brackets.
+5. Two 2009 figures by hand, checking that the Making Work Pay credit is out of the 2005-2009 grid.
 Output: data/processed/tieout.csv; exits with an error on any difference."""
 import base64
 import bisect
@@ -156,6 +157,18 @@ def main():
         ok = abs(g - h) < 1
         bad += not ok
         print(f"4. 2019 federal income tax: TAXSIM {g:,.0f}, by hand {h:,.0f} {'ok' if ok else 'MISMATCH'}")
+    # 5. the 2005-2009 tax grid has the Making Work Pay credit taken out: by hand, 2009 law, no credit.
+    #    single $30,000: taxable 30,000 - 5,700 - 3,650 = 20,650; joint $60,000: taxable 60,000 - 11,400 - 7,300 = 41,300
+    hand09 = {(0, 30000): 0.10 * 8350 + 0.15 * (20650 - 8350), (1, 60000): 0.10 * 16700 + 0.15 * (41300 - 16700)}
+    out = subprocess.run([str(ROOT / "data" / "raw" / "taxsim" / "taxsim35-osx.exe")], capture_output=True, text=True,
+                         input="taxsimid,year,state,mstat,page,sage,depx,age1,age2,pwages\n1,2009,44,1,40,0,0,0,0,30000\n2,2009,44,2,40,40,0,0,0,60000\n").stdout
+    ts = [float(ln.split(",")[3]) for ln in out.strip().splitlines()[1:]]
+    for ((ti, inc), h), raw_fed, credit in zip(hand09.items(), ts, (400, 800)):
+        grid_total = tax(T, "2009", ti, "48", inc)               # Texas: no state income tax
+        fed_in_grid = grid_total - 0.0765 * inc
+        ok = abs(raw_fed + credit - h) < 1 and abs(fed_in_grid - h) < 25    # the grid is interpolated between income points
+        bad += not ok
+        print(f"5. 2009 federal tax without Making Work Pay: by hand {h:,.0f}; TAXSIM {raw_fed:,.0f} + {credit} credit; in our grid {fed_in_grid:,.0f} {'ok' if ok else 'MISMATCH'}")
     print("TIE-OUT", "CLEAN" if not bad else f"FAILED: {bad} differences")
     sys.exit(1 if bad else 0)
 

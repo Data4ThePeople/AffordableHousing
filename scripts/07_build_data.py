@@ -11,6 +11,7 @@ from common import COLLEGE_SHARE, FRAMES, INC_EDGES, PROC, RENTER_EDGES, RENT_ED
 
 PCTS = [0.2, 0.4, 0.5, 0.6, 0.8]
 MIN_UNITS = 200     # fewer cash-rent units than this: low reliability
+MAX_INC_MOE = 0.25  # published median income whose 90% margin of error is over this share of the estimate: low reliability for that profile
 MAX_CV = 0.30       # ACS: margin of error on renter units implies a coefficient of variation above this: low reliability
 HOW = {"direct": 0, "merged": 1, "rebuilt": 2}
 
@@ -56,6 +57,10 @@ def pack(x, fk):
     if x["moe"] is not None and cash + x["nc"] > 0 and (x["moe"] / 1.645) / (cash + x["nc"]) > MAX_CV:
         lo = True
     out = {"r": x["r"], "nc": x["nc"], "p": prof, "e": mask, "lo": int(lo), "h": HOW.get(x.get("how", "direct"), 0), "hh": sum(x["i"])}
+    pm = x.get("pm") or [None, None]
+    thin = (4 if x["mi"] and pm[0] and pm[0] / x["mi"] > MAX_INC_MOE else 0) | (32 if x["ri"] and pm[1] and pm[1] / x["ri"] > MAX_INC_MOE else 0)
+    if thin:
+        out["pm"] = thin                                # bit 2: median of all households, bit 5: median renter household
     if floor:
         out["tc"] = floor
     return out
@@ -80,7 +85,7 @@ def main():
            "st": {s: [pack(H["states"][s][fk], fk) for fk, *_ in FRAMES] for s in sts},
            "tax": {"inc": T["inc"], "types": T["types"],
                    "t": [[[T["tax"][fk][str(ti)][s] for s in sts] for ti in range(len(T["types"]))] for fk, *_ in FRAMES]},
-           "rules": {"minUnits": MIN_UNITS, "maxCv": MAX_CV, "college": round(100 * COLLEGE_SHARE)}}
+           "rules": {"minUnits": MIN_UNITS, "maxCv": MAX_CV, "college": round(100 * COLLEGE_SHARE), "incMoe": round(100 * MAX_INC_MOE)}}
     dest = PROC / "map_data.json"
     dest.write_text(json.dumps(out, separators=(",", ":")))
     import gzip

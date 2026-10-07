@@ -180,8 +180,8 @@ dollars, so we bring each income to 2023 dollars with the CPI-U, tax it under
 **Coverage.** All states and DC. Tax years 2009, 2014, 2019 and 2023 are used.
 Everything it returns is modeled, not measured.
 
-**Changes over time.** Tax law itself: the 2009 Making Work Pay credit, and
-the 2018 changes to rates, the standard deduction and the child tax credit.
+**Changes over time.** Tax law itself: the 2009 Making Work Pay credit (which
+we remove, see section 7 item 15), and the 2018 changes to rates, the standard deduction and the child tax credit.
 
 **Suppressed, censored or masked values.** None.
 
@@ -326,10 +326,10 @@ Statistics.
     They are included by default. The 15% line is our choice.
 15. Tax law is one year per period. Each period is taxed under its final
     year's law. 2009 law includes the Making Work Pay credit ($400 single,
-    $800 joint), which existed only in 2009 and 2010. It raises the 2005-2009
-    share for the median renter household from 31.95% to 34.54%, so 2.6 of
-    the 6.9-point drop to 2010-2014 comes from that credit (independent audit,
-    October 7, 2026).
+    $800 joint), which existed only in 2009 and 2010. We take it out of the
+    2005-2009 period (Eric, October 7, 2026): left in, it lifted that period
+    for the median renter household from 31.95% to 34.54%. Other one-year
+    features of a final year's law are not adjusted.
 16. State tax law for 2020-2024 is 2021 law carried forward, so states that
     cut rates in 2022 or 2023 are taxed too high (North Carolina by about $365
     on $80,000, Idaho $380, Utah $250, Kentucky $237). North Carolina would
@@ -342,8 +342,10 @@ Statistics.
 18. Published median incomes for mid-sized counties swing between periods
     from sampling alone, and the share swings with them (Baldwin County,
     Georgia reads 80%, 46%, 80% across three periods for all households). The
-    low-reliability mark looks only at the number of rentals, so it does not
-    flag these. A 5% change in the rent ceiling moves a typical county's share
+    low-reliability mark now also covers a published median income whose
+    margin of error is over 25% of the estimate (for the median renter
+    household, 442 to 727 units per period holding about 1% of rentals), but
+    swings inside that margin are not flagged. A 5% change in the rent ceiling moves a typical county's share
     by about 4 points.
 
 ## 8. Independent tie-out (fresh agent, October 7, 2026)
@@ -373,3 +375,15 @@ county income (50,362 runs).
   figure; state schedules beyond about 12 states; map shapes.
 - Method findings are limitations 15 to 18 above and the "at least" and
   top-code fixes made the same day.
+
+## 9. Small counties with very low renter income (October 7, 2026)
+
+Webster County, West Virginia shows a median renter income of $12,364 in
+2020-2024 against $43,839 for all households. This is what the ACS publishes,
+and it is consistent across the four periods ($13,933, $14,558, $16,068,
+$12,364). About 77% of households there own; the 658 renter households are a
+small and much poorer group. The margin of error on the 2020-2024 renter
+median is plus or minus $5,346, 43% of the estimate. The typical county's
+renter median is 62% of its all-household median; 41 units are under 40%.
+These counties now carry the low-reliability mark when the margin is over 25%
+of the estimate, and are left out of the rankings.

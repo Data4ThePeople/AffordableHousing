@@ -7,6 +7,8 @@ Assumptions: all income is wages of one earner aged 40; the spouse, if any, is 4
 earnings; children are 5 and 8; standard deduction; no local income tax.
 The 2020-2024 frame is in 2024 dollars and TAXSIM35 stops at tax year 2023, so those incomes are
 brought to 2023 dollars with the CPI-U, taxed under 2023 law, and the tax is scaled back up.
+The 2009 Making Work Pay credit is removed from the 2005-2009 period (Eric, October 7, 2026): it was a
+two-year measure and would otherwise lift that whole period.
 Output: data/processed/tax_grid.json"""
 import io
 import json
@@ -25,6 +27,13 @@ GRID = [0] + [round(250 * (8000 ** (k / 159))) for k in range(160)]
 # From 2013 an extra 0.9% applies above $200,000 (single) or $250,000 (joint).
 FICA = {2009: (0.062, 106800, 0.0145, False), 2014: (0.062, 117000, 0.0145, False), 2019: (0.062, 132900, 0.0145, False),
         2024: (0.062, 168600, 0.0145, False)}
+
+
+def making_work_pay(wages, mstat):
+    """The 2009 Making Work Pay credit: 6.2% of earnings up to $400 ($800 joint), less 2% of income over $75,000
+    ($150,000 joint). It existed only in 2009 and 2010, so we take it back out of the 2005-2009 period."""
+    cap, start = (800, 150000) if mstat == 2 else (400, 75000)
+    return max(0.0, min(0.062 * wages, cap) - 0.02 * max(0, wages - start))
 
 
 def payroll(year, wages, mstat):
@@ -61,6 +70,8 @@ def main():
                 lines = [f"{law},{soi[st]},{mstat},40,{40 if mstat == 2 else 0},{dep},{5 if dep else 0},{8 if dep else 0},{inc * k:.2f}" for inc in GRID]
                 fwd, rev = run(lines), run(lines[::-1])[::-1]
                 assert all(abs(a[0] - b[0]) < 1 and abs(a[1] - b[1]) < 1 for a, b in zip(fwd, rev)), f"TAXSIM result depends on order: {fk} {st} type {ti}"
+                if law == 2009:
+                    fwd = [(fed + making_work_pay(inc, mstat), sta) for inc, (fed, sta) in zip(GRID, fwd)]
                 for gi, (inc, (fed, sta)) in enumerate(zip(GRID, fwd)):
                     # state income tax is never a large refund for a wage earner above $30,000, and never above 15% of income
                     assert not (inc > 30000 and (sta / k < -5000 or sta / k > 0.15 * inc)), f"implausible state tax: {fk} {st} type {ti} income {inc}: {sta}"

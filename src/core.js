@@ -126,7 +126,7 @@
     if (!sh) return { norent: true };
     // a top-coded income ("$250,000 or more") is a floor, so the share is a floor too
     if (S.prof < 5 && ((f.tc || 0) >> S.prof) & 1) { sh.top = true; sh.hi = 1; sh.inc = true; }
-    return { inc, tax, net, ceil, sh, est: S.prof < 6 && !!((f.e >> S.prof) & 1), lo: !!f.lo, f };
+    return { inc, tax, net, ceil, sh, est: S.prof < 6 && !!((f.e >> S.prof) & 1), lo: !!f.lo || !!(((f.pm || 0) >> S.prof) & 1), thinInc: !!(((f.pm || 0) >> S.prof) & 1), f };
   }
   function binOf(v) { let i = 0; while (i < BINS.length && v >= BINS[i]) i++; return i; }
   function value(u, fi) {
@@ -412,7 +412,7 @@
     let h = `<b>${esc(u.n)}</b>`;
     if (!c.sh) h += `<div class="src">${esc(noFigure(u, c, S.fi))}</div>`;
     else h += `<div>${bigLine(c)}</div><table class="math"><tr><td>Rent ceiling</td><td>${usd(c.ceil)} a month</td></tr><tr><td>Rentals paying cash rent</td><td>${nf.format(c.sh.tot)}</td></tr></table>`
-      + (c.lo ? `<div class="src">Few rentals in the sample. Treat with care.</div>` : "");
+      + (c.lo ? `<div class="src">${c.thinInc ? "This income figure rests on a small sample. Treat with care." : "Few rentals in the sample. Treat with care."}</div>` : "");
     tip.innerHTML = h;
     tip.hidden = false;
     const tw = tip.offsetWidth, th = tip.offsetHeight;
@@ -509,7 +509,8 @@
   function notes(u, c) {
     const out = [];
     if (c.sh && c.est) out.push(`The Census Bureau does not publish this income figure for this area in ${flabel(S.fi)}; we estimated it from its income buckets.`);
-    if (c.sh && c.lo) out.push("Few rentals in the sample here. Treat the figure with care.");
+    if (c.sh && c.thinInc) out.push("The Census Bureau's margin of error on this income figure is more than a quarter of the figure itself, so the share here could be well off. It is left out of the rankings.");
+    else if (c.sh && c.lo) out.push("Few rentals in the sample here. Treat the figure with care.");
     const f = u.f[S.fi];
     if (u.col && !S.noCol) out.push(`A college county: ${u.cs}% of residents are enrolled in college or graduate school. Student renters report little income, which lowers the renter median here.`);
     if (u.m > 1) out.push("Several counties or cities are joined here because their boundaries changed after 2009.");
@@ -566,7 +567,7 @@
     const sign = S.rankTab === 0 ? 1 : -1;
     rows.sort((x, y) => sign * (x[1].v - y[1].v) || x[0].n.localeCompare(y[0].n));
     let h = `<h2>Rankings</h2><div class="tabs">${tabs.map((t, i) => `<button type="button" data-t="${i}" aria-pressed="${i === S.rankTab}">${t}</button>`).join("")}</div>`;
-    h += `<p class="scope">${esc(S.st ? DATA.states[S.st][1] : "All states")}, ${flabel(S.fi)}. ${nf.format(rows.length)} counties, leaving out those with few rentals in the sample.</p>`;
+    h += `<p class="scope">${esc(S.st ? DATA.states[S.st][1] : "All states")}, ${flabel(S.fi)}. ${nf.format(rows.length)} counties, leaving out those with a small sample.</p>`;
     if (rows.length < 3) h += `<p class="msg">Not enough counties to rank here.</p>`;
     else h += "<table>" + rows.slice(0, TOP_N).map(([u, v], i) =>
       `<tr data-id="${u.id}"${S.sel === u ? ' class="sel"' : ""}><td class="r">${i + 1}</td><td>${esc(u.n)}<br><small>${usd(v.c.ceil)} ceiling, ${nf.format(v.c.sh.tot)} rentals</small></td><td class="n">${v.c.sh.top ? "≥" : ""}${pc(v.v)}</td></tr>`).join("") + "</table>";

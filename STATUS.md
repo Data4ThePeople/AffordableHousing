@@ -69,3 +69,8 @@ None.
   Recorded as limitations 15 to 18. Open for Eric: whether to remove the 2009
   Making Work Pay credit from the first period, and which household type is
   the tax default.
+- 2026-10-07 Eric decided: remove the 2009 Making Work Pay credit from
+  2005-2009 (default now reads 32.0, 27.6, 32.0, 31.3%, matching the
+  independent agent's own figure); keep married with no children as the tax
+  default. Added a low-reliability mark for median incomes with a margin over
+  25% of the estimate, after Eric questioned Webster County WV.

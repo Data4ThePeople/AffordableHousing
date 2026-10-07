@@ -18,8 +18,6 @@
   const VARS = ["--d0", "--d1", "--d2", "--d3", "--d4", "--d5"];
   const PROF = ["20th percentile household", "40th percentile household", "median household", "60th percentile household", "80th percentile household", "median renter household", "household"];
   const PROF_SHORT = ["20th percentile income", "40th percentile income", "Median household income", "60th percentile income", "80th percentile income", "Median renter income", "Income entered"];
-  // where each period sits on the trend chart's time axis
-  const MID = { "2009": 2007, "2014": 2012, "2019": 2017, "2024": 2022 };
 
   // ---------- data ----------
   async function loadData() {
@@ -452,30 +450,6 @@
       + `<line x1="${l}" x2="${w - rt}" y1="${h - b}" y2="${h - b}" stroke="var(--line)"/>${bars}${line}${ticks}</svg>`
       + `<div class="src">Dark bars are within reach. Buckets are the Census Bureau's and are wider at higher rents.</div>`;
   }
-  // Share within reach in every period: this county, its state, the country.
-  function spark(u) {
-    const series = [
-      { key: "u", pts: F.map((f, i) => { const c = calc(u, i); return c.sh ? 100 * c.sh.v : null; }) },
-      { key: "st", pts: F.map((f, i) => { const t = total(i, u.s); return t ? t.v : null; }) },
-      { key: "us", pts: usTrend() },
-    ];
-    const w = 300, h = 110, l = 30, r = 34, t = 8, b = 18;
-    const x0 = MID[F[0].k], x1 = MID[F[NF - 1].k];
-    const xs = (i) => l + ((MID[F[i].k] - x0) / (x1 - x0)) * (w - l - r);
-    const ys = (v) => t + (1 - v / 100) * (h - t - b);
-    const path = (pts) => { let d = "", pen = false; pts.forEach((v, i) => { if (v === null) { pen = false; return; } d += `${pen ? "L" : "M"}${xs(i).toFixed(1)},${ys(v).toFixed(1)}`; pen = true; }); return d; };
-    const grid = [0, 50, 100].map((v) => `<line x1="${l}" x2="${w - r}" y1="${ys(v)}" y2="${ys(v)}" stroke="var(--grid)"/><text x="${l - 4}" y="${ys(v) + 3.5}" text-anchor="end" font-size="10" fill="var(--ink-3)">${v}%</text>`).join("");
-    const xl = F.map((f, i) => `<text x="${xs(i)}" y="${h - 4}" text-anchor="middle" font-size="10" fill="var(--ink-3)">${f.label.slice(0, 5)}${f.label.slice(7)}</text>`).join("");
-    const up = series[0].pts;
-    const dots = up.map((v, i) => (v === null ? "" : `<circle cx="${xs(i).toFixed(1)}" cy="${ys(v).toFixed(1)}" r="${i === S.fi ? 4 : 2.2}" fill="var(--accent)"${i === S.fi ? ' stroke="var(--panel)" stroke-width="2"' : ""}><title>${flabel(i)}: ${pc(v)}</title></circle>`)).join("");
-    const last = up[NF - 1];
-    const endLab = last === null ? "" : `<text x="${w - r + 5}" y="${ys(last) + 3.5}" font-size="10.5" font-weight="600" fill="var(--ink)">${pc(last)}</text>`;
-    return `<h3>Share within reach over time</h3><div class="key"><span><i></i>This county</span><span><i class="st"></i>${esc(DATA.states[u.s][1])}</span><span><i class="us"></i>United States</span></div>`
-      + `<svg class="spark" viewBox="0 0 ${w} ${h}" role="img" aria-label="Share of rentals within reach by period, ${esc(u.n)}, its state and the United States">${grid}${xl}`
-      + `<path d="${path(series[2].pts)}" fill="none" stroke="var(--ink-3)" stroke-width="2" stroke-dasharray="1.5 3"/>`
-      + `<path d="${path(series[1].pts)}" fill="none" stroke="var(--st-line)" stroke-width="2" stroke-dasharray="5 3"/>`
-      + `<path d="${path(up)}" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linejoin="round"/>${dots}${endLab}</svg>`;
-  }
   // Two columns: the change in all rentals paying cash rent, and in rentals priced within reach,
   // from the first period to the last. Both are counts of units on one axis.
   function countsChart(u) {
@@ -506,8 +480,6 @@
     return head + `<svg class="cols" viewBox="0 0 ${w} ${h}" role="img" aria-label="Change in all rentals and in rentals priced within reach, ${flabel(0)} to ${flabel(NF - 1)}, ${esc(u.n)}">${g}</svg>`
       + `<div class="src">Rentals paying cash rent. ${nf.format(Math.round(a.sh.tot))} then, ${nf.format(Math.round(z.sh.tot))} now; ${nf.format(Math.round(a.sh.v * a.sh.tot))} priced within reach then, ${nf.format(Math.round(z.sh.v * z.sh.tot))} now.</div>`;
   }
-  let usCache = null;
-  function usTrend() { return usCache || (usCache = F.map((f, i) => { const t = total(i, ""); return t ? t.v : null; })); }
   function notes(u, c) {
     const out = [];
     if (c.sh && c.est) out.push(`The Census Bureau does not publish this income figure for this area in ${flabel(S.fi)}; we estimated it from its income buckets.`);
@@ -519,17 +491,16 @@
     else if (f.h === 2) out.push(`For ${flabel(S.fi)} this area was rebuilt from smaller Census areas to match today's boundaries.`);
     const blank = F.filter((x, i) => u.f[i].x).map((x) => x.label);
     if (blank.length) out.push(`Not shown for ${blank.join(" and ")}: ${u.f.find((x) => x.x).x}.`);
-    out.push("Each period's line for the state and the country adds up every county's rentals within reach of that county's own household.");
     return out.join(" ");
   }
   function showDetail(u) {
     const el = $("detail");
-    if (!u) { el.innerHTML = `<h2>County</h2><div class="empty">Hover over or tap a county to see its rent ceiling, its rentals by monthly rent, and how the share within reach has changed since 2005-2009.</div>`; return; }
+    if (!u) { el.innerHTML = `<h2>County</h2><div class="empty">Hover over or tap a county to see its rent ceiling, its rentals by monthly rent, and how its rentals have changed since 2005-2009.</div>`; return; }
     const v = vals.get(u.id), c = v.c;
     let h = `<h2>County</h2><div class="name">${esc(u.n)}</div><div class="meta">${DATA.states[u.s][1]} &middot; ${flabel(S.fi)}</div>`;
     if (!c.sh) h += `<div class="src">${esc(noFigure(u, c, S.fi))}</div>`;
     else h += `<div class="big">${bigLine(c)}</div>` + mathTable(c, S.fi) + `<div class="src">${esc(rangeLine(c))}</div>` + ladder(u, c);
-    h += countsChart(u) + spark(u) + `<div class="hist">${esc(notes(u, c))}</div>`;
+    h += countsChart(u) + `<div class="hist">${esc(notes(u, c))}</div>`;
     el.innerHTML = h;
   }
 
@@ -593,7 +564,6 @@
   // ---------- controls ----------
   function press(on, off) { $(on).setAttribute("aria-pressed", "true"); $(off).setAttribute("aria-pressed", "false"); }
   function update(fade) {
-    usCache = null;
     computeVals(); legend(); headline(); rankings(); showDetail(S.hover || S.sel);
     $("yearOut").textContent = flabel(S.fi);
     $("stamp").textContent = flabel(S.fi);

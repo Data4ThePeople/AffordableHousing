@@ -13,7 +13,14 @@ from d4tp_env import get_key, load_env  # noqa: E402
 ROOT = Path(__file__).resolve().parent.parent
 RAW = ROOT / "data" / "raw"
 PROC = ROOT / "data" / "processed"
-UA = "Mozilla/5.0 (Macintosh) Data4ThePeople research"
+
+
+def user_agent():
+    """Browser-like User-Agent with a contact address. The address lives in the central .env
+    (D4TP_CONTACT_EMAIL), not in this repo."""
+    load_env()
+    return f"Mozilla/5.0 (Macintosh) Data4ThePeople research {get_key('D4TP_CONTACT_EMAIL')}"
+
 
 # Four ACS 5-year periods that share no sample. key, label, source, income year (also the tax year)
 FRAMES = [("2009", "2005-2009", "acs", 2009), ("2014", "2010-2014", "acs", 2014),
@@ -61,7 +68,7 @@ def fetch(url, dest, tries=6):
     dest.parent.mkdir(parents=True, exist_ok=True)
     for i in range(tries):
         try:
-            r = requests.get(url, headers={"User-Agent": UA}, timeout=(20, 180))
+            r = requests.get(url, headers={"User-Agent": user_agent()}, timeout=(20, 180))
             if r.status_code == 404:
                 return False
             if r.status_code in (429, 503):

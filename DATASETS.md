@@ -1,8 +1,8 @@
 # Datasets
 
 One section per dataset, written before any analysis, updated whenever we learn
-something new. Figures marked "to measure" are filled in by
-`scripts/10_coverage.py`.
+something new. The measured coverage figures are in the last section, from
+`scripts/08_coverage.py`.
 
 The map has seven frames that share no survey sample: 1980, 1990, 2000,
 2005-2009, 2010-2014, 2015-2019 and 2020-2024.
@@ -270,8 +270,9 @@ macOS, CSV in and out. No login.
 
 **Version and vintage.** TAXSIM35. Federal law through 2023; state law 1977
 through 2021, with 2022 and later computed from 2021 state law carried forward
-at "real" values. Our 2020-2024 frame uses tax year 2023, the last year
-TAXSIM35 has federal law for, not 2024.
+at "real" values. The offline program refuses tax year 2024. Our 2020-2024
+frame is in 2024 dollars, so we bring each income to 2023 dollars with the
+CPI-U, tax it under 2023 law, and scale the tax back up.
 
 **Coverage.** All states and DC. Federal from 1960, state from 1977, so all
 seven frames are covered. Everything it returns is modeled, not measured.
@@ -295,7 +296,14 @@ others are left out, so post-tax income is overstated there). We treat all
 household income as wages of one earner aged 40, which overstates tax for
 retirees and for households living on benefits. Three household types: single
 with no children, married with no children, married with two children. We
-count the employee's share of payroll tax only. Refundable credits can make
+take income tax only from TAXSIM. Payroll tax is computed in
+`scripts/05_taxsim.py` from the statutory employee rates and wage bases
+(Social Security Administration), because TAXSIM35's payroll output does not
+match the law in two of our years: it returns 5.6% of wages for 1979 against
+the statutory 6.13%, and a 2023 wage base of $153,600 against $160,200. Its
+1989 to 2019 figures match the statute. Three 1979 federal income tax figures
+worked by hand from the rate schedules match TAXSIM to the dollar
+(`scripts/10_tieout.py`). Refundable credits can make
 total tax negative for low-income households with children, which puts
 post-tax income above pre-tax income.
 
@@ -342,3 +350,52 @@ CPI at all: their income and the rents come from the same survey.
 
 **License and attribution.** Public domain. Credit: U.S. Bureau of Labor
 Statistics.
+
+## 8. Source coverage, measured (October 7, 2026)
+
+From `scripts/08_coverage.py` and `scripts/03_harmonize.py`.
+
+- **Units.** 3,144 counties become 3,120 stable units. 21 units join two or
+  more counties or cities. In every frame the units add exactly to the
+  national row for both rent and income. Three units are blank in 1980 and
+  1990 (Boulder, Adams and Broomfield, Colorado).
+- **Read directly, joined, or rebuilt.** 3,086 to 3,103 of the 3,120 units are
+  a single county read straight from the source in each frame. 16 to 20 are
+  sums of counties. 9 to 14 are rebuilt from smaller areas (Connecticut's nine
+  regions in six frames; La Paz, Yuma, Cibola and Valencia in 1980; Broomfield
+  and its four parents in 2000).
+- **Income profiles.** In 1980, 1990, 2000 and 2005-2009 only the median is
+  published, so the four percentile profiles are our estimates: 80.2% of
+  profile values in those frames. From 2010-2014 on, under 1% are estimated.
+  Median renter income exists only in the four ACS frames.
+- **How close the estimates run.** Our straight-line median from buckets
+  against the published median, single-county units: income within 0.4%
+  typically and 2% to 3% at the 95th percentile in the ACS frames, and equal
+  in 1980 and 1990; rent within 0.1% typically. The Census Bureau computes its
+  medians the same way from finer buckets, so this checks our bucket handling.
+  It does not check how rents are spread inside a bucket.
+- **Top rent bucket.** At the default setting the rent ceiling lands in the
+  open top bucket in 14 units in 1980, 6 in 1990, 0 in 2000, 2 in 2005-2009,
+  6 in 2010-2014 and none after.
+- **Low reliability.** 5% to 7% of units in each frame have under 200
+  cash-rent units or an ACS margin implying a coefficient of variation over
+  30%. They hold under 0.1% of rentals.
+- **Imputed answers, 1990.** The Census Bureau filled in gross rent for 6.6%
+  of renter units and some part of income for 18.9% of households. The 1980
+  file in our extract has no equivalent table, and we did not pull the ACS
+  allocation tables.
+- **1980 suppression.** No county, and none of the county divisions we use,
+  carries a suppression flag for total population, housing units, occupied
+  units or renter-occupied units.
+- **1980 La Paz and Cibola.** Rebuilt from the 1980 county divisions of Yuma
+  (Parker division to La Paz) and Valencia (Fence Lake, Grants, Laguna and
+  Zuni-Ramah Navajo divisions to Cibola). The divisions add exactly to the
+  1980 counties. That each division lies wholly on one side of the later
+  county line is our reading of the division names and household counts; it
+  has not been checked against a 1980 boundary file.
+- **Not corrected.** The 2007 land exchange between York County and Newport
+  News, Virginia, and other changes under the Census threshold of 200 people.
+- **Dayton check.** Greene, Miami and Montgomery counties add to 116,730
+  cash-rent units in 2015-2019 and 115,961 in 2020-2024, with 49.2% and 46.3%
+  in buckets fully under $800 and $1,100. These match the published Dayton
+  post.

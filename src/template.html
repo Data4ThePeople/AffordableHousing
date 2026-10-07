@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rentals Within Reach</title>
+<meta name="description" content="Interactive map: the share of rental homes in every U.S. county that a household can afford at 30% of its income, 1980 to 2020-2024. Pick an income profile or enter an income. Census gross rent data, after-tax income from NBER TAXSIM. Free to use. Built by Data 4 The People.">
+<style>
+  :root{ color-scheme: light; }
+  .ah{
+    --paper:#F7F5EF; --panel:#FFFFFF; --ink:#1F2A27; --ink-2:#4E5B57; --ink-3:#7E8A86; --line:#D9D5CC; --grid:#E8E4DB;
+    --accent:#085041; --accent-ink:#F7F5EF;
+    --edge:rgba(31,42,39,.16); --state:#5E6B67; --hi:#1F2A27;
+    --nohist:#ECE9E2; --hatch:#C9C4B9; --mark:rgba(31,42,39,.5);
+    --s0:#e4f2ee; --s1:#c2e1d9; --s2:#9bcdc1; --s3:#6fb5a7; --s4:#44998b; --s5:#207b6e; --s6:#085041;
+    --st-line:#8A5A00;
+    container-type:inline-size; background:var(--paper); color:var(--ink);
+    font:14px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    padding:12px 16px 8px; box-sizing:border-box; max-width:1200px; margin:0 auto; overflow-x:hidden;
+    display:flex; flex-direction:column; height:780px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:where(:not([data-theme="light"])) .ah:not(.framed){ color-scheme:dark;
+      --paper:#181A1B; --panel:#202325; --ink:#E4E2DC; --ink-2:#BBBDC0; --ink-3:#8C9094; --line:#33373A; --grid:#2A2E31;
+      --accent:#8FBFAF; --accent-ink:#181A1B; --edge:rgba(255,255,255,.14); --state:#9AA5A1; --hi:#FFFFFF;
+      --nohist:#232628; --hatch:#3F4447; --mark:rgba(255,255,255,.6);
+      --s0:#1d3a35; --s1:#215047; --s2:#27695d; --s3:#318474; --s4:#4ba08f; --s5:#7dbfb0; --s6:#bfe3d9; --st-line:#E0B45A; }
+  }
+  :root[data-theme="dark"] .ah:not(.framed){ color-scheme:dark;
+      --paper:#181A1B; --panel:#202325; --ink:#E4E2DC; --ink-2:#BBBDC0; --ink-3:#8C9094; --line:#33373A; --grid:#2A2E31;
+      --accent:#8FBFAF; --accent-ink:#181A1B; --edge:rgba(255,255,255,.14); --state:#9AA5A1; --hi:#FFFFFF;
+      --nohist:#232628; --hatch:#3F4447; --mark:rgba(255,255,255,.6);
+      --s0:#1d3a35; --s1:#215047; --s2:#27695d; --s3:#318474; --s4:#4ba08f; --s5:#7dbfb0; --s6:#bfe3d9; --st-line:#E0B45A; }
+  body{margin:0; background:#F7F5EF}
+  @media (prefers-color-scheme: dark){ :root:where(:not([data-theme="light"])) body{background:#181A1B} }
+  :root[data-theme="dark"] body{background:#181A1B}
+  .ah.framed{max-width:100%; overflow:hidden}
+  @media (max-width: 759px){ .ah:not(.framed){height:auto} }
+  .ah [hidden]{display:none !important}
+  .ah *{box-sizing:border-box}
+  .ah button,.ah select,.ah input{font:inherit; color:inherit}
+
+  .hdr{display:flex; justify-content:space-between; align-items:flex-start; gap:12px}
+  .hdr > div:first-child{min-width:0}
+  .hdr h1{font-size:19px; line-height:1.2; margin:0}
+  .hdr .sub{margin:3px 0 0; color:var(--ink-2); font-size:13px; min-height:36px}
+  .brand{flex:none}
+  .brand .logo{height:22px; width:auto; display:block}
+  .brand .logo-dark{display:none}
+  @media (prefers-color-scheme: dark){
+    :root:where(:not([data-theme="light"])) .ah:not(.framed) .brand .logo-light{display:none}
+    :root:where(:not([data-theme="light"])) .ah:not(.framed) .brand .logo-dark{display:block}
+  }
+  :root[data-theme="dark"] .ah:not(.framed) .brand .logo-light{display:none}
+  :root[data-theme="dark"] .ah:not(.framed) .brand .logo-dark{display:block}
+
+  .controls{display:flex; flex-wrap:wrap; gap:6px 12px; align-items:flex-end; margin:6px 0 8px}
+  .controls label{display:flex; flex-direction:column; font-size:11.5px; color:var(--ink-2); gap:2px}
+  .controls select,.controls input[type=search],.controls input[type=text]{background:var(--panel); border:1px solid var(--line); border-radius:6px; padding:5px 8px; font-size:13.5px; min-width:0}
+  .controls input[type=text]{width:104px}
+  .controls select:disabled{opacity:.5}
+  .seg{display:inline-flex; border:1px solid var(--line); border-radius:7px; overflow:hidden; background:var(--panel)}
+  .seg button{border:0; background:none; padding:5px 11px; cursor:pointer; font-size:13.5px}
+  .seg button[aria-pressed="true"]{background:var(--accent); color:var(--accent-ink)}
+  .yr{display:flex; align-items:center; gap:8px}
+  .yr input[type=range]{width:130px; accent-color:var(--accent)}
+  .yr.pct input[type=range]{width:90px}
+  .yr output{font-weight:600; font-variant-numeric:tabular-nums; min-width:74px}
+  .yr.pct output{min-width:34px}
+  .btn{background:var(--panel); border:1px solid var(--line); border-radius:6px; padding:5px 10px; cursor:pointer; font-size:13px}
+  .btn:hover{background:var(--grid)}
+  .combo{position:relative; display:block}
+  .combo input{width:160px; max-width:100%}
+  .lb{position:absolute; z-index:30; left:0; top:calc(100% + 2px); min-width:100%; width:max-content; max-width:min(420px,92vw); max-height:280px; overflow:auto;
+      margin:0; padding:4px 0; list-style:none; background:var(--panel); border:1px solid var(--line); border-radius:8px; box-shadow:0 8px 24px rgba(0,0,0,.16); color:var(--ink)}
+  .lb li{padding:5px 10px; cursor:pointer; font-size:13px}
+  .lb li[aria-selected="true"],.lb li:hover{background:var(--grid)}
+
+  .main{flex:1; min-height:0; display:grid; grid-template-columns:minmax(0,1fr) 340px; gap:12px}
+  .mapwrap{position:relative; min-height:0; display:flex; flex-direction:column; background:var(--panel); border:1px solid var(--line); border-radius:10px; overflow:hidden; touch-action:none}
+  .mapwrap canvas{position:absolute; inset:0; width:100%; height:100%; cursor:grab; display:block}
+  .mapwrap canvas.drag{cursor:grabbing}
+  .zoom{position:absolute; right:8px; top:8px; display:flex; flex-direction:column; gap:4px}
+  .zoom button{width:28px; height:28px; padding:0; font-size:17px; line-height:1}
+  .stamp{position:absolute; left:10px; top:8px; font-size:22px; font-weight:600; color:var(--ink-2); font-variant-numeric:tabular-nums; pointer-events:none}
+  .tip{position:absolute; pointer-events:none; background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:6px 9px;
+       box-shadow:0 6px 18px rgba(0,0,0,.14); font-size:12.5px; max-width:270px; z-index:5}
+  .tip b{display:block; font-size:13px; margin-bottom:2px}
+  .math{width:100%; border-collapse:collapse; font-size:12.5px; font-variant-numeric:tabular-nums}
+  .math td{padding:1px 0}
+  .math td:last-child{text-align:right; padding-left:12px; white-space:nowrap}
+  .math tr.eq td{border-top:1px solid var(--line); font-weight:600; padding-top:3px}
+  .tip .src,.detail .src{font-size:11.5px; color:var(--ink-3); margin-top:4px; line-height:1.3}
+  .key{font-size:11.5px; color:var(--ink-2); margin-top:8px; display:flex; flex-wrap:wrap; gap:2px 10px}
+  .key i{display:inline-block; width:16px; height:0; border-top:2px solid var(--accent); vertical-align:middle; margin-right:4px}
+  .key i.st{border-top:2px dashed var(--st-line)}
+  .key i.us{border-top:2px dotted var(--ink-3)}
+  .loading{position:absolute; inset:0; display:flex; align-items:center; justify-content:center; color:var(--ink-3)}
+
+  .side{min-height:0; display:flex; flex-direction:column; gap:10px; overflow:auto}
+  .card{background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:10px 12px}
+  .card h2{font-size:12px; text-transform:uppercase; letter-spacing:.04em; color:var(--ink-2); margin:0 0 6px; font-weight:600}
+  .card h3{font-size:12px; color:var(--ink-2); margin:10px 0 2px; font-weight:600}
+  .legend{flex:none; background:var(--panel); border-top:1px solid var(--line); padding:6px 12px 7px; touch-action:auto;
+          display:grid; grid-template-columns:270px minmax(0,1fr); gap:4px 22px; align-items:center}
+  .legend h2{font-size:11px; text-transform:uppercase; letter-spacing:.03em; color:var(--ink-2); margin:0 0 3px; font-weight:600; line-height:1.3}
+  .legend .strip{display:flex; height:12px; border-radius:3px; overflow:hidden; border:1px solid var(--line)}
+  .legend .strip span{flex:1}
+  .legend .ticks{position:relative; height:15px; font-size:10.5px; color:var(--ink-2); font-variant-numeric:tabular-nums}
+  .legend .ticks span{position:absolute; top:1px; transform:translateX(-50%)}
+  .legend .unit{font-size:10.5px; color:var(--ink-3); margin-bottom:3px}
+  .legend .row{display:flex; align-items:center; gap:7px; font-size:11.5px; margin:2px 0}
+  .legend .sw{width:18px; height:11px; border-radius:3px; flex:none; border:1px solid var(--line)}
+  .mapbox{position:relative; flex:1; min-height:0}
+  .detail{flex:none}
+  .detail .name{font-weight:600; font-size:14.5px; line-height:1.25}
+  .detail .meta{color:var(--ink-3); font-size:12px; margin-bottom:6px}
+  .detail .big{font-size:20px; font-weight:600; font-variant-numeric:tabular-nums; line-height:1.2; margin-bottom:4px}
+  .detail .hist{font-size:11.5px; color:var(--ink-3); margin-top:6px}
+  .detail .empty{color:var(--ink-3); font-size:12.5px}
+  .spark{width:100%; height:110px; display:block; margin-top:2px}
+  .ladder{width:100%; height:112px; display:block}
+  .tabs{display:flex; gap:4px; margin-bottom:6px}
+  .tabs button{flex:1; border:1px solid var(--line); background:var(--panel); border-radius:6px; padding:4px 6px; cursor:pointer; font-size:12.5px}
+  .tabs button[aria-pressed="true"]{background:var(--accent); color:var(--accent-ink); border-color:var(--accent)}
+  .rank table{width:100%; border-collapse:collapse; font-size:12.5px}
+  .rank td{padding:3px 4px; border-top:1px solid var(--grid); vertical-align:top}
+  .rank td.n{text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap}
+  .rank td.r{color:var(--ink-3); width:22px; font-variant-numeric:tabular-nums}
+  .rank tr{cursor:pointer}
+  .rank tr:hover td{background:var(--grid)}
+  .rank tr.sel td{background:var(--grid); font-weight:600}
+  .rank td small{color:var(--ink-3)}
+  .rank .msg{color:var(--ink-3); font-size:12.5px}
+  .rank .scope{font-size:11.5px; color:var(--ink-3); margin:0 0 4px}
+
+  #more{display:none}
+  .foot{display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; font-size:11px; color:var(--ink-3); margin-top:6px}
+
+  @container (max-width: 759px){
+    .main{grid-template-columns:1fr; grid-template-rows:auto auto}
+    .mapbox{height:360px; flex:none}
+    .legend{grid-template-columns:1fr}
+    .ah.framed .main{flex:none}
+    .ah.framed{overflow-y:auto}
+    .side{overflow:visible}
+    .yr input[type=range]{width:160px}
+  }
+  @container (max-width: 520px){
+    .hdr h1{font-size:17px}
+    .brand .logo{height:18px}
+    .mapbox{height:300px}
+    .hdr .sub{font-size:12.5px}
+    .controls{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); align-items:end}
+    .controls .wide{grid-column:1 / -1}
+    .controls select,.combo input,.controls input[type=text]{width:100%}
+    .yr input[type=range]{flex:1; width:auto; min-width:0}
+    .controls:not(.open) .sec{display:none}
+    #more{display:block; grid-column:1 / -1}
+  }
+</style>
+</head>
+<body>
+<div class="ah" id="ah">
+  <div class="hdr">
+    <div>
+      <h1 id="title">Rentals Within Reach</h1>
+      <p class="sub" id="sub">Loading&hellip;</p>
+    </div>
+    <div class="brand"><!--__LOGO_ON_LIGHT__--><!--__LOGO_ON_DARK__--></div>
+  </div>
+
+  <div class="controls">
+    <label id="yearCtl" class="wide">Period
+      <span class="yr"><input type="range" id="year" min="0" max="6" step="1" value="6" aria-label="Period"><output id="yearOut"></output>
+      <button type="button" class="btn" id="play" aria-label="Play through the periods">Play</button></span>
+    </label>
+    <label>Household
+      <select id="prof">
+        <option value="0">20th percentile income</option><option value="1">40th percentile income</option>
+        <option value="2" selected>Median household income</option>
+        <option value="3">60th percentile income</option><option value="4">80th percentile income</option>
+        <option value="5">Median renter household</option><option value="6">Enter an income</option>
+      </select>
+    </label>
+    <label id="incCtl" hidden>Income, 2024 dollars
+      <input type="text" id="inc" inputmode="numeric" value="$60,000" aria-label="Household income in 2024 dollars">
+    </label>
+    <label>Share of income for rent
+      <span class="yr pct"><input type="range" id="pct" min="10" max="50" step="1" value="30" aria-label="Share of income for rent"><output id="pctOut">30%</output></span>
+    </label>
+    <label class="sec">Income counted
+      <span class="seg" role="group" aria-label="Income counted">
+        <button type="button" id="tAfter" aria-pressed="true">After taxes</button>
+        <button type="button" id="tBefore" aria-pressed="false">Before taxes</button>
+      </span>
+    </label>
+    <label class="sec">Taxed as
+      <select id="ht"><option value="0">Single, no children</option><option value="1" selected>Married, no children</option><option value="2">Married, two children</option></select>
+    </label>
+    <label class="sec">Show one state <select id="state"><option value="">All states</option></select></label>
+    <label class="sec">Map
+      <span class="seg" role="group" aria-label="Map style">
+        <button type="button" id="vArea" aria-pressed="true">Counties</button>
+        <button type="button" id="vBub" aria-pressed="false">Bubbles</button>
+      </span>
+    </label>
+    <label class="sec wide">Find a county
+      <span class="combo"><input type="search" id="q" placeholder="County name" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="lb" aria-autocomplete="list">
+      <ul class="lb" id="lb" role="listbox" hidden></ul></span>
+    </label>
+    <button type="button" class="btn sec" id="reset">Reset</button>
+    <button type="button" class="btn" id="more" aria-expanded="false">More options</button>
+  </div>
+
+  <div class="main">
+    <div class="mapwrap" id="mapwrap">
+      <div class="mapbox" id="mapbox">
+        <canvas id="map" aria-label="Map of the share of rental homes a household can afford, by county" role="img"></canvas>
+        <div class="loading" id="loading">Loading map&hellip;</div>
+        <div class="stamp" id="stamp"></div>
+        <div class="zoom"><button type="button" class="btn" id="zin" aria-label="Zoom in">+</button><button type="button" class="btn" id="zout" aria-label="Zoom out">&minus;</button></div>
+        <div class="tip" id="tip" hidden></div>
+      </div>
+      <div class="legend" id="legend"></div>
+    </div>
+    <div class="side">
+      <div class="card detail" id="detail"></div>
+      <div class="card rank" id="rank"></div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span>Sources: U.S. Census Bureau, gross rent and household income from the 1980, 1990 and 2000 censuses and the American Community Survey 5-year estimates for 2005-2009, 2010-2014, 2015-2019 and 2020-2024 (tables B25063, B19001, B19013, B19080, B25119). 1980 and 1990 tables from IPUMS NHGIS, University of Minnesota, www.nhgis.org. Income and payroll taxes: NBER TAXSIM (Feenberg and Coutts, 1993) and Social Security Administration rates; no local income taxes. Rentals are occupied units paying cash rent, counted by what the tenant pays. Dollars are not adjusted for inflation, except a typed-in income, which is carried back with the CPI-U.</span>
+    <span>Built by Data 4 The People</span>
+  </div>
+</div>
+<script>
+/*__DATA__*/
+/*__CORE__*/
+</script>
+</body>
+</html>

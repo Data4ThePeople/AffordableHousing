@@ -32,3 +32,11 @@ None.
   household can afford at 30% of income, by income profile or a typed-in
   income, animated over time, with a one-state filter. Start year 1980 (Eric,
   2026-10-07). Rent from ACS B25063 and the decennial long form.
+- 2026-10-07 Plan approved. Seven frames that share no sample: 1980, 1990,
+  2000, 2005-2009, 2010-2014, 2015-2019, 2020-2024. Post-tax income by default
+  (Eric). Built: DATASETS.md, fetch scripts, 3,120 stable county units, tax
+  grid, page at dist/index.html (not in git yet), coverage check, tie-out
+  clean. Working title "Rentals Within Reach" is a placeholder.
+- 2026-10-07 Open before the page can be public: IPUMS permission to publish
+  the 1980 and 1990 county rent buckets (ipums@umn.edu). Until then
+  data/processed/ and dist/ stay out of git and the repo stays private.

@@ -86,3 +86,8 @@ None.
   DATASETS.md at Eric's request. Contact address moved to the central env and
   removed from this repo's history.
 - 2026-10-07 Step 2a opened. Slug: rentals-within-reach. posts/rentals-within-reach/POST.md created from the template; waiting for Eric's draft.
+- 2026-10-07 Tutorial video built: video/rentals-within-reach-tutorial.mp4
+  (57 s, 1920x1080, same format and music as the earlier tutorials). Sequence
+  set by Eric: household income on the national map, Florida, Play, Miami-Dade
+  panel, Broward and Holmes from the rankings, reset, search New York County.
+  Captions are Claude's and await Eric's review.

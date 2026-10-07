@@ -6,3 +6,6 @@ shapely
 pyproj
 pyogrio
 dbfread
+websocket-client
+imageio-ffmpeg
+pillow

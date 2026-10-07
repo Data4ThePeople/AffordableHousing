@@ -476,33 +476,35 @@
       + `<path d="${path(series[1].pts)}" fill="none" stroke="var(--st-line)" stroke-width="2" stroke-dasharray="5 3"/>`
       + `<path d="${path(up)}" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linejoin="round"/>${dots}${endLab}</svg>`;
   }
-  // Rentals paying cash rent in the county, and how many of them are priced within reach, in every period.
-  const kfmt = (v) => (v >= 1e6 ? (v / 1e6).toFixed(v >= 1e7 ? 0 : 1) + "M" : v >= 1e4 ? Math.round(v / 1e3) + "k" : v >= 1e3 ? (v / 1e3).toFixed(1) + "k" : String(Math.round(v)));
+  // Two columns: the change in all rentals paying cash rent, and in rentals priced within reach,
+  // from the first period to the last. Both are counts of units on one axis.
   function countsChart(u) {
-    const P = F.map((f, i) => { const c = calc(u, i); return c.sh ? { all: c.sh.tot, got: c.sh.v * c.sh.tot } : null; });
-    if (!P.some(Boolean)) return "";
-    const top = Math.max(...P.filter(Boolean).map((p) => p.all));
-    const mag = Math.pow(10, Math.floor(Math.log10(top))), hi = Math.ceil(top / (mag / 2)) * (mag / 2);
-    const w = 300, h = 116, l = 34, r = 40, t = 10, b = 18;
-    const x0 = MID[F[0].k], x1 = MID[F[NF - 1].k];
-    const xs = (i) => l + ((MID[F[i].k] - x0) / (x1 - x0)) * (w - l - r);
-    const ys = (v) => t + (1 - v / hi) * (h - t - b);
-    const path = (k) => { let d = "", pen = false; P.forEach((p, i) => { if (!p) { pen = false; return; } d += `${pen ? "L" : "M"}${xs(i).toFixed(1)},${ys(p[k]).toFixed(1)}`; pen = true; }); return d; };
-    const grid = [0, hi / 2, hi].map((v) => `<line x1="${l}" x2="${w - r}" y1="${ys(v)}" y2="${ys(v)}" stroke="var(--grid)"/><text x="${l - 4}" y="${ys(v) + 3.5}" text-anchor="end" font-size="10" fill="var(--ink-3)">${kfmt(v)}</text>`).join("");
-    const xl = F.map((f, i) => `<text x="${xs(i)}" y="${h - 4}" text-anchor="middle" font-size="10" fill="var(--ink-3)">${f.label.slice(0, 5)}${f.label.slice(7)}</text>`).join("");
-    const dots = (k, col) => P.map((p, i) => (!p ? "" : `<circle cx="${xs(i).toFixed(1)}" cy="${ys(p[k]).toFixed(1)}" r="${i === S.fi ? 4 : 2.2}" fill="${col}"${i === S.fi ? ' stroke="var(--panel)" stroke-width="2"' : ""}><title>${flabel(i)}: ${nf.format(Math.round(p[k]))} ${k === "all" ? "rentals" : "priced within reach"}</title></circle>`)).join("");
-    const last = P[NF - 1];
-    let ends = "";
-    if (last) {
-      let ya = ys(last.all) + 3.5, yg = ys(last.got) + 3.5;
-      if (yg - ya < 11) yg = ya + 11;                         // keep the two end labels apart
-      ends = `<text x="${w - r + 6}" y="${ya}" font-size="10.5" font-weight="600" fill="var(--ink)">${kfmt(last.all)}</text>`
-        + `<text x="${w - r + 6}" y="${yg}" font-size="10.5" font-weight="600" fill="var(--ink)">${kfmt(last.got)}</text>`;
-    }
-    return `<h3>Rentals, and how many are priced within reach</h3><div class="key"><span><i class="all"></i>All rentals paying cash rent</span><span><i></i>Priced within reach</span></div>`
-      + `<svg class="spark" viewBox="0 0 ${w} ${h}" role="img" aria-label="Rentals paying cash rent and rentals priced within reach by period, ${esc(u.n)}">${grid}${xl}`
-      + `<path d="${path("all")}" fill="none" stroke="var(--ink-2)" stroke-width="2" stroke-linejoin="round"/>${dots("all", "var(--ink-2)")}`
-      + `<path d="${path("got")}" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linejoin="round"/>${dots("got", "var(--accent)")}${ends}</svg>`;
+    const a = calc(u, 0), z = calc(u, NF - 1);
+    const head = `<h3>Change in rentals, ${flabel(0)} to ${flabel(NF - 1)}</h3>`;
+    if (!a.sh || !z.sh) return head + `<div class="src">No comparable figure in one of the two periods.</div>`;
+    const bars = [
+      { name: "All rentals", d: z.sh.tot - a.sh.tot, from: a.sh.tot, col: "var(--ink-3)" },
+      { name: "Priced within reach", d: z.sh.v * z.sh.tot - a.sh.v * a.sh.tot, from: a.sh.v * a.sh.tot, col: "var(--accent)" },
+    ];
+    const hi = Math.max(0, ...bars.map((b) => b.d)), lo = Math.min(0, ...bars.map((b) => b.d));
+    const w = 300, h = 150, t = 30, b = 46, span = hi - lo || 1;
+    const ys = (v) => t + ((hi - v) / span) * (h - t - b);
+    const sign = (v) => (v > 0 ? "+" : v < 0 ? MINUS : "");
+    let g = `<line x1="20" x2="${w - 20}" y1="${ys(0)}" y2="${ys(0)}" stroke="var(--ink-3)"/>`;
+    bars.forEach((bar, i) => {
+      const cx = i ? 215 : 85, bw = 78, y0 = ys(0), y1 = ys(bar.d), top = Math.min(y0, y1), hh = Math.max(Math.abs(y1 - y0), 1);
+      const pct = bar.from > 0 ? `${sign(bar.d)}${Math.abs((100 * bar.d) / bar.from).toFixed(0)}%` : "";
+      const up = bar.d >= 0;
+      // the value sits beyond the bar's end; the name sits on the other side of the zero line
+      const vy = up ? top - 17 : top + hh + 12, ny = up ? y0 + 13 : y0 - 6;
+      g += `<g><title>${bar.name}: ${nf.format(Math.round(bar.from))} in ${flabel(0)}, ${nf.format(Math.round(bar.from + bar.d))} in ${flabel(NF - 1)}</title>`
+        + `<rect x="${cx - bw / 2}" y="${top.toFixed(1)}" width="${bw}" height="${hh.toFixed(1)}" rx="3" fill="${bar.col}"/></g>`
+        + `<text x="${cx}" y="${vy.toFixed(1)}" text-anchor="middle" font-size="12" font-weight="600" fill="var(--ink)">${sign(bar.d)}${nf.format(Math.abs(Math.round(bar.d)))}</text>`
+        + `<text x="${cx}" y="${(vy + 13).toFixed(1)}" text-anchor="middle" font-size="10.5" fill="var(--ink-2)">${pct}</text>`
+        + `<text x="${cx}" y="${ny.toFixed(1)}" text-anchor="middle" font-size="11" fill="var(--ink-2)">${bar.name}</text>`;
+    });
+    return head + `<svg class="cols" viewBox="0 0 ${w} ${h}" role="img" aria-label="Change in all rentals and in rentals priced within reach, ${flabel(0)} to ${flabel(NF - 1)}, ${esc(u.n)}">${g}</svg>`
+      + `<div class="src">Rentals paying cash rent. ${nf.format(Math.round(a.sh.tot))} then, ${nf.format(Math.round(z.sh.tot))} now; ${nf.format(Math.round(a.sh.v * a.sh.tot))} priced within reach then, ${nf.format(Math.round(z.sh.v * z.sh.tot))} now.</div>`;
   }
   let usCache = null;
   function usTrend() { return usCache || (usCache = F.map((f, i) => { const t = total(i, ""); return t ? t.v : null; })); }

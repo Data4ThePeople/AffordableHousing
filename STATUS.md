@@ -61,3 +61,11 @@ None.
   counties (15% or more of residents enrolled in college or graduate school,
   B14001, 2020-2024), limitation 14, and a county chart of all rentals against
   rentals priced within reach by period. Tie-out clean.
+- 2026-10-07 Independent tie-out by a fresh agent came back: no data,
+  geography or arithmetic error; headline numbers reproduced to within 0.02
+  points. Fixed from its findings: headline now says "at least" when any
+  county is top-coded; a top-coded 80th percentile is treated as a floor;
+  Bedford VA shows its joined note; three DATASETS.md statements corrected.
+  Recorded as limitations 15 to 18. Open for Eric: whether to remove the 2009
+  Making Work Pay credit from the first period, and which household type is
+  the tax default.

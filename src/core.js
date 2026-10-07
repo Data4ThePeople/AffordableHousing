@@ -124,6 +124,8 @@
     const ceil = (S.pct / 100) * net / 12;
     const sh = shareOf(f.r, F[fi].re, ceil);
     if (!sh) return { norent: true };
+    // a top-coded income ("$250,000 or more") is a floor, so the share is a floor too
+    if (S.prof < 5 && ((f.tc || 0) >> S.prof) & 1) { sh.top = true; sh.hi = 1; sh.inc = true; }
     return { inc, tax, net, ceil, sh, est: S.prof < 6 && !!((f.e >> S.prof) & 1), lo: !!f.lo, f };
   }
   function binOf(v) { let i = 0; while (i < BINS.length && v >= BINS[i]) i++; return i; }
@@ -397,6 +399,7 @@
     return h;
   }
   function rangeLine(c) {
+    if (c.sh.inc) return `The Census Bureau reports this income only as "$250,000 or more", so the true share is somewhere from ${pc(100 * c.sh.lo)} to 100%.`;
     if (c.sh.top) return `The ceiling is above ${usd(F[S.fi].re[F[S.fi].re.length - 1])}, the top of the Census rent scale for this period, so the true share is somewhere from ${pc(100 * c.sh.lo)} to 100%.`;
     if (c.sh.lo === c.sh.hi) return `Direct Census read: ${pc(100 * c.sh.lo)}.`;
     return `Direct Census reads: ${pc(100 * c.sh.lo)} in rent buckets fully under the ceiling, ${pc(100 * c.sh.hi)} counting the bucket the ceiling falls in. ${pc(100 * c.sh.v)} is our estimate between them.`;
@@ -547,7 +550,7 @@
       return;
     }
     const who = S.prof === 6 ? whose() : `each county's ${PROF[S.prof]}`;
-    $("sub").textContent = `${where}, ${flabel(S.fi)}: ${who}, spending ${setup()}, could afford ${pc(t.v)} of the rentals in its own county, all counties added together. In ${nf.format(t.under)} of ${nf.format(t.n)} counties the share is under half.${S.noCol ? " College counties are left out." : ""}`;
+    $("sub").textContent = `${where}, ${flabel(S.fi)}: ${who}, spending ${setup()}, could afford ${t.top ? "at least " : ""}${pc(t.v)} of the rentals in its own county, all counties added together. In ${nf.format(t.under)} of ${nf.format(t.n)} counties the share is under half.${t.top ? ` In ${nf.format(t.top)} ${t.top === 1 ? "county" : "counties"} the figure is a floor, because the ceiling or the income is above the top of the Census scale.` : ""}${S.noCol ? " College counties are left out." : ""}`;
   }
 
   // ---------- rankings ----------

@@ -37,10 +37,12 @@ def pack(x, fk):
     edges = INC_EDGES[fk]
     est = [pctl(x["i"], edges, p) for p in PCTS]
     pub = [x["q"][0], x["q"][1], x["mi"], x["q"][2], x["q"][3]] if x["q"] else [None, None, x["mi"], None, None]
-    prof, mask = [], 0
+    prof, mask, floor = [], 0, 0
     for i in range(5):
         if pub[i]:
             prof.append(round(pub[i]))
+            if pub[i] >= 250000:                        # Census top-codes these at 250,001: the true value is at least this
+                floor |= 1 << i
         else:
             prof.append(est[i])
             mask |= 1 << i
@@ -53,7 +55,10 @@ def pack(x, fk):
     lo = cash < MIN_UNITS
     if x["moe"] is not None and cash + x["nc"] > 0 and (x["moe"] / 1.645) / (cash + x["nc"]) > MAX_CV:
         lo = True
-    return {"r": x["r"], "nc": x["nc"], "p": prof, "e": mask, "lo": int(lo), "h": HOW.get(x.get("how", "direct"), 0), "hh": sum(x["i"])}
+    out = {"r": x["r"], "nc": x["nc"], "p": prof, "e": mask, "lo": int(lo), "h": HOW.get(x.get("how", "direct"), 0), "hh": sum(x["i"])}
+    if floor:
+        out["tc"] = floor
+    return out
 
 
 def main():
@@ -66,7 +71,7 @@ def main():
     units = []
     for u in sorted(H["units"]):
         info = H["units"][u]
-        units.append({"id": u, "n": info["name"], "s": info["st"], "c": G["pts"][u], "m": len(info["members"]), "col": int(info["college"] >= COLLEGE_SHARE), "cs": round(100 * info["college"]),
+        units.append({"id": u, "n": info["name"], "s": info["st"], "c": G["pts"][u], "m": info["joined"], "col": int(info["college"] >= COLLEGE_SHARE), "cs": round(100 * info["college"]),
                       "f": [pack(info["f"][fk], fk) for fk, *_ in FRAMES]})
     assert len({u["id"] for u in units}) == len(units)
     out = {"frames": frames, "grid": G["grid"], "geo": G["geo"], "borders": G["borders"],

@@ -126,7 +126,7 @@ def main():
                 dom = subprocess.run([CHROME, "--headless=new", "--disable-gpu", "--virtual-time-budget=15000", "--window-size=1200,900", "--dump-dom",
                                       f"file://{d}/p.html{h}"], capture_output=True, text=True, timeout=300).stdout
                 sub = re.search(r'id="sub"[^>]*>([^<]*)<', dom).group(1)
-                m = re.search(r"could afford ([\d.]+%) of the rentals.*In ([\d,]+) of ([\d,]+) counties", sub)
+                m = re.search(r"could afford (?:at least )?([\d.]+%) of the rentals.*?In ([\d,]+) of ([\d,]+) counties", sub)
                 page = (m.group(1), int(m.group(2).replace(",", "")), int(m.group(3).replace(",", ""))) if m else None
                 ok = page == (fmt(v), under, n)
                 bad += not ok

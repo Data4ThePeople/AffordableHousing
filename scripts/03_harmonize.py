@@ -195,6 +195,7 @@ def main():
     assert set(enr) == set(units)
     for u, info in units.items():
         info["college"] = round(enr[u][0] / enr[u][1], 4) if enr[u][1] else 0
+        info["joined"] = len(MERGES[u][1]) if u in MERGES else 1          # codes ever joined here, even if only one exists today
     log.append(f"college counties (enrollment at or over {COLLEGE_SHARE:.0%} of residents): {sum(i['college'] >= COLLEGE_SHARE for i in units.values())}")
     for s in states.values():
         for x in s.values():

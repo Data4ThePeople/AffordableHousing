@@ -92,7 +92,10 @@ bucket that contains it, and the page marks the value as estimated.
 **Suppressed, censored or masked values.** Medians are top-coded at 250,001
 and bottom-coded at 2,499. B19080 values are missing for a few small counties.
 We treat those as not published and interpolate. A percentile that falls in
-the open top income bucket cannot be estimated and is left out.
+the open top income bucket cannot be estimated and is left out. A published
+80th percentile of 250,001 is a top code: we keep it as a floor and the page
+shows the share as "at least" (29 unit-periods, 28 of them in 2020-2024,
+including Manhattan, Santa Clara and San Francisco).
 
 **Missing data.** Negative values (-666666666 and similar) mean no estimate.
 
@@ -200,7 +203,8 @@ households, which puts post-tax income above pre-tax income. We take income
 tax only from TAXSIM. The employee's payroll tax is computed in
 `scripts/05_taxsim.py` from the statutory rates and wage bases (Social
 Security Administration), because TAXSIM35's payroll output uses a 2023 wage
-base of $153,600 against the statutory $160,200. TAXSIM35 run as one large batch returned Oregon 2023
+base of $153,600 against the statutory $160,200. For 2020-2024 we apply the
+2024 wage base ($168,600) to the 2024-dollar income directly. TAXSIM35 run as one large batch returned Oregon 2023
 state tax about $37,000 too low on every row (found October 7, 2026, when
 Oregon's 2020-2024 bubbles turned dark green). The same households run alone
 come back normal. Each period, household type and state is now its own TAXSIM
@@ -275,8 +279,9 @@ Statistics.
   cash-rent units or an ACS margin implying a coefficient of variation over
   30%. They hold under 0.1% of rentals.
 - **Dayton check.** Greene, Miami and Montgomery counties add to 116,730
-  cash-rent units in 2015-2019 and 115,961 in 2020-2024, with 49.2% and 46.3%
-  in buckets fully under $800 and $1,100. These match the published Dayton
+  cash-rent units in 2015-2019 and 115,961 in 2020-2024, with 49.2% in
+  buckets fully under $800 and 46.3% in buckets fully under $1,000 (the last
+  bucket edge below the post's $1,100 line). These match the published Dayton
   post.
 
 ## 7. Limitations to state in the post (accepted by Eric, October 7, 2026)
@@ -319,3 +324,52 @@ Statistics.
     or graduate school (ACS table B14001, 2020-2024): 71 counties. The page
     has a checkbox to leave them out of the map, the totals and the rankings.
     They are included by default. The 15% line is our choice.
+15. Tax law is one year per period. Each period is taxed under its final
+    year's law. 2009 law includes the Making Work Pay credit ($400 single,
+    $800 joint), which existed only in 2009 and 2010. It raises the 2005-2009
+    share for the median renter household from 31.95% to 34.54%, so 2.6 of
+    the 6.9-point drop to 2010-2014 comes from that credit (independent audit,
+    October 7, 2026).
+16. State tax law for 2020-2024 is 2021 law carried forward, so states that
+    cut rates in 2022 or 2023 are taxed too high (North Carolina by about $365
+    on $80,000, Idaho $380, Utah $250, Kentucky $237). North Carolina would
+    read 34.3% against 33.9%. Oregon's 2019 law in the model is about 19%
+    below 2018 and 2020, which fits a one-time rebate; Oregon's 2015-2019
+    share would be 25.7% against 26.9% with 2018 law.
+17. The household type used for taxes moves the result. Single instead of
+    married with no children takes the 2020-2024 national figure from 31.3%
+    to 26.9%.
+18. Published median incomes for mid-sized counties swing between periods
+    from sampling alone, and the share swings with them (Baldwin County,
+    Georgia reads 80%, 46%, 80% across three periods for all households). The
+    low-reliability mark looks only at the number of rentals, so it does not
+    flag these. A 5% change in the rent ceiling moves a typical county's share
+    by about 4 points.
+
+## 8. Independent tie-out (fresh agent, October 7, 2026)
+
+A separate agent pulled every ACS table again from the Census API, rebuilt the
+units and the calculation with its own code, and ran TAXSIM one household per
+process for the whole grid (98,532 runs) and once per county at the exact
+county income (50,362 runs).
+
+- Inlined data against its fresh pull: 282,690 rent cells, 12,564 no-cash-rent
+  counts, 75,384 income profile values, 12,564 renter medians, 3,141 college
+  flags. No mismatches.
+- Geography: every code that differs from 2024 boundaries is covered by a
+  rename or a join; units add to the national row in every period;
+  Connecticut's 169 towns all assigned.
+- Headline numbers for 13 settings across four periods: its figures match the
+  page to under 0.005 points, and to within 0.02 points when it bypassed our
+  tax grid entirely.
+- Tax grid: no cell differs from one-household-per-process TAXSIM by more than
+  $1. Federal tax by hand matched in 132 of 144 cases; the 12 others are at
+  $220,000 or more in 2009 and 2014, where its hand calculation left out the
+  exemption phaseout and the alternative minimum tax, so they are unverified.
+  Payroll matches Social Security Administration figures. Six flat-tax states
+  match published schedules to the dollar.
+- It could not check: the even-spread assumption inside a rent bucket; ACS
+  allocation rates; the 2005-2009 percentile estimates against any published
+  figure; state schedules beyond about 12 states; map shapes.
+- Method findings are limitations 15 to 18 above and the "at least" and
+  top-code fixes made the same day.

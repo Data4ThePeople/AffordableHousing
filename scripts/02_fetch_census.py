@@ -2,7 +2,8 @@
 
 ACS (2005-2009, 2010-2014, 2015-2019, 2020-2024): B25063 gross rent, B19001 household income,
 B19013 median household income, B19080 quintile limits (not in 2005-2009), B25119 median income by
-tenure, B25118 renter households by income (for areas with no published renter median), B25064 median gross rent.
+tenure, B25118 renter households by income (for areas with no published renter median), B25064 median gross rent. Also B14001 school enrollment for 2020-2024,
+counties only, to mark college counties.
 Levels: nation, states, counties, Connecticut towns.
 Output: data/raw/acs/*.json"""
 from common import ACS_VINTAGES, RAW, census
@@ -13,6 +14,8 @@ ACS_GROUPS = ["B25063", "B19001", "B19013", "B19080", "B25119", "B25118", "B2506
 
 
 def main():
+    rows = census("2024/acs/acs5", {"get": "group(B14001)", "for": "county:*", "in": "state:*"}, RAW / "acs" / "B14001_2024_county.json")
+    print(2024, "B14001 county", len(rows) - 1)
     for v in ACS_VINTAGES:
         for g in ACS_GROUPS:
             if g == "B19080" and v == 2009:

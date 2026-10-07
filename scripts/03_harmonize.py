@@ -16,7 +16,7 @@ import re
 import geopandas as gpd
 import pandas as pd
 
-from common import FKEYS, PROC, RAW, RENT_EDGES, STATE_INFO
+from common import COLLEGE_SHARE, FKEYS, PROC, RAW, RENT_EDGES, STATE_INFO
 
 RENAME = {"46113": "46102", "02270": "02158"}
 # unit id -> (label, member codes in any period)
@@ -183,6 +183,19 @@ def main():
                 info["f"][fk] = x
         kinds = pd.Series([f.get("how", "blank") for f in (i["f"][fk] for i in units.values())]).value_counts().to_dict()
         log.append(f"{fk}: {len(county)} source counties -> {len(units)} units {kinds}; renter units {sum(us[fk]['r']) + us[fk]['nc']:,}; households {sum(us[fk]['i']):,}")
+    # college counties: enrolled in college or graduate school as a share of residents age 3 and over, 2020-2024
+    j = json.loads((RAW / "acs" / "B14001_2024_county.json").read_text())
+    h = {c: i for i, c in enumerate(j[0])}
+    enr = {}
+    for row in j[1:]:
+        if row[h["state"]] in STATE_INFO:
+            e = enr.setdefault(unit_of(row[h["state"]] + row[h["county"]]), [0, 0])
+            e[0] += int(row[h["B14001_008E"]]) + int(row[h["B14001_009E"]])
+            e[1] += int(row[h["B14001_001E"]])
+    assert set(enr) == set(units)
+    for u, info in units.items():
+        info["college"] = round(enr[u][0] / enr[u][1], 4) if enr[u][1] else 0
+    log.append(f"college counties (enrollment at or over {COLLEGE_SHARE:.0%} of residents): {sum(i['college'] >= COLLEGE_SHARE for i in units.values())}")
     for s in states.values():
         for x in s.values():
             x.pop("n", None)

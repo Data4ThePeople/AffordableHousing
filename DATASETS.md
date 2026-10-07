@@ -312,3 +312,10 @@ Statistics.
     median is available for renters alone. Comparing profiles shows how reach
     differs along the income scale, not what happens to one household whose
     income falls.
+14. College counties. Students who rent report little income, which pulls
+    the renter median down and makes rentals look further out of reach than
+    they are for non-student renters. We mark a county as a college county
+    when 15% or more of its residents age 3 and over are enrolled in college
+    or graduate school (ACS table B14001, 2020-2024): 71 counties. The page
+    has a checkbox to leave them out of the map, the totals and the rankings.
+    They are included by default. The 15% line is our choice.

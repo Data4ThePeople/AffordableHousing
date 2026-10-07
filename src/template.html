@@ -93,6 +93,7 @@
   .tip .src,.detail .src{font-size:11.5px; color:var(--ink-3); margin-top:4px; line-height:1.3}
   .key{font-size:11.5px; color:var(--ink-2); margin-top:8px; display:flex; flex-wrap:wrap; gap:2px 10px}
   .key i{display:inline-block; width:16px; height:0; border-top:2px solid var(--accent); vertical-align:middle; margin-right:4px}
+  .key i.all{border-top:2px solid var(--ink-2)}
   .key i.st{border-top:2px dashed var(--st-line)}
   .key i.us{border-top:2px dotted var(--ink-3)}
   .loading{position:absolute; inset:0; display:flex; align-items:center; justify-content:center; color:var(--ink-3)}
@@ -118,7 +119,7 @@
   .detail .big{font-size:20px; font-weight:600; font-variant-numeric:tabular-nums; line-height:1.2; margin-bottom:4px}
   .detail .hist{font-size:11.5px; color:var(--ink-3); margin-top:6px}
   .detail .empty{color:var(--ink-3); font-size:12.5px}
-  .spark{width:100%; height:110px; display:block; margin-top:2px}
+  .spark{width:100%; height:116px; display:block; margin-top:2px}
   .ladder{width:100%; height:112px; display:block}
   .tabs{display:flex; gap:4px; margin-bottom:6px}
   .tabs button{flex:1; border:1px solid var(--line); background:var(--panel); border-radius:6px; padding:4px 6px; cursor:pointer; font-size:12.5px}
@@ -134,6 +135,8 @@
   .rank .msg{color:var(--ink-3); font-size:12.5px}
   .rank .scope{font-size:11.5px; color:var(--ink-3); margin:0 0 4px}
 
+  .controls .ck{display:flex; align-items:center; gap:5px; font-size:13.5px; color:var(--ink); padding:5px 0}
+  .controls .ck input{accent-color:var(--accent); margin:0}
   .taxnote{margin:-2px 0 8px; font-size:11.5px; color:var(--ink-3)}
   #more{display:none}
   .foot{display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; font-size:11px; color:var(--ink-3); margin-top:6px}
@@ -201,6 +204,9 @@
       <select id="ht"><option value="0">Single, no children</option><option value="1" selected>Married, no children</option><option value="2">Married, two children</option></select>
     </label>
     <label class="sec">Show one state <select id="state"><option value="">All states</option></select></label>
+    <label class="sec chk"><span>College counties</span>
+      <span class="ck"><input type="checkbox" id="nocol"> Leave out (<span id="nocolN"></span>)</span>
+    </label>
     <label class="sec wide">Find a county
       <span class="combo"><input type="search" id="q" placeholder="County name" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="lb" aria-autocomplete="list">
       <ul class="lb" id="lb" role="listbox" hidden></ul></span>

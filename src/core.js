@@ -84,7 +84,7 @@
   }
 
   // ---------- state ----------
-  const S = { fi: NF - 1, prof: 5, inc: 60000, pct: 30, after: true, ht: 1, st: "", bub: true, sel: null, hover: null, rankTab: 0 };
+  const S = { fi: NF - 1, prof: 5, inc: 60000, pct: 30, after: true, ht: 1, st: "", noCol: false, bub: true, sel: null, hover: null, rankTab: 0 };
   const inState = (u) => !S.st || u.s === S.st;
 
   // Total tax (federal and state income tax plus the employee's payroll tax) on an income, from the grid.
@@ -116,6 +116,7 @@
   function calc(u, fi) {
     const f = u.f[fi];
     if (f.x) return { blank: f.x };
+    if (S.noCol && u.col) return { college: true };
     const inc = S.prof === 6 ? S.inc * F[fi].cpi : f.p[S.prof];
     if (inc === null || inc === undefined) return { noinc: true };
     const tax = S.after ? taxOn(fi, S.ht, u.s, inc) : 0;
@@ -382,6 +383,7 @@
     return `${c.sh.top ? "At least " : ""}${pc(100 * c.sh.v)} of rentals priced within reach`;
   }
   function noFigure(u, c, fi) {
+    if (c.college) return `Left out as a college county: ${u.cs}% of residents are enrolled in college or graduate school, and student renters report little income. Untick "Leave out college counties" to see it.`;
     if (c.blank) return `Not shown for ${flabel(fi)}: ${c.blank}, so earlier figures cover a different area.`;
     if (c.noinc) return S.prof === 5 ? `There is no renter income figure for this area in ${flabel(fi)}.`
       : `This income level falls in the open top income bucket for ${flabel(fi)}, so it cannot be estimated here.`;
@@ -471,6 +473,34 @@
       + `<path d="${path(series[1].pts)}" fill="none" stroke="var(--st-line)" stroke-width="2" stroke-dasharray="5 3"/>`
       + `<path d="${path(up)}" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linejoin="round"/>${dots}${endLab}</svg>`;
   }
+  // Rentals paying cash rent in the county, and how many of them are priced within reach, in every period.
+  const kfmt = (v) => (v >= 1e6 ? (v / 1e6).toFixed(v >= 1e7 ? 0 : 1) + "M" : v >= 1e4 ? Math.round(v / 1e3) + "k" : v >= 1e3 ? (v / 1e3).toFixed(1) + "k" : String(Math.round(v)));
+  function countsChart(u) {
+    const P = F.map((f, i) => { const c = calc(u, i); return c.sh ? { all: c.sh.tot, got: c.sh.v * c.sh.tot } : null; });
+    if (!P.some(Boolean)) return "";
+    const top = Math.max(...P.filter(Boolean).map((p) => p.all));
+    const mag = Math.pow(10, Math.floor(Math.log10(top))), hi = Math.ceil(top / (mag / 2)) * (mag / 2);
+    const w = 300, h = 116, l = 34, r = 40, t = 10, b = 18;
+    const x0 = MID[F[0].k], x1 = MID[F[NF - 1].k];
+    const xs = (i) => l + ((MID[F[i].k] - x0) / (x1 - x0)) * (w - l - r);
+    const ys = (v) => t + (1 - v / hi) * (h - t - b);
+    const path = (k) => { let d = "", pen = false; P.forEach((p, i) => { if (!p) { pen = false; return; } d += `${pen ? "L" : "M"}${xs(i).toFixed(1)},${ys(p[k]).toFixed(1)}`; pen = true; }); return d; };
+    const grid = [0, hi / 2, hi].map((v) => `<line x1="${l}" x2="${w - r}" y1="${ys(v)}" y2="${ys(v)}" stroke="var(--grid)"/><text x="${l - 4}" y="${ys(v) + 3.5}" text-anchor="end" font-size="10" fill="var(--ink-3)">${kfmt(v)}</text>`).join("");
+    const xl = F.map((f, i) => `<text x="${xs(i)}" y="${h - 4}" text-anchor="middle" font-size="10" fill="var(--ink-3)">${f.label.slice(0, 5)}${f.label.slice(7)}</text>`).join("");
+    const dots = (k, col) => P.map((p, i) => (!p ? "" : `<circle cx="${xs(i).toFixed(1)}" cy="${ys(p[k]).toFixed(1)}" r="${i === S.fi ? 4 : 2.2}" fill="${col}"${i === S.fi ? ' stroke="var(--panel)" stroke-width="2"' : ""}><title>${flabel(i)}: ${nf.format(Math.round(p[k]))} ${k === "all" ? "rentals" : "priced within reach"}</title></circle>`)).join("");
+    const last = P[NF - 1];
+    let ends = "";
+    if (last) {
+      let ya = ys(last.all) + 3.5, yg = ys(last.got) + 3.5;
+      if (yg - ya < 11) yg = ya + 11;                         // keep the two end labels apart
+      ends = `<text x="${w - r + 6}" y="${ya}" font-size="10.5" font-weight="600" fill="var(--ink)">${kfmt(last.all)}</text>`
+        + `<text x="${w - r + 6}" y="${yg}" font-size="10.5" font-weight="600" fill="var(--ink)">${kfmt(last.got)}</text>`;
+    }
+    return `<h3>Rentals, and how many are priced within reach</h3><div class="key"><span><i class="all"></i>All rentals paying cash rent</span><span><i></i>Priced within reach</span></div>`
+      + `<svg class="spark" viewBox="0 0 ${w} ${h}" role="img" aria-label="Rentals paying cash rent and rentals priced within reach by period, ${esc(u.n)}">${grid}${xl}`
+      + `<path d="${path("all")}" fill="none" stroke="var(--ink-2)" stroke-width="2" stroke-linejoin="round"/>${dots("all", "var(--ink-2)")}`
+      + `<path d="${path("got")}" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linejoin="round"/>${dots("got", "var(--accent)")}${ends}</svg>`;
+  }
   let usCache = null;
   function usTrend() { return usCache || (usCache = F.map((f, i) => { const t = total(i, ""); return t ? t.v : null; })); }
   function notes(u, c) {
@@ -478,6 +508,7 @@
     if (c.sh && c.est) out.push(`The Census Bureau does not publish this income figure for this area in ${flabel(S.fi)}; we estimated it from its income buckets.`);
     if (c.sh && c.lo) out.push("Few rentals in the sample here. Treat the figure with care.");
     const f = u.f[S.fi];
+    if (u.col && !S.noCol) out.push(`A college county: ${u.cs}% of residents are enrolled in college or graduate school. Student renters report little income, which lowers the renter median here.`);
     if (u.m > 1) out.push("Several counties or cities are joined here because their boundaries changed after 2009.");
     else if (f.h === 2) out.push(`For ${flabel(S.fi)} this area was rebuilt from smaller Census areas to match today's boundaries.`);
     const blank = F.filter((x, i) => u.f[i].x).map((x) => x.label);
@@ -492,7 +523,7 @@
     let h = `<h2>County</h2><div class="name">${esc(u.n)}</div><div class="meta">${DATA.states[u.s][1]} &middot; ${flabel(S.fi)}</div>`;
     if (!c.sh) h += `<div class="src">${esc(noFigure(u, c, S.fi))}</div>`;
     else h += `<div class="big">${bigLine(c)}</div>` + mathTable(c, S.fi) + `<div class="src">${esc(rangeLine(c))}</div>` + ladder(u, c);
-    h += spark(u) + `<div class="hist">${esc(notes(u, c))}</div>`;
+    h += countsChart(u) + spark(u) + `<div class="hist">${esc(notes(u, c))}</div>`;
     el.innerHTML = h;
   }
 
@@ -516,7 +547,7 @@
       return;
     }
     const who = S.prof === 6 ? whose() : `each county's ${PROF[S.prof]}`;
-    $("sub").textContent = `${where}, ${flabel(S.fi)}: ${who}, spending ${setup()}, could afford ${pc(t.v)} of the rentals in its own county, all counties added together. In ${nf.format(t.under)} of ${nf.format(t.n)} counties the share is under half.`;
+    $("sub").textContent = `${where}, ${flabel(S.fi)}: ${who}, spending ${setup()}, could afford ${pc(t.v)} of the rentals in its own county, all counties added together. In ${nf.format(t.under)} of ${nf.format(t.n)} counties the share is under half.${S.noCol ? " College counties are left out." : ""}`;
   }
 
   // ---------- rankings ----------
@@ -575,6 +606,8 @@
   $("tAfter").onclick = () => { S.after = true; press("tAfter", "tBefore"); update(); };
   $("tBefore").onclick = () => { S.after = false; press("tBefore", "tAfter"); update(); };
   $("ht").onchange = () => { S.ht = +$("ht").value; update(); };
+  $("nocol").onchange = () => { S.noCol = $("nocol").checked; update(); };
+  $("nocolN").textContent = nf.format(U.filter((u) => u.col).length);
   const yr = $("year");
   yr.max = NF - 1; yr.value = S.fi;
   yr.oninput = () => { S.fi = +yr.value; update(true); };
@@ -594,7 +627,7 @@
   $("reset").onclick = () => {
     stopPlay(); S.st = ""; stSel.value = ""; S.sel = null; S.hover = null; S.fi = NF - 1; yr.value = S.fi;
     S.prof = 5; $("prof").value = 5; S.pct = 30; $("pct").value = 30; S.after = true; press("tAfter", "tBefore"); S.ht = 1; $("ht").value = 1;
-    S.inc = 60000; incEl.value = usd(S.inc); S.rankTab = 0; hideTip(); home(); update();
+    S.inc = 60000; incEl.value = usd(S.inc); S.noCol = false; $("nocol").checked = false; S.rankTab = 0; hideTip(); home(); update();
   };
   $("more").onclick = () => {
     const open = document.querySelector(".controls").classList.toggle("open");
@@ -640,6 +673,7 @@
   if (hs.get("pct") && +hs.get("pct") >= 10 && +hs.get("pct") <= 50) { S.pct = +hs.get("pct"); $("pct").value = S.pct; }
   if (hs.get("tax") === "0") { S.after = false; press("tBefore", "tAfter"); }
   if (hs.get("ht") && +hs.get("ht") >= 0 && +hs.get("ht") <= 2) { S.ht = +hs.get("ht"); $("ht").value = S.ht; }
+  if (hs.get("col") === "0") { S.noCol = true; $("nocol").checked = true; }
   if (hs.get("st") && DATA.states[hs.get("st")]) { S.st = hs.get("st"); stSel.value = S.st; }
   computeVals();
   $("loading").remove();

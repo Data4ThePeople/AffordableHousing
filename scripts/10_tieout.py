@@ -21,7 +21,7 @@ from pathlib import Path
 
 import pandas as pd
 
-from common import FRAMES, INC_EDGES, PROC, RENTER_EDGES, RENT_EDGES, ROOT, STATE_INFO
+from common import COLLEGE_SHARE, FRAMES, INC_EDGES, PROC, RENTER_EDGES, RENT_EDGES, ROOT, STATE_INFO
 
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 PCTS = [0.2, 0.4, 0.5, 0.6, 0.8]
@@ -71,11 +71,11 @@ def share(r, edges, c):
     return below / tot
 
 
-def nation(H, T, cpi, fk, year, prof=5, pct=30, after=True, ht=1, typed=None, st=None):
+def nation(H, T, cpi, fk, year, prof=5, pct=30, after=True, ht=1, typed=None, st=None, nocollege=False):
     a = t = n = under = 0
     for u, info in H["units"].items():
         x = info["f"][fk]
-        if "na" in x or (st and info["st"] != st):
+        if "na" in x or (st and info["st"] != st) or (nocollege and info["college"] >= COLLEGE_SHARE):
             continue
         inc = typed * cpi[str(year)] / cpi["2024"] if typed else income(x, fk, prof)
         if inc is None or sum(x["r"]) == 0:
@@ -112,7 +112,7 @@ def main():
     print(f"1. inlined bucket counts checked: {cells:,} cells, differences: {bad}")
 
     # 2. headline numbers
-    cases = [dict(), dict(prof=2), dict(prof=0), dict(after=False), dict(typed=60000), dict(ht=2, prof=1), dict(st="39"), dict(st="09"), dict(pct=40, after=False)]
+    cases = [dict(), dict(prof=2), dict(prof=0), dict(after=False), dict(typed=60000), dict(ht=2, prof=1), dict(st="39"), dict(st="09"), dict(pct=40, after=False), dict(nocollege=True)]
     rows = []
     with tempfile.TemporaryDirectory() as d:
         Path(d, "p.html").write_text(html)
@@ -122,6 +122,7 @@ def main():
                 h = f"#f={fk}&p={6 if case.get('typed') else case.get('prof', 5)}&pct={case.get('pct', 30)}&tax={int(case.get('after', True))}&ht={case.get('ht', 1)}"
                 h += f"&inc={case['typed']}" if case.get("typed") else ""
                 h += f"&st={case['st']}" if case.get("st") else ""
+                h += "&col=0" if case.get("nocollege") else ""
                 dom = subprocess.run([CHROME, "--headless=new", "--disable-gpu", "--virtual-time-budget=15000", "--window-size=1200,900", "--dump-dom",
                                       f"file://{d}/p.html{h}"], capture_output=True, text=True, timeout=300).stdout
                 sub = re.search(r'id="sub"[^>]*>([^<]*)<', dom).group(1)

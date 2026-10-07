@@ -58,7 +58,7 @@ def main():
                              'window.addEventListener("unhandledrejection",e=>document.body.setAttribute("data-err","promise: "+e.reason));', 1)
         with tempfile.TemporaryDirectory() as d:
             Path(d, "probe.html").write_text(probe)
-            for mode in ("", "#embed=1", "#u=39113&f=2024&embed=1", "#f=2009&p=0", "#f=2014&p=2", "#st=39", "#ht=2&p=0", "#p=6&inc=45000&f=2009", "#tax=0&p=5&pct=30&u=39113", "#u=08014&f=2009", "#u=09190&f=2014"):
+            for mode in ("", "#embed=1", "#u=39113&f=2024&embed=1", "#f=2009&p=0", "#f=2014&p=2", "#st=39", "#col=0", "#ht=2&p=0", "#p=6&inc=45000&f=2009", "#tax=0&p=5&pct=30&u=39113", "#u=08014&f=2009", "#u=09190&f=2014"):
                 dom = subprocess.run([CHROME, "--headless=new", "--disable-gpu", "--virtual-time-budget=15000", "--window-size=1200,900",
                                       "--dump-dom", f"file://{d}/probe.html{mode}"], capture_output=True, text=True, timeout=300).stdout
                 err = re.search(r'data-err="([^"]*)"', dom)
@@ -69,7 +69,7 @@ def main():
                 out = Path(sys.argv[sys.argv.index("--shots") + 1])
                 out.mkdir(parents=True, exist_ok=True)
                 for name, mode, size in [("wide", "#embed=1", "1200,780"), ("dayton", "#u=39113&f=2024&embed=1", "1200,780"),
-                                         ("ohio", "#st=39&embed=1", "1200,780"), ("y2009", "#f=2009&embed=1", "1200,780"), ("franklin", "#st=39&u=39049&embed=1", "1200,780"), ("allhh", "#p=2&embed=1", "1200,780"), ("ct2009", "#st=09&f=2009&u=09190&embed=1", "1200,780"),
+                                         ("ohio", "#st=39&embed=1", "1200,780"), ("y2009", "#f=2009&embed=1", "1200,780"), ("franklin", "#st=39&u=39049&embed=1", "1200,780"), ("allhh", "#p=2&embed=1", "1200,780"), ("ct2009", "#st=09&f=2009&u=09190&embed=1", "1200,780"), ("nocollege", "#col=0&u=53075&embed=1", "1200,780"), ("tall", "#u=06037&embed=0", "1300,1500"),
                                          ("narrow", "#embed=1", "420,780"), ("full", "", "1300,900")]:
                     subprocess.run([CHROME, "--headless=new", "--disable-gpu", "--hide-scrollbars", "--virtual-time-budget=8000",
                                     f"--window-size={size}", f"--screenshot={out / (name + '.png')}", f"file://{d}/probe.html{mode}"],

@@ -7,7 +7,7 @@ Also: state and national records, the tax grid, CPI factors, shapes.
 Output: data/processed/map_data.json"""
 import json
 
-from common import FRAMES, INC_EDGES, PROC, RENTER_EDGES, RENT_EDGES, STATE_INFO
+from common import COLLEGE_SHARE, FRAMES, INC_EDGES, PROC, RENTER_EDGES, RENT_EDGES, STATE_INFO
 
 PCTS = [0.2, 0.4, 0.5, 0.6, 0.8]
 MIN_UNITS = 200     # fewer cash-rent units than this: low reliability
@@ -66,7 +66,7 @@ def main():
     units = []
     for u in sorted(H["units"]):
         info = H["units"][u]
-        units.append({"id": u, "n": info["name"], "s": info["st"], "c": G["pts"][u], "m": len(info["members"]),
+        units.append({"id": u, "n": info["name"], "s": info["st"], "c": G["pts"][u], "m": len(info["members"]), "col": int(info["college"] >= COLLEGE_SHARE), "cs": round(100 * info["college"]),
                       "f": [pack(info["f"][fk], fk) for fk, *_ in FRAMES]})
     assert len({u["id"] for u in units}) == len(units)
     out = {"frames": frames, "grid": G["grid"], "geo": G["geo"], "borders": G["borders"],
@@ -75,7 +75,7 @@ def main():
            "st": {s: [pack(H["states"][s][fk], fk) for fk, *_ in FRAMES] for s in sts},
            "tax": {"inc": T["inc"], "types": T["types"],
                    "t": [[[T["tax"][fk][str(ti)][s] for s in sts] for ti in range(len(T["types"]))] for fk, *_ in FRAMES]},
-           "rules": {"minUnits": MIN_UNITS, "maxCv": MAX_CV}}
+           "rules": {"minUnits": MIN_UNITS, "maxCv": MAX_CV, "college": round(100 * COLLEGE_SHARE)}}
     dest = PROC / "map_data.json"
     dest.write_text(json.dumps(out, separators=(",", ":")))
     import gzip

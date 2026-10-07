@@ -57,3 +57,7 @@ None.
   post (DATASETS.md section 7). Color breaks now 30, 40, 50, 65, 80% because
   the renter default put 86% of rentals in one band. Independent tie-out by a
   fresh agent started; rule added to CLAUDE.md and PROCESS.md.
+- 2026-10-07 Added at Eric's request: a checkbox to leave out 71 college
+  counties (15% or more of residents enrolled in college or graduate school,
+  B14001, 2020-2024), limitation 14, and a county chart of all rentals against
+  rentals priced within reach by period. Tie-out clean.

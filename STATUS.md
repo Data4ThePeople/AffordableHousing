@@ -102,3 +102,4 @@ None.
 - 2026-10-08 Step 2a: subtitle chosen by Eric from three options.
 - 2026-10-08 Step 2a: tutorial video is on YouTube (zs0lN6o3SdE) and embedded in POST.md.
 - 2026-10-08 Step 2a confirmed by Eric. Section is both Data 4 Thought and Visualization. Step 2b opened; Eric has begun editing POST.md directly.
+- 2026-10-08 Step 2b: look-over done; Eric accepted items 1 to 3 and 5 to 8, confirmed the 20.9% homeowner cost figure himself, and asked for a limits section, drafted by Claude before \"Try it yourself\" and awaiting his review.

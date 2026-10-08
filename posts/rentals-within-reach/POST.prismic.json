@@ -61,7 +61,7 @@
           },
           {
             "type": "o-list-item",
-            "text": "Over the prior five years, the median monthly rental unit increased by 33.1%, while the median housing costs for homeowners increased by 20.9%.",
+            "text": "Over the prior five years, the median monthly rent increased by 33.1%, while the median housing costs for homeowners increased by 20.9%.",
             "spans": [],
             "direction": "ltr"
           },
@@ -151,7 +151,7 @@
           },
           {
             "type": "paragraph",
-            "text": "That said, please meet the newest member of our visualization team \u2013 D4TP\u2019s Rentals Within Reach visualization. It starts by asking one question \u2013 if your family earned the median renter\u2019s household income and wanted to pay no more than 30% of your after-tax income on rent (you know, the rule of thumb), how many units in your county could you afford? The map shows you this. And all the red? Those are the counties where less than 40% of the total rental units in your county were in your price range.",
+            "text": "That said, please meet the newest member of our visualization team \u2013 D4TP\u2019s Rentals Within Reach visualization. It starts by asking one question \u2013 if your family earned the median renter\u2019s household income and wanted to pay no more than 30% of your after-tax income on rent (a stricter take on the usual 30% rule of thumb), how many units in your county could you afford? The map shows you this. And all the red? Those are the counties where fewer than 40% of the total rental units in your county were in your price range.",
             "spans": [],
             "direction": "ltr"
           }
@@ -178,7 +178,7 @@
         "html_content": [
           {
             "type": "preformatted",
-            "text": "<style>html,body{margin:0;padding:0;overflow:hidden}iframe{display:block}</style><iframe src=\"https://data4thepeople.github.io/AffordableHousing/?v=20261007a#embed=1\" width=\"100%\" height=\"780\" loading=\"lazy\" style=\"border:0\" title=\"Rentals Within Reach: interactive map of rentals a household can afford, by county, 2005-2009 to 2020-2024\"></iframe>",
+            "text": "<style>html,body{margin:0;padding:0;overflow:hidden}iframe{display:block}</style><iframe src=\"https://data4thepeople.github.io/AffordableHousing/?v=20261008a#embed=1\" width=\"100%\" height=\"780\" loading=\"lazy\" style=\"border:0\" title=\"Rentals Within Reach: interactive map of rentals a household can afford, by county, 2005-2009 to 2020-2024\"></iframe>",
             "spans": [],
             "direction": "ltr"
           }
@@ -208,7 +208,7 @@
           },
           {
             "type": "paragraph",
-            "text": "Feel free to head over to GitHub for step-by-step written instructions on how to use this new visualization. You\u2019ll find the detailed methodology there too. But to save words today, we\u2019ve created a one-minute tutorial video. We strongly encourage you watch this to get a feel for everything this viz can do.",
+            "text": "Feel free to head over to GitHub for step-by-step written instructions on how to use this new visualization. You\u2019ll find the detailed methodology there too. But to save words today, we\u2019ve created a one-minute tutorial video. We strongly encourage you to watch this to get a feel for everything this viz can do.",
             "spans": [
               {
                 "start": 26,
@@ -264,19 +264,19 @@
         "paragraph_text": [
           {
             "type": "heading2",
-            "text": "A case study: An entry-level teacher looking for a place to live",
+            "text": "A thought experiment: An entry-level teacher looking for a place to live",
             "spans": [],
             "direction": "ltr"
           },
           {
             "type": "paragraph",
-            "text": "There are so many stories we want to tell from this visualization. And we will tell many of them over time. But for now, we will just present a single case study. This one comes from the mind of Data 4 The People founding data architect, Amanda Sinton, who before she became a data scientist, was an elementary school teacher.",
+            "text": "There are so many stories we want to tell from this visualization. And we will tell many of them over time. But for now, we will just present a single thought experiment. This one comes from the mind of Data 4 The People founding data architect, Amanda Sinton, who, before she became a data scientist, was an elementary school teacher.",
             "spans": [],
             "direction": "ltr"
           },
           {
             "type": "paragraph",
-            "text": "You live in Arizona and just graduated with your bachelor\u2019s degree in education and are ready to go teach at an elementary school in Phoenix. But you need a place to live, and one that ideally you can pay for on 30% of what is left of your $53,000 salary after taxes. Your friend tells you about this neat new free tool at Data 4 The People, so you head over to the site, choose Arizona from the dropdown, plug your salary in (note: we have no access to any user entered data! It all lives in your browser), set \u201cTaxed as\u201d to single and study the data.",
+            "text": "You live in Arizona and just graduated with your bachelor\u2019s degree in education and are ready to go teach at an elementary school in Phoenix. But you need a place to live, and one that ideally you can pay for on 30% of what is left of your $53,000 salary after taxes. Your friend tells you about this neat new free tool at Data 4 The People, so you head over to the site, choose Arizona from the dropdown, plug your salary in (note: we have no access to any user-entered data! It all lives in your browser), set \u201cTaxed as\u201d to single and study the data.",
             "spans": [],
             "direction": "ltr"
           }
@@ -384,7 +384,7 @@
         "paragraph_text": [
           {
             "type": "paragraph",
-            "text": "But it gets worse. You scroll down the right panel and learn that over the past 15 years the units that you could have afforded on this salary have declined 32%, despite overall units increasing by 39%! So, overall rental units are way up in your county\u2026just not ones you can afford.",
+            "text": "But it gets worse. You scroll down the right panel and learn that over the past 15 years the units that you could have afforded on this salary, adjusted for inflation, have declined 32%, despite overall units increasing by 39%! So, overall rental units are way up in your county\u2026just not ones you can afford.",
             "spans": [],
             "direction": "ltr"
           }
@@ -552,6 +552,116 @@
         "paragraph_text": [
           {
             "type": "heading2",
+            "text": "What this does not tell you",
+            "spans": [],
+            "direction": "ltr"
+          },
+          {
+            "type": "paragraph",
+            "text": "The teacher's search would be harder than the map suggests in some ways, and the tool leaves some things out.",
+            "spans": [],
+            "direction": "ltr"
+          },
+          {
+            "type": "list-item",
+            "text": "It counts rentals people live in now, not vacancies. The Census Bureau records what current tenants pay. A unit rented at a low price for many years counts the same as one on the market today. The share a new arrival can find is very likely lower than the share shown.",
+            "spans": [
+              {
+                "start": 0,
+                "end": 52,
+                "type": "strong"
+              }
+            ],
+            "direction": "ltr"
+          },
+          {
+            "type": "list-item",
+            "text": "A unit priced within reach may not be open. Many low-rent units are already rented, some of them by households that earn more.",
+            "spans": [
+              {
+                "start": 0,
+                "end": 43,
+                "type": "strong"
+              }
+            ],
+            "direction": "ltr"
+          },
+          {
+            "type": "list-item",
+            "text": "Size is not counted. A studio and a three-bedroom count the same.",
+            "spans": [
+              {
+                "start": 0,
+                "end": 20,
+                "type": "strong"
+              }
+            ],
+            "direction": "ltr"
+          },
+          {
+            "type": "list-item",
+            "text": "Taxes are estimated. After-tax income is figured for one wage earner with no other income, using federal and state income tax and payroll tax. Local income taxes are left out.",
+            "spans": [
+              {
+                "start": 0,
+                "end": 20,
+                "type": "strong"
+              }
+            ],
+            "direction": "ltr"
+          },
+          {
+            "type": "list-item",
+            "text": "Small counties are less certain. Santa Cruz County has 4,690 rentals. Maricopa County has 583,955. Figures for small counties rest on fewer survey responses.",
+            "spans": [
+              {
+                "start": 0,
+                "end": 32,
+                "type": "strong"
+              }
+            ],
+            "direction": "ltr"
+          },
+          {
+            "type": "paragraph",
+            "text": "The full list of limits, and the method, is on GitHub.",
+            "spans": [
+              {
+                "start": 47,
+                "end": 53,
+                "type": "hyperlink",
+                "data": {
+                  "link_type": "Web",
+                  "url": "https://github.com/Data4ThePeople/AffordableHousing",
+                  "target": "_blank"
+                }
+              }
+            ],
+            "direction": "ltr"
+          }
+        ]
+      }
+    },
+    {
+      "slice_type": "spacer",
+      "slice_label": null,
+      "variation": "default",
+      "version": "initial",
+      "items": [],
+      "primary": {
+        "spacer_value": "20px"
+      }
+    },
+    {
+      "slice_type": "paragarph_text",
+      "slice_label": null,
+      "variation": "default",
+      "version": "initial",
+      "items": [],
+      "primary": {
+        "paragraph_text": [
+          {
+            "type": "heading2",
             "text": "Try it yourself",
             "spans": [],
             "direction": "ltr"
@@ -564,7 +674,7 @@
           },
           {
             "type": "paragraph",
-            "text": "So, take this tool for a spin and go learn about Americans who you have never met. We are going to come back to this tool many times in the coming months. We have identified several amazing stories, and will get them all in due time. But we\u2019d love to see what you find. Let us know if you come across a good story that opens your eyes to someone else\u2019s lived experience and we may just publish it (with credit to you of course!).",
+            "text": "So, take this tool for a spin and go learn about Americans who you have never met. We are going to come back to this tool many times in the coming months. We have identified several amazing stories, and will get to them all in due time. But we\u2019d love to see what you find first. Let us know if you come across a good story that opens your eyes to someone else\u2019s lived experience and we may just publish it (with credit to you of course!).",
             "spans": [],
             "direction": "ltr"
           }
@@ -572,5 +682,5 @@
       }
     }
   ],
-  "schema": "{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Article\",\n  \"headline\": \"Rentals Within Reach: Visualizing the Affordability of Rentals Where You Live\",\n  \"description\": \"\",\n  \"datePublished\": \"2026-10-08T07:00:00-04:00\",\n  \"dateModified\": \"2026-10-08T07:00:00-04:00\",\n  \"articleSection\": \"Data 4 Thought\",\n  \"license\": \"https://www.data4thepeople.com/terms-of-use\",\n  \"inLanguage\": \"en-US\",\n  \"isAccessibleForFree\": true,\n  \"author\": {\n    \"@type\": \"Person\",\n    \"name\": \"Eric Pachman\",\n    \"url\": \"https://www.data4thepeople.com/authors/eric-pachman\"\n  },\n  \"publisher\": {\n    \"@type\": \"Organization\",\n    \"name\": \"Data 4 The People\",\n    \"url\": \"https://data4thepeople.com\"\n  },\n  \"mainEntityOfPage\": {\n    \"@type\": \"WebPage\",\n    \"@id\": \"https://www.data4thepeople.com/p/rentals-within-reach\"\n  }\n}"
+  "schema": "{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Article\",\n  \"headline\": \"Rentals Within Reach: Visualizing the Affordability of Rentals Where You Live\",\n  \"description\": \"\",\n  \"datePublished\": \"2026-10-08T07:00:00-04:00\",\n  \"dateModified\": \"2026-10-08T07:00:00-04:00\",\n  \"articleSection\": \"Data 4 Thought, Visualization\",\n  \"license\": \"https://www.data4thepeople.com/terms-of-use\",\n  \"inLanguage\": \"en-US\",\n  \"isAccessibleForFree\": true,\n  \"author\": {\n    \"@type\": \"Person\",\n    \"name\": \"Eric Pachman\",\n    \"url\": \"https://www.data4thepeople.com/authors/eric-pachman\"\n  },\n  \"publisher\": {\n    \"@type\": \"Organization\",\n    \"name\": \"Data 4 The People\",\n    \"url\": \"https://data4thepeople.com\"\n  },\n  \"mainEntityOfPage\": {\n    \"@type\": \"WebPage\",\n    \"@id\": \"https://www.data4thepeople.com/p/rentals-within-reach\"\n  }\n}"
 }

@@ -29,6 +29,8 @@ In fact, I was [interviewed about this](https://www.data4thepeople.com/p/renters
 
 Based on these two findings, and a whole lot more, I titled the post “Squeezed on Both Ends.” Because that’s what renters were facing – higher shelter price inflation and much lower absolute income to cover higher costs.
 
+## From national data to local data
+
 But that was way back on February 19, 2026 – the days before we discovered how to leverage AI to assist with our data journalism process. And so, I was stuck analyzing national data, which as I have said over and again, no one person actually experiences.
 
 We can analyze national data to understand America.
@@ -37,9 +39,13 @@ But we must move to analyzing local data to understand Americans.
 
 I want to understand Americans, not America. And as we show you five days a week, we now have the tools to do this.
 
+## Meet Rentals Within Reach
+
 That said, please meet the newest member of our visualization team – D4TP’s Rentals within Reach visualization. It starts by asking one question – if your family earned the median renter’s household income and wanted to pay no more than 30% of your after-tax income on rent (you know, the rule of thumb), how many units in your county could you afford? The map shows you this. And all the red? Those are the counties where less than 40% of the total rental units in your county were in your price range.
 
 <iframe src="https://data4thepeople.github.io/AffordableHousing/?v=20261007a#embed=1" width="100%" height="780" loading="lazy" style="border:0" title="Rentals Within Reach: interactive map of rentals a household can afford, by county, 2005-2009 to 2020-2024"></iframe>
+
+## How to use it
 
 That’s just the default view. But this visualization is loaded with different bells and whistles that can help you explore this topic and really get a sense for how difficult it is to find an affordable rental across America.
 
@@ -66,6 +72,8 @@ But it gets worse. You scroll down the right panel and learn that over the past 
 ![Two columns for Maricopa County, 2005-2009 to 2020-2024. All rentals rose by 162,376, or 39%, from 421,579 to 583,955. Rentals priced within reach of a $53,000 income, held in 2024 dollars, fell by 39,384, or 32%, from 121,440 to 82,056.](images/03-maricopa-change-in-rentals.png)
 *From 2005-2009 to 2020-2024, Maricopa County added 162,376 rentals. The number priced within reach of this income fell by 39,384.*
 
+### The choices from here
+
 And so what do you do? Do you decide to shell out 50% of your income for a fancy Phoenix rental? If so, now you can afford 57% of all units… but how is that going to set you up for the future?
 
 ![The same dark map of Arizona counties with the share of income for rent raised to 50%. Maricopa County's bubble changes from dark red to yellow, meaning between 50% and 65% of rentals are within reach, and most other Arizona counties turn light green or dark green.](images/04-arizona-map-53k-at-50-percent.png)
@@ -75,6 +83,8 @@ Or, you could look a few counties away in Santa Cruz County. You may make just $
 
 ![County panel for Santa Cruz County, Arizona, 2020-2024, on a $45,000 income: $7,701 in income and payroll taxes, $37,299 after taxes, a rent ceiling of $932 a month, and 61% of rentals priced within reach. A bar chart of rentals by monthly rent shows most bars to the left of the ceiling line.](images/05-santa-cruz-45k.png)
 *Santa Cruz County, Arizona, on $45,000: a $932 monthly ceiling.*
+
+## Try it yourself
 
 This is how we understand Americans. We create the story and the tool to simulate their lives, and then see how it plays out. Are we missing elements of the story? Of course we are. These tools are not perfect. The only way to get to perfect is to actually live that other person’s life. But we can at least gain an appreciation for what they must have to go through using the data.
 

@@ -68,6 +68,33 @@
             "text": "Based on these two findings, and a whole lot more, I titled the post \u201cSqueezed on Both Ends.\u201d Because that\u2019s what renters were facing \u2013 higher shelter price inflation and much lower absolute income to cover higher costs.",
             "spans": [],
             "direction": "ltr"
+          }
+        ]
+      }
+    },
+    {
+      "slice_type": "spacer",
+      "slice_label": null,
+      "variation": "default",
+      "version": "initial",
+      "items": [],
+      "primary": {
+        "spacer_value": "20px"
+      }
+    },
+    {
+      "slice_type": "paragarph_text",
+      "slice_label": null,
+      "variation": "default",
+      "version": "initial",
+      "items": [],
+      "primary": {
+        "paragraph_text": [
+          {
+            "type": "heading2",
+            "text": "From national data to local data",
+            "spans": [],
+            "direction": "ltr"
           },
           {
             "type": "paragraph",
@@ -90,6 +117,33 @@
           {
             "type": "paragraph",
             "text": "I want to understand Americans, not America. And as we show you five days a week, we now have the tools to do this.",
+            "spans": [],
+            "direction": "ltr"
+          }
+        ]
+      }
+    },
+    {
+      "slice_type": "spacer",
+      "slice_label": null,
+      "variation": "default",
+      "version": "initial",
+      "items": [],
+      "primary": {
+        "spacer_value": "20px"
+      }
+    },
+    {
+      "slice_type": "paragarph_text",
+      "slice_label": null,
+      "variation": "default",
+      "version": "initial",
+      "items": [],
+      "primary": {
+        "paragraph_text": [
+          {
+            "type": "heading2",
+            "text": "Meet Rentals Within Reach",
             "spans": [],
             "direction": "ltr"
           },
@@ -138,6 +192,12 @@
       "items": [],
       "primary": {
         "paragraph_text": [
+          {
+            "type": "heading2",
+            "text": "How to use it",
+            "spans": [],
+            "direction": "ltr"
+          },
           {
             "type": "paragraph",
             "text": "That\u2019s just the default view. But this visualization is loaded with different bells and whistles that can help you explore this topic and really get a sense for how difficult it is to find an affordable rental across America.",
@@ -368,6 +428,12 @@
       "primary": {
         "paragraph_text": [
           {
+            "type": "heading3",
+            "text": "The choices from here",
+            "spans": [],
+            "direction": "ltr"
+          },
+          {
             "type": "paragraph",
             "text": "And so what do you do? Do you decide to shell out 50% of your income for a fancy Phoenix rental? If so, now you can afford 57% of all units\u2026 but how is that going to set you up for the future?",
             "spans": [],
@@ -475,6 +541,12 @@
       "items": [],
       "primary": {
         "paragraph_text": [
+          {
+            "type": "heading2",
+            "text": "Try it yourself",
+            "spans": [],
+            "direction": "ltr"
+          },
           {
             "type": "paragraph",
             "text": "This is how we understand Americans. We create the story and the tool to simulate their lives, and then see how it plays out. Are we missing elements of the story? Of course we are. These tools are not perfect. The only way to get to perfect is to actually live that other person\u2019s life. But we can at least gain an appreciation for what they must have to go through using the data.",

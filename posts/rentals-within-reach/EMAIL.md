@@ -2,7 +2,7 @@
 
 Post URL: https://www.data4thepeople.com/p/rentals-within-reach
 
-Drafted by Claude from the post text (October 8, 2026), using Eric's sentences as written.
+Drafted by Claude from the post text (October 8, 2026), using Eric's sentences as written; the closing line is Eric's, written for the email.
 
 ```
 Subject:  How many rentals could you afford?
@@ -60,7 +60,7 @@ Two columns for Maricopa County, 2005-2009 to 2020-2024. All rentals rose by 162
 ```
 And so what do you do?
 
-Take this tool for a spin and go learn about Americans who you have never met.
+You start by taking this tool for a spin and go learn about Americans who you have never met.
 ```
 
 ## 7. Call to action

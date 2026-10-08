@@ -15,7 +15,7 @@ Since: 2026-10-08
 |---|---|---|---|
 | 1  | Exploration and analysis | 2026-10-07 | Tie-out clean; independent tie-out by a fresh agent done; viz live on Pages |
 | 2a | Draft with brackets resolved | 2026-10-08 | 12 edits accepted; title, subtitle, video embed set |
-| 2b | Eric's edit, Claude's look-over | | |
+| 2b | Eric's edit, Claude's look-over | 2026-10-08 | 7 look-over edits accepted; limits section added |
 | 2c | Slice markup | | |
 | 2d | Hero 1680x1080 + alt text | | |
 | 2e | SEO | | |
@@ -103,3 +103,4 @@ None.
 - 2026-10-08 Step 2a: tutorial video is on YouTube (zs0lN6o3SdE) and embedded in POST.md.
 - 2026-10-08 Step 2a confirmed by Eric. Section is both Data 4 Thought and Visualization. Step 2b opened; Eric has begun editing POST.md directly.
 - 2026-10-08 Step 2b: look-over done; Eric accepted items 1 to 3 and 5 to 8, confirmed the 20.9% homeowner cost figure himself, and asked for a limits section, drafted by Claude before \"Try it yourself\" and awaiting his review.
+- 2026-10-08 Step 2b confirmed by Eric. Next: 2c, slice markup.

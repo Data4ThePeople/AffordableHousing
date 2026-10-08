@@ -51,7 +51,7 @@ That’s just the default view. But this visualization is loaded with different 
 
 Feel free to head over to [GitHub](https://github.com/Data4ThePeople/AffordableHousing) for step-by-step written instructions on how to use this new visualization. You’ll find the detailed methodology there too. But to save words today, we’ve created a one-minute tutorial video. We strongly encourage you watch this to get a feel for everything this viz can do.
 
-::: embed 440px
+<iframe src="https://www.youtube-nocookie.com/embed/zs0lN6o3SdE?rel=0" width="100%" height="440" loading="lazy" style="border:0" title="How to use Rentals Within Reach (57-second video)" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ## A case study: An entry-level teacher looking for a place to live
 

@@ -100,3 +100,4 @@ None.
 - 2026-10-08 Step 2a: section headers added at Eric's request; title set by Eric (typo "afforability" corrected).
 - 2026-10-08 Step 2a: title is "Rentals Within Reach: Visualizing the Affordability of Rentals Where You Live" (capital W and title case accepted by Eric).
 - 2026-10-08 Step 2a: subtitle chosen by Eric from three options.
+- 2026-10-08 Step 2a: tutorial video is on YouTube (zs0lN6o3SdE) and embedded in POST.md.

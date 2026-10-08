@@ -1,5 +1,6 @@
 {
-  "page_title": "Rentals within Reach: Visualizing the affordability of rentals where you live",
+  "page_title": "Rentals Within Reach: Visualizing the Affordability of Rentals Where You Live",
+  "page_subtitle": "A free map of every U.S. county shows how many rentals a household can afford at 30% of its income, and how that has changed since 2005.",
   "published_date": "2026-10-08",
   "updated_date": "2026-10-08",
   "make_this_main_post": false,
@@ -150,7 +151,7 @@
           },
           {
             "type": "paragraph",
-            "text": "That said, please meet the newest member of our visualization team \u2013 D4TP\u2019s Rentals within Reach visualization. It starts by asking one question \u2013 if your family earned the median renter\u2019s household income and wanted to pay no more than 30% of your after-tax income on rent (you know, the rule of thumb), how many units in your county could you afford? The map shows you this. And all the red? Those are the counties where less than 40% of the total rental units in your county were in your price range.",
+            "text": "That said, please meet the newest member of our visualization team \u2013 D4TP\u2019s Rentals Within Reach visualization. It starts by asking one question \u2013 if your family earned the median renter\u2019s household income and wanted to pay no more than 30% of your after-tax income on rent (you know, the rule of thumb), how many units in your county could you afford? The map shows you this. And all the red? Those are the counties where less than 40% of the total rental units in your county were in your price range.",
             "spans": [],
             "direction": "ltr"
           }
@@ -242,7 +243,14 @@
       "version": "initial",
       "items": [],
       "primary": {
-        "html_content": [],
+        "html_content": [
+          {
+            "type": "preformatted",
+            "text": "<style>html,body{margin:0;padding:0;overflow:hidden}iframe{display:block}</style><iframe src=\"https://www.youtube-nocookie.com/embed/zs0lN6o3SdE?rel=0\" width=\"100%\" height=\"440\" loading=\"lazy\" style=\"border:0\" title=\"How to use Rentals Within Reach (57-second video)\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen></iframe>",
+            "spans": [],
+            "direction": "ltr"
+          }
+        ],
         "embed_height": "440px"
       }
     },
@@ -564,5 +572,5 @@
       }
     }
   ],
-  "schema": "{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Article\",\n  \"headline\": \"Rentals within Reach: Visualizing the affordability of rentals where you live\",\n  \"description\": \"\",\n  \"datePublished\": \"2026-10-08T07:00:00-04:00\",\n  \"dateModified\": \"2026-10-08T07:00:00-04:00\",\n  \"articleSection\": \"Data 4 Thought\",\n  \"license\": \"https://www.data4thepeople.com/terms-of-use\",\n  \"inLanguage\": \"en-US\",\n  \"isAccessibleForFree\": true,\n  \"author\": {\n    \"@type\": \"Person\",\n    \"name\": \"Eric Pachman\",\n    \"url\": \"https://www.data4thepeople.com/authors/eric-pachman\"\n  },\n  \"publisher\": {\n    \"@type\": \"Organization\",\n    \"name\": \"Data 4 The People\",\n    \"url\": \"https://data4thepeople.com\"\n  },\n  \"mainEntityOfPage\": {\n    \"@type\": \"WebPage\",\n    \"@id\": \"https://www.data4thepeople.com/p/rentals-within-reach\"\n  }\n}"
+  "schema": "{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Article\",\n  \"headline\": \"Rentals Within Reach: Visualizing the Affordability of Rentals Where You Live\",\n  \"description\": \"\",\n  \"datePublished\": \"2026-10-08T07:00:00-04:00\",\n  \"dateModified\": \"2026-10-08T07:00:00-04:00\",\n  \"articleSection\": \"Data 4 Thought\",\n  \"license\": \"https://www.data4thepeople.com/terms-of-use\",\n  \"inLanguage\": \"en-US\",\n  \"isAccessibleForFree\": true,\n  \"author\": {\n    \"@type\": \"Person\",\n    \"name\": \"Eric Pachman\",\n    \"url\": \"https://www.data4thepeople.com/authors/eric-pachman\"\n  },\n  \"publisher\": {\n    \"@type\": \"Organization\",\n    \"name\": \"Data 4 The People\",\n    \"url\": \"https://data4thepeople.com\"\n  },\n  \"mainEntityOfPage\": {\n    \"@type\": \"WebPage\",\n    \"@id\": \"https://www.data4thepeople.com/p/rentals-within-reach\"\n  }\n}"
 }

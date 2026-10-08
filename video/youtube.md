@@ -2,6 +2,8 @@
 
 Video: `rentals-within-reach-tutorial.mp4` · Thumbnail: `rentals-within-reach-thumbnail.png`
 
+Published: https://www.youtube.com/watch?v=zs0lN6o3SdE
+
 No chapter timestamps: YouTube requires each chapter to be at least 10 seconds,
 and four of the seven steps run under that.
 

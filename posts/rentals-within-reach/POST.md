@@ -1,5 +1,5 @@
 ---
-title:
+title: "Rentals within Reach: Visualizing the affordability of rentals where you live"
 subtitle:
 slug: rentals-within-reach
 date: 2026-10-08
@@ -16,7 +16,7 @@ caption_spacer: 20px
 dividers: false
 ---
 
-# Title
+# Rentals within Reach: Visualizing the affordability of rentals where you live
 
 We’ve heard the story.
 

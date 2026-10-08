@@ -97,3 +97,4 @@ None.
   to GitHub for instructions and methodology. Proposed edits sent to Eric as
   a numbered list; none applied.
 - 2026-10-08 Step 2a: Eric accepted all 12 proposed edits; applied to POST.md.
+- 2026-10-08 Step 2a: section headers added at Eric's request; title set by Eric (typo "afforability" corrected).

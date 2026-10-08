@@ -6,10 +6,25 @@ date: 2026-10-08
 section: Data 4 Thought, Visualization
 hero: images/rentals-within-reach-hero-1680x1080.png
 hero_alt: "Dark map of the United States with one bubble per county, sized by its number of rentals and colored by the share the median renter household can afford in 2020-2024. Most large bubbles, including Los Angeles, Phoenix, Houston, South Florida, Chicago and the Northeast, are dark red or red, meaning under 40% within reach. Smaller yellow and orange bubbles dot the Midwest. Text: Rentals Within Reach. In 1,960 of 3,141 counties the median renter household can afford fewer than half the rentals."
-meta_title:
-description:
-keywords:
-schema_type: article
+meta_title: "Rent Affordability by County: Free Map, 2005 to 2024"
+description: "Free interactive map of every U.S. county: the share of rentals a household can afford at 30% of income, 2005-2009 to 2020-2024. Enter your own income."
+keywords: rent affordability by county, how much rent can I afford by county, affordable rentals map, rent affordability map, median renter income by county, share of rentals I can afford, rental housing affordability data, rent vs income by county
+schema_type: dataset
+dataset_name: Share of rental units a household can afford at 30% of income, every U.S. county, 2005-2009 to 2020-2024
+dataset_description: "For 3,141 U.S. counties and county equivalents on 2024 boundaries, in four American Community Survey 5-year periods that share no sample (2005-2009, 2010-2014, 2015-2019, 2020-2024): renter-occupied units paying cash rent by gross rent bucket, set against a monthly rent ceiling of 30% of household income, for the median renter household, the median and four percentiles of all households, or any income entered. Income can be counted before or after federal and state income tax and payroll tax."
+temporal: 2005/2024
+spatial: United States
+measured: Share of rentals priced at or under the rent ceiling|percent; Renter-occupied units paying cash rent, by gross rent bucket|count; Median renter household income|U.S. dollars; Household income at the 20th, 40th, 50th, 60th and 80th percentiles|U.S. dollars; Monthly rent ceiling|U.S. dollars; Change in rentals and in rentals priced within reach, 2005-2009 to 2020-2024|count and percent
+sources: https://www.census.gov/programs-surveys/acs|https://taxsim.nber.org/taxsim35/|https://www.ssa.gov/oact/cola/cbb.html|https://www.bls.gov/cpi/|https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.html
+distribution: text/html|https://data4thepeople.github.io/AffordableHousing/;application/json|https://github.com/Data4ThePeople/AffordableHousing/tree/main/data/processed
+measurement_technique: ACS table B25063 gross rent buckets per county; rent ceiling is the chosen share of income divided by 12; rentals at or under the ceiling counted with straight-line interpolation inside the bucket the ceiling falls in; incomes from ACS tables B25119, B19013, B19080, B19001 and B25118; after-tax income from NBER TAXSIM 35 and Social Security Administration payroll tax rates for one wage earner; counties with changed boundaries joined or rebuilt from towns so every period is on 2024 boundaries
+credit: Data 4 The People, from the U.S. Census Bureau, the National Bureau of Economic Research, the Social Security Administration and the U.S. Bureau of Labor Statistics
+license: https://www.data4thepeople.com/terms-of-use
+app_url: https://data4thepeople.github.io/AffordableHousing/
+app_name: "Rentals Within Reach: interactive map, 2005-2009 to 2020-2024"
+app_category: EducationalApplication
+app_description: Free interactive map of the share of rentals a household can afford at 30% of its income, in every U.S. county, across four periods from 2005-2009 to 2020-2024.
+app_features: Every U.S. county, four periods from 2005-2009 to 2020-2024|Play through the periods|Median renter household, median of all households, or four income percentiles|Enter any income|Income before or after taxes, for three household types|Slider for the share of income spent on rent|Hover or tap any county for the math|Rentals by monthly rent for each county|Change in rentals and in rentals within reach|Search any county by name|Filter to one state|Leave out college counties|Rankings of fewest and most within reach
 drop_cap: false
 heading_spacer: 20px
 caption_spacer: 20px

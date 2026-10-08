@@ -6,7 +6,7 @@ No chapter timestamps: YouTube requires each chapter to be at least 10 seconds,
 and four of the seven steps run under that.
 
 The post URL below assumes the slug `rentals-within-reach`. Change it if the
-slug changes. The title "Rentals Within Reach" is still a working title.
+slug changes.
 
 ## Title (59 characters)
 

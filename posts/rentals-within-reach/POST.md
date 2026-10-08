@@ -1,5 +1,5 @@
 ---
-title: "Rentals within Reach: Visualizing the affordability of rentals where you live"
+title: "Rentals Within Reach: Visualizing the Affordability of Rentals Where You Live"
 subtitle:
 slug: rentals-within-reach
 date: 2026-10-08
@@ -16,7 +16,7 @@ caption_spacer: 20px
 dividers: false
 ---
 
-# Rentals within Reach: Visualizing the affordability of rentals where you live
+# Rentals Within Reach: Visualizing the Affordability of Rentals Where You Live
 
 We’ve heard the story.
 
@@ -41,7 +41,7 @@ I want to understand Americans, not America. And as we show you five days a week
 
 ## Meet Rentals Within Reach
 
-That said, please meet the newest member of our visualization team – D4TP’s Rentals within Reach visualization. It starts by asking one question – if your family earned the median renter’s household income and wanted to pay no more than 30% of your after-tax income on rent (you know, the rule of thumb), how many units in your county could you afford? The map shows you this. And all the red? Those are the counties where less than 40% of the total rental units in your county were in your price range.
+That said, please meet the newest member of our visualization team – D4TP’s Rentals Within Reach visualization. It starts by asking one question – if your family earned the median renter’s household income and wanted to pay no more than 30% of your after-tax income on rent (you know, the rule of thumb), how many units in your county could you afford? The map shows you this. And all the red? Those are the counties where less than 40% of the total rental units in your county were in your price range.
 
 <iframe src="https://data4thepeople.github.io/AffordableHousing/?v=20261007a#embed=1" width="100%" height="780" loading="lazy" style="border:0" title="Rentals Within Reach: interactive map of rentals a household can afford, by county, 2005-2009 to 2020-2024"></iframe>
 

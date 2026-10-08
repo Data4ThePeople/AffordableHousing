@@ -121,3 +121,4 @@ None.
 - 2026-10-08 Step 2f: Eric changed "simulate their lives" to "understand their lives" directly in Prismic; POST.md updated to match, not re-pushed.
 - 2026-10-08 Step 2f confirmed by Eric. Next: 2g, Mailchimp teaser.
 - 2026-10-08 Step 2g opened. EMAIL.md drafted from the post, using Eric's sentences as written; hero JPG exported for email. Awaiting approve or reject.
+- 2026-10-08 Step 2g: at Eric's direction the Phoenix text now comes before the chart and the hook after it.

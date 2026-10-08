@@ -6,7 +6,7 @@ Process: ~/.claude/d4tp-process/PROCESS.md
 ## Current
 
 Post: rentals-within-reach
-Step: 2c
+Step: 2d
 Since: 2026-10-08
 
 ## Steps
@@ -16,7 +16,7 @@ Since: 2026-10-08
 | 1  | Exploration and analysis | 2026-10-07 | Tie-out clean; independent tie-out by a fresh agent done; viz live on Pages |
 | 2a | Draft with brackets resolved | 2026-10-08 | 12 edits accepted; title, subtitle, video embed set |
 | 2b | Eric's edit, Claude's look-over | 2026-10-08 | 7 look-over edits accepted; limits section added |
-| 2c | Slice markup | | |
+| 2c | Slice markup | 2026-10-08 | Drop cap off, no dividers, 40px after both embeds |
 | 2d | Hero 1680x1080 + alt text | | |
 | 2e | SEO | | |
 | 2f | Pushed to Prismic (draft) | | |
@@ -106,3 +106,4 @@ None.
 - 2026-10-08 Step 2b confirmed by Eric. Next: 2c, slice markup.
 - 2026-10-08 Step 2c opened. Defaults applied; a 40px spacer added after each of the two embeds, since a heading follows both.
 - 2026-10-08 Step 2c: drop cap turned off for this post and no divider dots (Eric).
+- 2026-10-08 Step 2c confirmed by Eric. Step 2d opened.

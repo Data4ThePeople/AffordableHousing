@@ -6,23 +6,6 @@
   "make_this_main_post": false,
   "slices": [
     {
-      "slice_type": "drop_cap",
-      "slice_label": null,
-      "variation": "default",
-      "version": "initial",
-      "items": [],
-      "primary": {
-        "drop_cap_text": [
-          {
-            "type": "paragraph",
-            "text": "We\u2019ve heard the story.",
-            "spans": [],
-            "direction": "ltr"
-          }
-        ]
-      }
-    },
-    {
       "slice_type": "paragarph_text",
       "slice_label": null,
       "variation": "default",
@@ -30,6 +13,12 @@
       "items": [],
       "primary": {
         "paragraph_text": [
+          {
+            "type": "paragraph",
+            "text": "We\u2019ve heard the story.",
+            "spans": [],
+            "direction": "ltr"
+          },
           {
             "type": "paragraph",
             "text": "Renters are getting squeezed.",

@@ -10,7 +10,7 @@ meta_title:
 description:
 keywords:
 schema_type: article
-drop_cap: true
+drop_cap: false
 heading_spacer: 20px
 caption_spacer: 20px
 dividers: false

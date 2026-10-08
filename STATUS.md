@@ -124,3 +124,4 @@ None.
 - 2026-10-08 Step 2g: at Eric's direction the Phoenix text now comes before the chart and the hook after it.
 - 2026-10-08 Step 2g: a static picture of the live tool added after body part one (Eric), so the email has two images besides the hero.
 - 2026-10-08 Step 2g approved by Eric. Every step through 2g is confirmed: the post is complete. Eric asked for social media posts next, outside the seven steps.
+- 2026-10-08 Social posts for X and LinkedIn accepted by Eric (posts/rentals-within-reach/SOCIAL.md). Eric declared the piece done. Left for Eric: tags, author and publishing in Prismic; posting the email and social copy.

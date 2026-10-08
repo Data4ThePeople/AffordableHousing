@@ -115,3 +115,4 @@ None.
 - 2026-10-08 Step 2e: Eric accepted all eight Common questions answers; added at the end under divider dots, with the before-tax count (1,084 of 3,141) checked against the page.
 - 2026-10-08 Step 2e confirmed by Eric. Step 2f opened.
 - 2026-10-08 Step 2f: dry run clean, then pushed to Prismic as a draft: document asddnREAACsAEb9R, 50 slices, 5 images and the hero uploaded, in the Migration Release. Tags and author left empty. Awaiting Eric's check in Prismic.
+- 2026-10-08 Step 2f: the video now uses Prismic's youtube_embed slice (full width, embed link and title), at Eric's direction. The importer learned a `::: youtube-full <link> <title>` fence; the draft was updated in place.

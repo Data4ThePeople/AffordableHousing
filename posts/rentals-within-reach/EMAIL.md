@@ -26,10 +26,6 @@ Rentals Within Reach: Visualizing the Affordability of Rentals Where You Live
 ## 3. Body, part one
 
 ```
-We’ve heard the story.
-
-Renters are getting squeezed.
-
 We can analyze national data to understand America. But we must move to analyzing local data to understand Americans. I want to understand Americans, not America. And as we show you five days a week, we now have the tools to do this.
 
 That said, please meet the newest member of our visualization team – D4TP’s Rentals Within Reach visualization. It starts by asking one question – if your family earned the median renter’s household income and wanted to pay no more than 30% of your after-tax income on rent (a stricter take on the usual 30% rule of thumb), how many units in your county could you afford? The map shows you this. And all the red? Those are the counties where fewer than 40% of the total rental units in your county were in your price range.

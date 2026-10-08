@@ -6,7 +6,7 @@ Process: ~/.claude/d4tp-process/PROCESS.md
 ## Current
 
 Post: rentals-within-reach
-Step: 2g
+Step: complete (all steps through 2g confirmed)
 Since: 2026-10-08
 
 ## Steps
@@ -20,7 +20,7 @@ Since: 2026-10-08
 | 2d | Hero 1680x1080 + alt text | 2026-10-08 | Default map at hero scale; headline 1,960 of 3,141 counties; alt 496 characters |
 | 2e | SEO | 2026-10-08 | Dataset schema; 8 FAQ entries; meta title 52, description 151 characters; Dayton link on hold |
 | 2f | Pushed to Prismic (draft) | 2026-10-08 | Draft asddnREAACsAEb9R in the Migration Release; video in youtube_embed slice; limits as a blurb; one wording change made by Eric in Prismic and mirrored in POST.md |
-| 2g | Mailchimp teaser | | |
+| 2g | Mailchimp teaser | 2026-10-08 | Approved by Eric; his sentences; tool picture and Maricopa chart; hero JPG 206 KB |
 
 ## Stale
 
@@ -123,3 +123,4 @@ None.
 - 2026-10-08 Step 2g opened. EMAIL.md drafted from the post, using Eric's sentences as written; hero JPG exported for email. Awaiting approve or reject.
 - 2026-10-08 Step 2g: at Eric's direction the Phoenix text now comes before the chart and the hook after it.
 - 2026-10-08 Step 2g: a static picture of the live tool added after body part one (Eric), so the email has two images besides the hero.
+- 2026-10-08 Step 2g approved by Eric. Every step through 2g is confirmed: the post is complete. Eric asked for social media posts next, outside the seven steps.

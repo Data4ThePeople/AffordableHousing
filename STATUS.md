@@ -96,3 +96,4 @@ None.
   placeholder for the video. README.md written, since the draft sends readers
   to GitHub for instructions and methodology. Proposed edits sent to Eric as
   a numbered list; none applied.
+- 2026-10-08 Step 2a: Eric accepted all 12 proposed edits; applied to POST.md.

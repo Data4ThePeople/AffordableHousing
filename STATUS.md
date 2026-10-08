@@ -107,3 +107,4 @@ None.
 - 2026-10-08 Step 2c opened. Defaults applied; a 40px spacer added after each of the two embeds, since a heading follows both.
 - 2026-10-08 Step 2c: drop cap turned off for this post and no divider dots (Eric).
 - 2026-10-08 Step 2c confirmed by Eric. Step 2d opened.
+- 2026-10-08 Step 2d: hero built from the default map at hero scale (scripts/12_hero.py), padded to 1680x1080; alt text written. Awaiting Eric.

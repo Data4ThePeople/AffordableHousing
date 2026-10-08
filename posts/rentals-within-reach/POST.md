@@ -114,6 +114,8 @@ The teacher's search would be harder than the map suggests in some ways, and the
 - **Taxes are estimated.** After-tax income is figured for one wage earner with no other income, using federal and state income tax and payroll tax. Local income taxes are left out.
 - **Small counties are less certain.** Santa Cruz County has 4,690 rentals. Maricopa County has 583,955. Figures for small counties rest on fewer survey responses.
 
+These limitations are why this is a thought experiment, not a perfect simulation.
+
 The full list of limits, and the method, is on [GitHub](https://github.com/Data4ThePeople/AffordableHousing).
 :::
 

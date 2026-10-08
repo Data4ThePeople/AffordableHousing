@@ -117,3 +117,4 @@ None.
 - 2026-10-08 Step 2f: dry run clean, then pushed to Prismic as a draft: document asddnREAACsAEb9R, 50 slices, 5 images and the hero uploaded, in the Migration Release. Tags and author left empty. Awaiting Eric's check in Prismic.
 - 2026-10-08 Step 2f: the video now uses Prismic's youtube_embed slice (full width, embed link and title), at Eric's direction. The importer learned a `::: youtube-full <link> <title>` fence; the draft was updated in place.
 - 2026-10-08 Step 2f: the limits section is now a highlighted page blurb titled "What this does not tell you" (Eric); draft updated in place.
+- 2026-10-08 Step 2f: Eric added a sentence to the limits blurb ("These limitations are why this is a thought experiment, not a perfect simulation."); draft updated.

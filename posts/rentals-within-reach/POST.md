@@ -1,6 +1,6 @@
 ---
 title: "Rentals Within Reach: Visualizing the Affordability of Rentals Where You Live"
-subtitle:
+subtitle: "A free map of every U.S. county shows how many rentals a household can afford at 30% of its income, and how that has changed since 2005."
 slug: rentals-within-reach
 date: 2026-10-08
 section: Data 4 Thought

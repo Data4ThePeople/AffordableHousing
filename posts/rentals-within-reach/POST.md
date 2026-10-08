@@ -3,7 +3,7 @@ title: "Rentals Within Reach: Visualizing the Affordability of Rentals Where You
 subtitle: "A free map of every U.S. county shows how many rentals a household can afford at 30% of its income, and how that has changed since 2005."
 slug: rentals-within-reach
 date: 2026-10-08
-section: Data 4 Thought
+section: Data 4 Thought, Visualization
 hero: images/rentals-within-reach-hero-1680x1080.png
 hero_alt:
 meta_title:
@@ -53,9 +53,9 @@ Feel free to head over to [GitHub](https://github.com/Data4ThePeople/AffordableH
 
 <iframe src="https://www.youtube-nocookie.com/embed/zs0lN6o3SdE?rel=0" width="100%" height="440" loading="lazy" style="border:0" title="How to use Rentals Within Reach (57-second video)" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-## A case study: An entry-level teacher looking for a place to live
+## A thought experiment: An entry-level teacher looking for a place to live
 
-There are so many stories we want to tell from this visualization. And we will tell many of them over time. But for now, we will just present a single case study. This one comes from the mind of Data 4 The People founding data architect, Amanda Sinton, who before she became a data scientist, was an elementary school teacher.
+There are so many stories we want to tell from this visualization. And we will tell many of them over time. But for now, we will just present a single thought experiment. This one comes from the mind of Data 4 The People founding data architect, Amanda Sinton, who before she became a data scientist, was an elementary school teacher.
 
 You live in Arizona and just graduated with your bachelor’s degree in education and are ready to go teach at an elementary school in Phoenix. But you need a place to live, and one that ideally you can pay for on 30% of what is left of your $53,000 salary after taxes. Your friend tells you about this neat new free tool at Data 4 The People, so you head over to the site, choose Arizona from the dropdown, plug your salary in (note: we have no access to any user entered data! It all lives in your browser), set “Taxed as” to single and study the data.
 
@@ -88,4 +88,4 @@ Or, you could look a few counties away in Santa Cruz County. You may make just $
 
 This is how we understand Americans. We create the story and the tool to simulate their lives, and then see how it plays out. Are we missing elements of the story? Of course we are. These tools are not perfect. The only way to get to perfect is to actually live that other person’s life. But we can at least gain an appreciation for what they must have to go through using the data.
 
-So, take this tool for a spin and go learn about Americans who you have never met. We are going to come back to this tool many times in the coming months. We have identified several amazing stories, and will get them all in due time. But we’d love to see what you find. Let us know if you come across a good story that opens your eyes to someone else’s lived experience and we may just publish it (with credit to you of course!).
+So, take this tool for a spin and go learn about Americans who you have never met. We are going to come back to this tool many times in the coming months. We have identified several amazing stories, and will get to them all in due time. But we’d love to see what you find first. Let us know if you come across a good story that opens your eyes to someone else’s lived experience and we may just publish it (with credit to you of course!).

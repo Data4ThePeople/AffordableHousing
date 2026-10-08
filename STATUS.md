@@ -6,15 +6,15 @@ Process: ~/.claude/d4tp-process/PROCESS.md
 ## Current
 
 Post: rentals-within-reach
-Step: 2a
-Since: 2026-10-07
+Step: 2b
+Since: 2026-10-08
 
 ## Steps
 
 | Step | What | Confirmed | Notes |
 |---|---|---|---|
 | 1  | Exploration and analysis | 2026-10-07 | Tie-out clean; independent tie-out by a fresh agent done; viz live on Pages |
-| 2a | Draft with brackets resolved | | |
+| 2a | Draft with brackets resolved | 2026-10-08 | 12 edits accepted; title, subtitle, video embed set |
 | 2b | Eric's edit, Claude's look-over | | |
 | 2c | Slice markup | | |
 | 2d | Hero 1680x1080 + alt text | | |
@@ -101,3 +101,4 @@ None.
 - 2026-10-08 Step 2a: title is "Rentals Within Reach: Visualizing the Affordability of Rentals Where You Live" (capital W and title case accepted by Eric).
 - 2026-10-08 Step 2a: subtitle chosen by Eric from three options.
 - 2026-10-08 Step 2a: tutorial video is on YouTube (zs0lN6o3SdE) and embedded in POST.md.
+- 2026-10-08 Step 2a confirmed by Eric. Section is both Data 4 Thought and Visualization. Step 2b opened; Eric has begun editing POST.md directly.

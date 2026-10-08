@@ -45,6 +45,8 @@ That said, please meet the newest member of our visualization team – D4TP’s 
 
 <iframe src="https://data4thepeople.github.io/AffordableHousing/?v=20261008a#embed=1" width="100%" height="780" loading="lazy" style="border:0" title="Rentals Within Reach: interactive map of rentals a household can afford, by county, 2005-2009 to 2020-2024"></iframe>
 
+::: spacer 40px
+
 ## How to use it
 
 That’s just the default view. But this visualization is loaded with different bells and whistles that can help you explore this topic and really get a sense for how difficult it is to find an affordable rental across America.
@@ -52,6 +54,8 @@ That’s just the default view. But this visualization is loaded with different 
 Feel free to head over to [GitHub](https://github.com/Data4ThePeople/AffordableHousing) for step-by-step written instructions on how to use this new visualization. You’ll find the detailed methodology there too. But to save words today, we’ve created a one-minute tutorial video. We strongly encourage you to watch this to get a feel for everything this viz can do.
 
 <iframe src="https://www.youtube-nocookie.com/embed/zs0lN6o3SdE?rel=0" width="100%" height="440" loading="lazy" style="border:0" title="How to use Rentals Within Reach (57-second video)" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+::: spacer 40px
 
 ## A thought experiment: An entry-level teacher looking for a place to live
 

@@ -6,7 +6,7 @@ Process: ~/.claude/d4tp-process/PROCESS.md
 ## Current
 
 Post: rentals-within-reach
-Step: 2b
+Step: 2c
 Since: 2026-10-08
 
 ## Steps
@@ -104,3 +104,4 @@ None.
 - 2026-10-08 Step 2a confirmed by Eric. Section is both Data 4 Thought and Visualization. Step 2b opened; Eric has begun editing POST.md directly.
 - 2026-10-08 Step 2b: look-over done; Eric accepted items 1 to 3 and 5 to 8, confirmed the 20.9% homeowner cost figure himself, and asked for a limits section, drafted by Claude before \"Try it yourself\" and awaiting his review.
 - 2026-10-08 Step 2b confirmed by Eric. Next: 2c, slice markup.
+- 2026-10-08 Step 2c opened. Defaults applied; a 40px spacer added after each of the two embeds, since a heading follows both.

@@ -187,6 +187,16 @@
       }
     },
     {
+      "slice_type": "spacer",
+      "slice_label": null,
+      "variation": "default",
+      "version": "initial",
+      "items": [],
+      "primary": {
+        "spacer_value": "40px"
+      }
+    },
+    {
       "slice_type": "paragarph_text",
       "slice_label": null,
       "variation": "default",
@@ -252,6 +262,16 @@
           }
         ],
         "embed_height": "440px"
+      }
+    },
+    {
+      "slice_type": "spacer",
+      "slice_label": null,
+      "variation": "default",
+      "version": "initial",
+      "items": [],
+      "primary": {
+        "spacer_value": "40px"
       }
     },
     {

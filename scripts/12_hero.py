@@ -1,7 +1,7 @@
-"""Hero image for the post: the default bubble map at hero scale beside the title and the headline figure.
+"""Hero image for the post: the default bubble map at hero scale beside the title and the headline count.
 
 Same layout as the child poverty viz hero. The map is shot from dist/index.html in headless Chrome with
-the dark palette, the headline percentage is read from the page, and the card is drawn at 1546 x 994 so
+the dark palette, the headline count is read from the page, and the card is drawn at 1546 x 994 so
 that `hero pad` brings it to 1680 x 1080 without scaling type.
 Output: posts/rentals-within-reach/images/rentals-within-reach-hero-source.png"""
 import base64
@@ -52,7 +52,8 @@ def main():
         time.sleep(1.5)
         ch.frame_done()
         sub = ch.js("document.getElementById('sub').textContent")
-        pct = re.search(r"could afford (?:at least )?([\d.]+%)", sub).group(1)
+        m_ = re.search(r"In ([\d,]+) of ([\d,]+) counties the share is under half", sub)
+        under, total = m_.group(1), m_.group(2)
         r = ch.js("(() => { const r = document.getElementById('mapbox').getBoundingClientRect(); return [r.x, r.y, r.width, r.height]; })()")
         d = ch.cmd("Page.captureScreenshot", format="png", clip=dict(x=r[0], y=r[1], width=r[2], height=r[3], scale=1))["data"]
         m = Image.open(io.BytesIO(base64.b64decode(d))).convert("RGB")
@@ -70,9 +71,10 @@ def main():
         .leg .ticks{{position:relative;height:28px;font-size:18px;color:{TEXT};margin-top:6px}}
         .leg .ticks span{{position:absolute;transform:translateX(-50%)}}
         .txt{{position:absolute;left:1040px;top:0;bottom:0;width:480px;display:flex;flex-direction:column;justify-content:center}}
-        h1{{font-size:70px;line-height:1.02;margin:0 0 70px;font-weight:800;color:{TEXT}}}
+        h1{{font-size:70px;line-height:1.02;margin:0 0 56px;font-weight:800;color:{TEXT}}}
         .big{{font-size:124px;font-weight:800;line-height:1;color:#f08a3c}}
-        .what{{font-size:27px;line-height:1.3;margin-top:22px;color:{TEXT}}}
+        .of{{font-size:40px;font-weight:700;margin-top:10px;color:{TEXT}}}
+        .what{{font-size:27px;line-height:1.3;margin-top:18px;color:{TEXT}}}
         .where{{font-size:21px;line-height:1.35;color:{MUTED};margin-top:44px}}
         .src{{position:absolute;left:1040px;bottom:60px;font-size:16px;color:{DIM}}}
         </style></head><body>
@@ -82,8 +84,9 @@ def main():
           <div class="strip">{''.join(f'<span style="background:{c}"></span>' for c in RAMP)}</div>
           <div class="ticks">{''.join(f'<span style="left:{(i + 1) / 6 * 100:.2f}%">{t}</span>' for i, t in enumerate(ticks))}</div></div>
         <div class="txt"><h1>Rentals<br>Within<br>Reach</h1>
-          <div class="big">{pct}</div>
-          <div class="what">of rentals are priced within reach of the median renter household in its own county</div>
+          <div class="big">{under}</div>
+          <div class="of">of {total} counties</div>
+          <div class="what">where the median renter household can afford fewer than half the rentals</div>
           <div class="where">Every U.S. county<br>2005-2009 to 2020-2024</div></div>
         <div class="src">Data 4 The People &nbsp;&middot;&nbsp; Source: U.S. Census Bureau, ACS</div>
         </body></html>"""
@@ -95,7 +98,7 @@ def main():
         time.sleep(1.5)
         out = IMG / "rentals-within-reach-hero-source.png"
         ch.shot().save(out, optimize=True)
-        print("wrote", out, "headline figure", pct)
+        print("wrote", out, "headline figure", under, "of", total)
     finally:
         ch.close()
 

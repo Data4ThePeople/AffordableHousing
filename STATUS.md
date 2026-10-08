@@ -108,3 +108,4 @@ None.
 - 2026-10-08 Step 2c: drop cap turned off for this post and no divider dots (Eric).
 - 2026-10-08 Step 2c confirmed by Eric. Step 2d opened.
 - 2026-10-08 Step 2d: hero built from the default map at hero scale (scripts/12_hero.py), padded to 1680x1080; alt text written. Awaiting Eric.
+- 2026-10-08 Step 2d: Eric did not follow the 31% national figure on the hero, so the headline is now the count of counties under half (1,960 of 3,141), read from the page.

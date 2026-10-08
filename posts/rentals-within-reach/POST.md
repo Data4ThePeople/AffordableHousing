@@ -5,7 +5,7 @@ slug: rentals-within-reach
 date: 2026-10-08
 section: Data 4 Thought, Visualization
 hero: images/rentals-within-reach-hero-1680x1080.png
-hero_alt: "Dark map of the United States with one bubble per county, sized by its number of rentals and colored by the share the median renter household can afford in 2020-2024. Most large bubbles, including Los Angeles, Phoenix, Houston, South Florida, Chicago and the Northeast, are dark red or red, meaning under 40% within reach. Smaller yellow and orange bubbles dot the Midwest. Text: Rentals Within Reach, 31% of rentals are priced within reach of the median renter household in its own county."
+hero_alt: "Dark map of the United States with one bubble per county, sized by its number of rentals and colored by the share the median renter household can afford in 2020-2024. Most large bubbles, including Los Angeles, Phoenix, Houston, South Florida, Chicago and the Northeast, are dark red or red, meaning under 40% within reach. Smaller yellow and orange bubbles dot the Midwest. Text: Rentals Within Reach. In 1,960 of 3,141 counties the median renter household can afford fewer than half the rentals."
 meta_title:
 description:
 keywords:

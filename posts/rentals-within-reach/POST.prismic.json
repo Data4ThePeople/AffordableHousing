@@ -719,7 +719,307 @@
           }
         ]
       }
+    },
+    {
+      "slice_type": "divider_dots",
+      "slice_label": null,
+      "variation": "default",
+      "version": "initial",
+      "items": [],
+      "primary": {}
+    },
+    {
+      "slice_type": "paragarph_text",
+      "slice_label": null,
+      "variation": "default",
+      "version": "initial",
+      "items": [],
+      "primary": {
+        "paragraph_text": [
+          {
+            "type": "heading2",
+            "text": "Common questions",
+            "spans": [],
+            "direction": "ltr"
+          }
+        ]
+      }
+    },
+    {
+      "slice_type": "spacer",
+      "slice_label": null,
+      "variation": "default",
+      "version": "initial",
+      "items": [],
+      "primary": {
+        "spacer_value": "20px"
+      }
+    },
+    {
+      "slice_type": "paragarph_text",
+      "slice_label": null,
+      "variation": "default",
+      "version": "initial",
+      "items": [],
+      "primary": {
+        "paragraph_text": [
+          {
+            "type": "heading3",
+            "text": "What does \"within reach\" mean?",
+            "spans": [],
+            "direction": "ltr"
+          },
+          {
+            "type": "paragraph",
+            "text": "A rental counts as within reach when its monthly rent, including utilities, is at or under what the household can pay. The tool sets that ceiling at 30% of the household\u2019s yearly income, divided by 12. You can change the 30%.",
+            "spans": [],
+            "direction": "ltr"
+          }
+        ]
+      }
+    },
+    {
+      "slice_type": "spacer",
+      "slice_label": null,
+      "variation": "default",
+      "version": "initial",
+      "items": [],
+      "primary": {
+        "spacer_value": "20px"
+      }
+    },
+    {
+      "slice_type": "paragarph_text",
+      "slice_label": null,
+      "variation": "default",
+      "version": "initial",
+      "items": [],
+      "primary": {
+        "paragraph_text": [
+          {
+            "type": "heading3",
+            "text": "How many rentals can the median renter afford?",
+            "spans": [],
+            "direction": "ltr"
+          },
+          {
+            "type": "paragraph",
+            "text": "In 1,960 of 3,141 counties, the median renter household can afford fewer than half the rentals in its own county. That is for 2020-2024, at 30% of income after taxes. Counted before taxes, it is 1,084 of 3,141 counties.",
+            "spans": [],
+            "direction": "ltr"
+          }
+        ]
+      }
+    },
+    {
+      "slice_type": "spacer",
+      "slice_label": null,
+      "variation": "default",
+      "version": "initial",
+      "items": [],
+      "primary": {
+        "spacer_value": "20px"
+      }
+    },
+    {
+      "slice_type": "paragarph_text",
+      "slice_label": null,
+      "variation": "default",
+      "version": "initial",
+      "items": [],
+      "primary": {
+        "paragraph_text": [
+          {
+            "type": "heading3",
+            "text": "Does the map show apartments available to rent now?",
+            "spans": [],
+            "direction": "ltr"
+          },
+          {
+            "type": "paragraph",
+            "text": "No. It counts rentals that people live in now, by what the current tenant pays. A unit rented at a low price for many years counts the same as one on the market today, so the share a new renter can find is very likely lower.",
+            "spans": [],
+            "direction": "ltr"
+          }
+        ]
+      }
+    },
+    {
+      "slice_type": "spacer",
+      "slice_label": null,
+      "variation": "default",
+      "version": "initial",
+      "items": [],
+      "primary": {
+        "spacer_value": "20px"
+      }
+    },
+    {
+      "slice_type": "paragarph_text",
+      "slice_label": null,
+      "variation": "default",
+      "version": "initial",
+      "items": [],
+      "primary": {
+        "paragraph_text": [
+          {
+            "type": "heading3",
+            "text": "Can I enter my own income, and is it saved?",
+            "spans": [],
+            "direction": "ltr"
+          },
+          {
+            "type": "paragraph",
+            "text": "Yes, choose \u201cEnter an income\u201d under Household Income and type a yearly figure. Nothing you enter is saved or sent anywhere. The calculation runs in your browser.",
+            "spans": [],
+            "direction": "ltr"
+          }
+        ]
+      }
+    },
+    {
+      "slice_type": "spacer",
+      "slice_label": null,
+      "variation": "default",
+      "version": "initial",
+      "items": [],
+      "primary": {
+        "spacer_value": "20px"
+      }
+    },
+    {
+      "slice_type": "paragarph_text",
+      "slice_label": null,
+      "variation": "default",
+      "version": "initial",
+      "items": [],
+      "primary": {
+        "paragraph_text": [
+          {
+            "type": "heading3",
+            "text": "Why does it use income after taxes?",
+            "spans": [],
+            "direction": "ltr"
+          },
+          {
+            "type": "paragraph",
+            "text": "Rent is paid from take-home pay, so the tool starts there. It subtracts federal and state income tax and payroll tax for one wage earner. This is stricter than the usual 30% rule, which uses income before taxes. Switch to \u201cBefore taxes\u201d to see that version.",
+            "spans": [],
+            "direction": "ltr"
+          }
+        ]
+      }
+    },
+    {
+      "slice_type": "spacer",
+      "slice_label": null,
+      "variation": "default",
+      "version": "initial",
+      "items": [],
+      "primary": {
+        "spacer_value": "20px"
+      }
+    },
+    {
+      "slice_type": "paragarph_text",
+      "slice_label": null,
+      "variation": "default",
+      "version": "initial",
+      "items": [],
+      "primary": {
+        "paragraph_text": [
+          {
+            "type": "heading3",
+            "text": "How do I find my county?",
+            "spans": [],
+            "direction": "ltr"
+          },
+          {
+            "type": "paragraph",
+            "text": "Type its name in \u201cFind a county\u201d, or pick your state under \u201cShow one state\u201d and click its bubble. The panel on the right shows the rent ceiling, the county\u2019s rentals by monthly rent, and how its rentals have changed since 2005-2009.",
+            "spans": [],
+            "direction": "ltr"
+          }
+        ]
+      }
+    },
+    {
+      "slice_type": "spacer",
+      "slice_label": null,
+      "variation": "default",
+      "version": "initial",
+      "items": [],
+      "primary": {
+        "spacer_value": "20px"
+      }
+    },
+    {
+      "slice_type": "paragarph_text",
+      "slice_label": null,
+      "variation": "default",
+      "version": "initial",
+      "items": [],
+      "primary": {
+        "paragraph_text": [
+          {
+            "type": "heading3",
+            "text": "Why are there only four time periods?",
+            "spans": [],
+            "direction": "ltr"
+          },
+          {
+            "type": "paragraph",
+            "text": "County figures come from 5-year surveys. The four periods shown (2005-2009, 2010-2014, 2015-2019 and 2020-2024) do not overlap, so each change on the map compares two separate sets of survey responses.",
+            "spans": [],
+            "direction": "ltr"
+          }
+        ]
+      }
+    },
+    {
+      "slice_type": "spacer",
+      "slice_label": null,
+      "variation": "default",
+      "version": "initial",
+      "items": [],
+      "primary": {
+        "spacer_value": "20px"
+      }
+    },
+    {
+      "slice_type": "paragarph_text",
+      "slice_label": null,
+      "variation": "default",
+      "version": "initial",
+      "items": [],
+      "primary": {
+        "paragraph_text": [
+          {
+            "type": "heading3",
+            "text": "Where does the data come from?",
+            "spans": [],
+            "direction": "ltr"
+          },
+          {
+            "type": "paragraph",
+            "text": "Rents and incomes are from the U.S. Census Bureau\u2019s American Community Survey 5-year estimates. Taxes are estimated with the NBER TAXSIM model and Social Security Administration payroll tax rates. The method and its limits are on GitHub.",
+            "spans": [
+              {
+                "start": 230,
+                "end": 236,
+                "type": "hyperlink",
+                "data": {
+                  "link_type": "Web",
+                  "url": "https://github.com/Data4ThePeople/AffordableHousing",
+                  "target": "_blank"
+                }
+              }
+            ],
+            "direction": "ltr"
+          }
+        ]
+      }
     }
   ],
-  "schema": "{\n  \"@context\": \"https://schema.org\",\n  \"@graph\": [\n    {\n      \"@type\": \"Dataset\",\n      \"@id\": \"https://www.data4thepeople.com/p/rentals-within-reach#dataset\",\n      \"name\": \"Share of rental units a household can afford at 30% of income, every U.S. county, 2005-2009 to 2020-2024\",\n      \"description\": \"For 3,141 U.S. counties and county equivalents on 2024 boundaries, in four American Community Survey 5-year periods that share no sample (2005-2009, 2010-2014, 2015-2019, 2020-2024): renter-occupied units paying cash rent by gross rent bucket, set against a monthly rent ceiling of 30% of household income, for the median renter household, the median and four percentiles of all households, or any income entered. Income can be counted before or after federal and state income tax and payroll tax.\",\n      \"url\": \"https://www.data4thepeople.com/p/rentals-within-reach\",\n      \"license\": \"https://www.data4thepeople.com/terms-of-use\",\n      \"isAccessibleForFree\": true,\n      \"creator\": {\n        \"@type\": \"Person\",\n        \"name\": \"Eric Pachman\",\n        \"url\": \"https://www.data4thepeople.com/authors/eric-pachman\"\n      },\n      \"publisher\": {\n        \"@type\": \"Organization\",\n        \"name\": \"Data 4 The People\",\n        \"url\": \"https://data4thepeople.com\"\n      },\n      \"inLanguage\": \"en-US\",\n      \"keywords\": [\n        \"rent affordability by county\",\n        \"how much rent can I afford by county\",\n        \"affordable rentals map\",\n        \"rent affordability map\",\n        \"median renter income by county\",\n        \"share of rentals I can afford\",\n        \"rental housing affordability data\",\n        \"rent vs income by county\"\n      ],\n      \"datePublished\": \"2026-10-08T07:00:00-04:00\",\n      \"dateModified\": \"2026-10-08T07:00:00-04:00\",\n      \"temporalCoverage\": \"2005/2024\",\n      \"spatialCoverage\": {\n        \"@type\": \"Place\",\n        \"name\": \"United States\"\n      },\n      \"variableMeasured\": [\n        {\n          \"@type\": \"PropertyValue\",\n          \"name\": \"Share of rentals priced at or under the rent ceiling\",\n          \"unitText\": \"percent\"\n        },\n        {\n          \"@type\": \"PropertyValue\",\n          \"name\": \"Renter-occupied units paying cash rent, by gross rent bucket\",\n          \"unitText\": \"count\"\n        },\n        {\n          \"@type\": \"PropertyValue\",\n          \"name\": \"Median renter household income\",\n          \"unitText\": \"U.S. dollars\"\n        },\n        {\n          \"@type\": \"PropertyValue\",\n          \"name\": \"Household income at the 20th, 40th, 50th, 60th and 80th percentiles\",\n          \"unitText\": \"U.S. dollars\"\n        },\n        {\n          \"@type\": \"PropertyValue\",\n          \"name\": \"Monthly rent ceiling\",\n          \"unitText\": \"U.S. dollars\"\n        },\n        {\n          \"@type\": \"PropertyValue\",\n          \"name\": \"Change in rentals and in rentals priced within reach, 2005-2009 to 2020-2024\",\n          \"unitText\": \"count and percent\"\n        }\n      ],\n      \"isBasedOn\": [\n        \"https://www.census.gov/programs-surveys/acs\",\n        \"https://taxsim.nber.org/taxsim35/\",\n        \"https://www.ssa.gov/oact/cola/cbb.html\",\n        \"https://www.bls.gov/cpi/\",\n        \"https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.html\"\n      ],\n      \"distribution\": [\n        {\n          \"@type\": \"DataDownload\",\n          \"encodingFormat\": \"text/html\",\n          \"contentUrl\": \"https://data4thepeople.github.io/AffordableHousing/\"\n        },\n        {\n          \"@type\": \"DataDownload\",\n          \"encodingFormat\": \"application/json\",\n          \"contentUrl\": \"https://github.com/Data4ThePeople/AffordableHousing/tree/main/data/processed\"\n        }\n      ],\n      \"measurementTechnique\": \"ACS table B25063 gross rent buckets per county; rent ceiling is the chosen share of income divided by 12; rentals at or under the ceiling counted with straight-line interpolation inside the bucket the ceiling falls in; incomes from ACS tables B25119, B19013, B19080, B19001 and B25118; after-tax income from NBER TAXSIM 35 and Social Security Administration payroll tax rates for one wage earner; counties with changed boundaries joined or rebuilt from towns so every period is on 2024 boundaries\",\n      \"creditText\": \"Data 4 The People, from the U.S. Census Bureau, the National Bureau of Economic Research, the Social Security Administration and the U.S. Bureau of Labor Statistics\"\n    },\n    {\n      \"@type\": \"WebPage\",\n      \"@id\": \"https://www.data4thepeople.com/p/rentals-within-reach\",\n      \"url\": \"https://www.data4thepeople.com/p/rentals-within-reach\",\n      \"name\": \"Rent Affordability by County: Free Map, 2005 to 2024\",\n      \"description\": \"Free interactive map of every U.S. county: the share of rentals a household can afford at 30% of income, 2005-2009 to 2020-2024. Enter your own income.\",\n      \"isPartOf\": {\n        \"@type\": \"WebSite\",\n        \"name\": \"Data 4 The People\",\n        \"url\": \"https://www.data4thepeople.com\"\n      },\n      \"about\": {\n        \"@id\": \"https://www.data4thepeople.com/p/rentals-within-reach#dataset\"\n      },\n      \"inLanguage\": \"en-US\",\n      \"datePublished\": \"2026-10-08T07:00:00-04:00\",\n      \"dateModified\": \"2026-10-08T07:00:00-04:00\"\n    },\n    {\n      \"@type\": \"WebApplication\",\n      \"@id\": \"https://www.data4thepeople.com/p/rentals-within-reach#tool\",\n      \"name\": \"Rentals Within Reach: interactive map, 2005-2009 to 2020-2024\",\n      \"url\": \"https://data4thepeople.github.io/AffordableHousing/\",\n      \"applicationCategory\": \"EducationalApplication\",\n      \"operatingSystem\": \"Web browser\",\n      \"browserRequirements\": \"Requires JavaScript\",\n      \"isAccessibleForFree\": true,\n      \"offers\": {\n        \"@type\": \"Offer\",\n        \"price\": \"0\",\n        \"priceCurrency\": \"USD\"\n      },\n      \"about\": {\n        \"@id\": \"https://www.data4thepeople.com/p/rentals-within-reach#dataset\"\n      },\n      \"creator\": {\n        \"@type\": \"Organization\",\n        \"name\": \"Data 4 The People\",\n        \"url\": \"https://data4thepeople.com\"\n      },\n      \"featureList\": [\n        \"Every U.S. county, four periods from 2005-2009 to 2020-2024\",\n        \"Play through the periods\",\n        \"Median renter household, median of all households, or four income percentiles\",\n        \"Enter any income\",\n        \"Income before or after taxes, for three household types\",\n        \"Slider for the share of income spent on rent\",\n        \"Hover or tap any county for the math\",\n        \"Rentals by monthly rent for each county\",\n        \"Change in rentals and in rentals within reach\",\n        \"Search any county by name\",\n        \"Filter to one state\",\n        \"Leave out college counties\",\n        \"Rankings of fewest and most within reach\"\n      ],\n      \"description\": \"Free interactive map of the share of rentals a household can afford at 30% of its income, in every U.S. county, across four periods from 2005-2009 to 2020-2024.\"\n    },\n    {\n      \"@type\": \"BreadcrumbList\",\n      \"itemListElement\": [\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 1,\n          \"name\": \"Home\",\n          \"item\": \"https://www.data4thepeople.com\"\n        },\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 2,\n          \"name\": \"Rentals Within Reach: Visualizing the Affordability of Rentals Where You Live\",\n          \"item\": \"https://www.data4thepeople.com/p/rentals-within-reach\"\n        }\n      ]\n    }\n  ]\n}"
+  "schema": "{\n  \"@context\": \"https://schema.org\",\n  \"@graph\": [\n    {\n      \"@type\": \"Dataset\",\n      \"@id\": \"https://www.data4thepeople.com/p/rentals-within-reach#dataset\",\n      \"name\": \"Share of rental units a household can afford at 30% of income, every U.S. county, 2005-2009 to 2020-2024\",\n      \"description\": \"For 3,141 U.S. counties and county equivalents on 2024 boundaries, in four American Community Survey 5-year periods that share no sample (2005-2009, 2010-2014, 2015-2019, 2020-2024): renter-occupied units paying cash rent by gross rent bucket, set against a monthly rent ceiling of 30% of household income, for the median renter household, the median and four percentiles of all households, or any income entered. Income can be counted before or after federal and state income tax and payroll tax.\",\n      \"url\": \"https://www.data4thepeople.com/p/rentals-within-reach\",\n      \"license\": \"https://www.data4thepeople.com/terms-of-use\",\n      \"isAccessibleForFree\": true,\n      \"creator\": {\n        \"@type\": \"Person\",\n        \"name\": \"Eric Pachman\",\n        \"url\": \"https://www.data4thepeople.com/authors/eric-pachman\"\n      },\n      \"publisher\": {\n        \"@type\": \"Organization\",\n        \"name\": \"Data 4 The People\",\n        \"url\": \"https://data4thepeople.com\"\n      },\n      \"inLanguage\": \"en-US\",\n      \"keywords\": [\n        \"rent affordability by county\",\n        \"how much rent can I afford by county\",\n        \"affordable rentals map\",\n        \"rent affordability map\",\n        \"median renter income by county\",\n        \"share of rentals I can afford\",\n        \"rental housing affordability data\",\n        \"rent vs income by county\"\n      ],\n      \"datePublished\": \"2026-10-08T07:00:00-04:00\",\n      \"dateModified\": \"2026-10-08T07:00:00-04:00\",\n      \"temporalCoverage\": \"2005/2024\",\n      \"spatialCoverage\": {\n        \"@type\": \"Place\",\n        \"name\": \"United States\"\n      },\n      \"variableMeasured\": [\n        {\n          \"@type\": \"PropertyValue\",\n          \"name\": \"Share of rentals priced at or under the rent ceiling\",\n          \"unitText\": \"percent\"\n        },\n        {\n          \"@type\": \"PropertyValue\",\n          \"name\": \"Renter-occupied units paying cash rent, by gross rent bucket\",\n          \"unitText\": \"count\"\n        },\n        {\n          \"@type\": \"PropertyValue\",\n          \"name\": \"Median renter household income\",\n          \"unitText\": \"U.S. dollars\"\n        },\n        {\n          \"@type\": \"PropertyValue\",\n          \"name\": \"Household income at the 20th, 40th, 50th, 60th and 80th percentiles\",\n          \"unitText\": \"U.S. dollars\"\n        },\n        {\n          \"@type\": \"PropertyValue\",\n          \"name\": \"Monthly rent ceiling\",\n          \"unitText\": \"U.S. dollars\"\n        },\n        {\n          \"@type\": \"PropertyValue\",\n          \"name\": \"Change in rentals and in rentals priced within reach, 2005-2009 to 2020-2024\",\n          \"unitText\": \"count and percent\"\n        }\n      ],\n      \"isBasedOn\": [\n        \"https://www.census.gov/programs-surveys/acs\",\n        \"https://taxsim.nber.org/taxsim35/\",\n        \"https://www.ssa.gov/oact/cola/cbb.html\",\n        \"https://www.bls.gov/cpi/\",\n        \"https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.html\"\n      ],\n      \"distribution\": [\n        {\n          \"@type\": \"DataDownload\",\n          \"encodingFormat\": \"text/html\",\n          \"contentUrl\": \"https://data4thepeople.github.io/AffordableHousing/\"\n        },\n        {\n          \"@type\": \"DataDownload\",\n          \"encodingFormat\": \"application/json\",\n          \"contentUrl\": \"https://github.com/Data4ThePeople/AffordableHousing/tree/main/data/processed\"\n        }\n      ],\n      \"measurementTechnique\": \"ACS table B25063 gross rent buckets per county; rent ceiling is the chosen share of income divided by 12; rentals at or under the ceiling counted with straight-line interpolation inside the bucket the ceiling falls in; incomes from ACS tables B25119, B19013, B19080, B19001 and B25118; after-tax income from NBER TAXSIM 35 and Social Security Administration payroll tax rates for one wage earner; counties with changed boundaries joined or rebuilt from towns so every period is on 2024 boundaries\",\n      \"creditText\": \"Data 4 The People, from the U.S. Census Bureau, the National Bureau of Economic Research, the Social Security Administration and the U.S. Bureau of Labor Statistics\"\n    },\n    {\n      \"@type\": \"WebPage\",\n      \"@id\": \"https://www.data4thepeople.com/p/rentals-within-reach\",\n      \"url\": \"https://www.data4thepeople.com/p/rentals-within-reach\",\n      \"name\": \"Rent Affordability by County: Free Map, 2005 to 2024\",\n      \"description\": \"Free interactive map of every U.S. county: the share of rentals a household can afford at 30% of income, 2005-2009 to 2020-2024. Enter your own income.\",\n      \"isPartOf\": {\n        \"@type\": \"WebSite\",\n        \"name\": \"Data 4 The People\",\n        \"url\": \"https://www.data4thepeople.com\"\n      },\n      \"about\": {\n        \"@id\": \"https://www.data4thepeople.com/p/rentals-within-reach#dataset\"\n      },\n      \"inLanguage\": \"en-US\",\n      \"datePublished\": \"2026-10-08T07:00:00-04:00\",\n      \"dateModified\": \"2026-10-08T07:00:00-04:00\"\n    },\n    {\n      \"@type\": \"WebApplication\",\n      \"@id\": \"https://www.data4thepeople.com/p/rentals-within-reach#tool\",\n      \"name\": \"Rentals Within Reach: interactive map, 2005-2009 to 2020-2024\",\n      \"url\": \"https://data4thepeople.github.io/AffordableHousing/\",\n      \"applicationCategory\": \"EducationalApplication\",\n      \"operatingSystem\": \"Web browser\",\n      \"browserRequirements\": \"Requires JavaScript\",\n      \"isAccessibleForFree\": true,\n      \"offers\": {\n        \"@type\": \"Offer\",\n        \"price\": \"0\",\n        \"priceCurrency\": \"USD\"\n      },\n      \"about\": {\n        \"@id\": \"https://www.data4thepeople.com/p/rentals-within-reach#dataset\"\n      },\n      \"creator\": {\n        \"@type\": \"Organization\",\n        \"name\": \"Data 4 The People\",\n        \"url\": \"https://data4thepeople.com\"\n      },\n      \"featureList\": [\n        \"Every U.S. county, four periods from 2005-2009 to 2020-2024\",\n        \"Play through the periods\",\n        \"Median renter household, median of all households, or four income percentiles\",\n        \"Enter any income\",\n        \"Income before or after taxes, for three household types\",\n        \"Slider for the share of income spent on rent\",\n        \"Hover or tap any county for the math\",\n        \"Rentals by monthly rent for each county\",\n        \"Change in rentals and in rentals within reach\",\n        \"Search any county by name\",\n        \"Filter to one state\",\n        \"Leave out college counties\",\n        \"Rankings of fewest and most within reach\"\n      ],\n      \"description\": \"Free interactive map of the share of rentals a household can afford at 30% of its income, in every U.S. county, across four periods from 2005-2009 to 2020-2024.\"\n    },\n    {\n      \"@type\": \"FAQPage\",\n      \"@id\": \"https://www.data4thepeople.com/p/rentals-within-reach#faq\",\n      \"mainEntity\": [\n        {\n          \"@type\": \"Question\",\n          \"name\": \"What does \\\"within reach\\\" mean?\",\n          \"acceptedAnswer\": {\n            \"@type\": \"Answer\",\n            \"text\": \"A rental counts as within reach when its monthly rent, including utilities, is at or under what the household can pay. The tool sets that ceiling at 30% of the household\u2019s yearly income, divided by 12. You can change the 30%.\"\n          }\n        },\n        {\n          \"@type\": \"Question\",\n          \"name\": \"How many rentals can the median renter afford?\",\n          \"acceptedAnswer\": {\n            \"@type\": \"Answer\",\n            \"text\": \"In 1,960 of 3,141 counties, the median renter household can afford fewer than half the rentals in its own county. That is for 2020-2024, at 30% of income after taxes. Counted before taxes, it is 1,084 of 3,141 counties.\"\n          }\n        },\n        {\n          \"@type\": \"Question\",\n          \"name\": \"Does the map show apartments available to rent now?\",\n          \"acceptedAnswer\": {\n            \"@type\": \"Answer\",\n            \"text\": \"No. It counts rentals that people live in now, by what the current tenant pays. A unit rented at a low price for many years counts the same as one on the market today, so the share a new renter can find is very likely lower.\"\n          }\n        },\n        {\n          \"@type\": \"Question\",\n          \"name\": \"Can I enter my own income, and is it saved?\",\n          \"acceptedAnswer\": {\n            \"@type\": \"Answer\",\n            \"text\": \"Yes, choose \u201cEnter an income\u201d under Household Income and type a yearly figure. Nothing you enter is saved or sent anywhere. The calculation runs in your browser.\"\n          }\n        },\n        {\n          \"@type\": \"Question\",\n          \"name\": \"Why does it use income after taxes?\",\n          \"acceptedAnswer\": {\n            \"@type\": \"Answer\",\n            \"text\": \"Rent is paid from take-home pay, so the tool starts there. It subtracts federal and state income tax and payroll tax for one wage earner. This is stricter than the usual 30% rule, which uses income before taxes. Switch to \u201cBefore taxes\u201d to see that version.\"\n          }\n        },\n        {\n          \"@type\": \"Question\",\n          \"name\": \"How do I find my county?\",\n          \"acceptedAnswer\": {\n            \"@type\": \"Answer\",\n            \"text\": \"Type its name in \u201cFind a county\u201d, or pick your state under \u201cShow one state\u201d and click its bubble. The panel on the right shows the rent ceiling, the county\u2019s rentals by monthly rent, and how its rentals have changed since 2005-2009.\"\n          }\n        },\n        {\n          \"@type\": \"Question\",\n          \"name\": \"Why are there only four time periods?\",\n          \"acceptedAnswer\": {\n            \"@type\": \"Answer\",\n            \"text\": \"County figures come from 5-year surveys. The four periods shown (2005-2009, 2010-2014, 2015-2019 and 2020-2024) do not overlap, so each change on the map compares two separate sets of survey responses.\"\n          }\n        },\n        {\n          \"@type\": \"Question\",\n          \"name\": \"Where does the data come from?\",\n          \"acceptedAnswer\": {\n            \"@type\": \"Answer\",\n            \"text\": \"Rents and incomes are from the U.S. Census Bureau\u2019s American Community Survey 5-year estimates. Taxes are estimated with the NBER TAXSIM model and Social Security Administration payroll tax rates. The method and its limits are on GitHub.\"\n          }\n        }\n      ]\n    },\n    {\n      \"@type\": \"BreadcrumbList\",\n      \"itemListElement\": [\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 1,\n          \"name\": \"Home\",\n          \"item\": \"https://www.data4thepeople.com\"\n        },\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 2,\n          \"name\": \"Rentals Within Reach: Visualizing the Affordability of Rentals Where You Live\",\n          \"item\": \"https://www.data4thepeople.com/p/rentals-within-reach\"\n        }\n      ]\n    }\n  ]\n}"
 }

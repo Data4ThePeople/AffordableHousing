@@ -122,3 +122,39 @@ The full list of limits, and the method, is on [GitHub](https://github.com/Data4
 This is how we understand Americans. We create the story and the tool to simulate their lives, and then see how it plays out. Are we missing elements of the story? Of course we are. These tools are not perfect. The only way to get to perfect is to actually live that other person’s life. But we can at least gain an appreciation for what they must have to go through using the data.
 
 So, take this tool for a spin and go learn about Americans who you have never met. We are going to come back to this tool many times in the coming months. We have identified several amazing stories, and will get to them all in due time. But we’d love to see what you find first. Let us know if you come across a good story that opens your eyes to someone else’s lived experience and we may just publish it (with credit to you of course!).
+
+::: divider
+
+## Common questions
+
+### What does "within reach" mean?
+
+A rental counts as within reach when its monthly rent, including utilities, is at or under what the household can pay. The tool sets that ceiling at 30% of the household’s yearly income, divided by 12. You can change the 30%.
+
+### How many rentals can the median renter afford?
+
+In 1,960 of 3,141 counties, the median renter household can afford fewer than half the rentals in its own county. That is for 2020-2024, at 30% of income after taxes. Counted before taxes, it is 1,084 of 3,141 counties.
+
+### Does the map show apartments available to rent now?
+
+No. It counts rentals that people live in now, by what the current tenant pays. A unit rented at a low price for many years counts the same as one on the market today, so the share a new renter can find is very likely lower.
+
+### Can I enter my own income, and is it saved?
+
+Yes, choose “Enter an income” under Household Income and type a yearly figure. Nothing you enter is saved or sent anywhere. The calculation runs in your browser.
+
+### Why does it use income after taxes?
+
+Rent is paid from take-home pay, so the tool starts there. It subtracts federal and state income tax and payroll tax for one wage earner. This is stricter than the usual 30% rule, which uses income before taxes. Switch to “Before taxes” to see that version.
+
+### How do I find my county?
+
+Type its name in “Find a county”, or pick your state under “Show one state” and click its bubble. The panel on the right shows the rent ceiling, the county’s rentals by monthly rent, and how its rentals have changed since 2005-2009.
+
+### Why are there only four time periods?
+
+County figures come from 5-year surveys. The four periods shown (2005-2009, 2010-2014, 2015-2019 and 2020-2024) do not overlap, so each change on the map compares two separate sets of survey responses.
+
+### Where does the data come from?
+
+Rents and incomes are from the U.S. Census Bureau’s American Community Survey 5-year estimates. Taxes are estimated with the NBER TAXSIM model and Social Security Administration payroll tax rates. The method and its limits are on [GitHub](https://github.com/Data4ThePeople/AffordableHousing).

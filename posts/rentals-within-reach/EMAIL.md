@@ -35,7 +35,15 @@ We can analyze national data to understand America. But we must move to analyzin
 That said, please meet the newest member of our visualization team – D4TP’s Rentals Within Reach visualization. It starts by asking one question – if your family earned the median renter’s household income and wanted to pay no more than 30% of your after-tax income on rent (a stricter take on the usual 30% rule of thumb), how many units in your county could you afford? The map shows you this. And all the red? Those are the counties where fewer than 40% of the total rental units in your county were in your price range.
 ```
 
-## 4. Body, part two (before the chart)
+## 4. The map (picture of the live tool)
+
+`images/06-viz-screenshot-email.jpg` (1200x780, 216 KB), linked to the post: https://www.data4thepeople.com/p/rentals-within-reach
+Alt:
+```
+Screenshot of the interactive map Rentals Within Reach for 2020-2024. Every U.S. county is a bubble sized by its number of rentals and colored from dark red, where the median renter household can afford under 30% of rentals, to dark green, 80% or more. Most large bubbles are dark red or red. Controls above the map set the period, household income, share of income for rent, taxes, state and county. A rankings panel on the right is led by Buchanan County, VA, at 8%.
+```
+
+## 5. Body, part two (before the chart)
 
 ```
 There are so many stories we want to tell from this visualization. And we will tell many of them over time. But for now, we will just present a single thought experiment.
@@ -47,7 +55,7 @@ You find out that of the 583,955 rental units in Maricopa County, you can afford
 But it gets worse. You scroll down the right panel and learn that over the past 15 years the units that you could have afforded on this salary, adjusted for inflation, have declined 32%, despite overall units increasing by 39%! So, overall rental units are way up in your county…just not ones you can afford.
 ```
 
-## 5. Chart
+## 6. Chart
 
 `images/03-maricopa-change-in-rentals.png`, linked to the post: https://www.data4thepeople.com/p/rentals-within-reach
 Alt:
@@ -55,7 +63,7 @@ Alt:
 Two columns for Maricopa County, 2005-2009 to 2020-2024. All rentals rose by 162,376, or 39%, from 421,579 to 583,955. Rentals priced within reach of a $53,000 income, held in 2024 dollars, fell by 39,384, or 32%, from 121,440 to 82,056.
 ```
 
-## 6. Body, part three (after the chart)
+## 7. Body, part three (after the chart)
 
 ```
 And so what do you do?
@@ -63,7 +71,7 @@ And so what do you do?
 You start by taking this tool for a spin and go learn about Americans who you have never met.
 ```
 
-## 7. Call to action
+## 8. Call to action
 
 **[Find your county](https://www.data4thepeople.com/p/rentals-within-reach)**
 

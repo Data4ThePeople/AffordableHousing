@@ -1,0 +1,473 @@
+{
+  "published_date": "2026-10-08",
+  "updated_date": "2026-10-08",
+  "make_this_main_post": false,
+  "slices": [
+    {
+      "slice_type": "drop_cap",
+      "slice_label": null,
+      "variation": "default",
+      "version": "initial",
+      "items": [],
+      "primary": {
+        "drop_cap_text": [
+          {
+            "type": "paragraph",
+            "text": "We\u2019ve heard the story.",
+            "spans": [],
+            "direction": "ltr"
+          }
+        ]
+      }
+    },
+    {
+      "slice_type": "paragarph_text",
+      "slice_label": null,
+      "variation": "default",
+      "version": "initial",
+      "items": [],
+      "primary": {
+        "paragraph_text": [
+          {
+            "type": "paragraph",
+            "text": "Renters are getting squeezed.",
+            "spans": [],
+            "direction": "ltr"
+          },
+          {
+            "type": "paragraph",
+            "text": "In fact, I was interviewed about this months ago, right after the ACS 5-year survey data dropped covering the 2020-2024 period. I did the math at the national level, and learned two things:",
+            "spans": [],
+            "direction": "ltr"
+          },
+          {
+            "type": "o-list-item",
+            "text": "The median U.S. homeowner household\u2019s income ($100,009) is nearly twice that of the median U.S. renter household ($52,966)",
+            "spans": [],
+            "direction": "ltr"
+          },
+          {
+            "type": "o-list-item",
+            "text": "Over the prior five years, the median monthly rental unit increased by 33.1%, while the median housing costs for homeowners increased by 20.9%.",
+            "spans": [],
+            "direction": "ltr"
+          },
+          {
+            "type": "paragraph",
+            "text": "Based on these two findings, and a whole lot more, I titled the post \u201cSqueezed on Both Ends.\u201d Because that what\u2019s renters were facing \u2013 higher shelter price inflation and much lower absolute income to cover higher costs.",
+            "spans": [],
+            "direction": "ltr"
+          },
+          {
+            "type": "paragraph",
+            "text": "But that was way back on February 19, 2026 \u2013 the days before we discovered how to leverage AI to assist with our data journalism process. And so, I was stuck analyzing national data, which as I have said over and again, no one person actually experiences.",
+            "spans": [],
+            "direction": "ltr"
+          },
+          {
+            "type": "paragraph",
+            "text": "We can analyze national data to understand America.",
+            "spans": [],
+            "direction": "ltr"
+          },
+          {
+            "type": "paragraph",
+            "text": "But we must move to analyzing local data to understand Americans.",
+            "spans": [],
+            "direction": "ltr"
+          },
+          {
+            "type": "paragraph",
+            "text": "I want to understand Americans, not America. And as we show you five days a week, we now have the tools to do this.",
+            "spans": [],
+            "direction": "ltr"
+          },
+          {
+            "type": "paragraph",
+            "text": "That said, please meet the newest member of our visualization team \u2013 D4TP\u2019s Rentals within Reach visualization. It starts by asking one question \u2013 if your family earned the median renter\u2019s household income and wanted to pay no more than 30% of your after-tax income on rent (you know, the rule of thumb), how many units in your county could you afford? The map shows you this. And all the red? Those are the counties where less than 40% of the total rental units in your county were in your price range",
+            "spans": [],
+            "direction": "ltr"
+          }
+        ]
+      }
+    },
+    {
+      "slice_type": "spacer",
+      "slice_label": null,
+      "variation": "default",
+      "version": "initial",
+      "items": [],
+      "primary": {
+        "spacer_value": "20px"
+      }
+    },
+    {
+      "slice_type": "html_embed",
+      "slice_label": null,
+      "variation": "fullWidth",
+      "version": "initial",
+      "items": [],
+      "primary": {
+        "html_content": [
+          {
+            "type": "preformatted",
+            "text": "<style>html,body{margin:0;padding:0;overflow:hidden}iframe{display:block}</style><iframe src=\"https://data4thepeople.github.io/AffordableHousing/?v=20261007a#embed=1\" width=\"100%\" height=\"780\" loading=\"lazy\" style=\"border:0\" title=\"Rentals Within Reach: interactive map of rentals a household can afford, by county, 2005-2009 to 2020-2024\"></iframe>",
+            "spans": [],
+            "direction": "ltr"
+          }
+        ],
+        "embed_height": "780px"
+      }
+    },
+    {
+      "slice_type": "paragarph_text",
+      "slice_label": null,
+      "variation": "default",
+      "version": "initial",
+      "items": [],
+      "primary": {
+        "paragraph_text": [
+          {
+            "type": "paragraph",
+            "text": "That\u2019s just the default view. But this visualization is loaded with different bells and whistles that can help you explore this topic and really get a sense for how difficult it is to find an affordable rental across America.",
+            "spans": [],
+            "direction": "ltr"
+          },
+          {
+            "type": "paragraph",
+            "text": "Feel free to head over to github for step-by-step written instructions on how to use this new visualization. You\u2019ll find the detailed methodology there too. But to save words today, we\u2019ve created a one-minute tutorial video. We strongly encourage you watch this to get a feel for everything this viz can do.",
+            "spans": [],
+            "direction": "ltr"
+          }
+        ]
+      }
+    },
+    {
+      "slice_type": "spacer",
+      "slice_label": null,
+      "variation": "default",
+      "version": "initial",
+      "items": [],
+      "primary": {
+        "spacer_value": "20px"
+      }
+    },
+    {
+      "slice_type": "html_embed",
+      "slice_label": null,
+      "variation": "fullWidth",
+      "version": "initial",
+      "items": [],
+      "primary": {
+        "html_content": [],
+        "embed_height": "440px"
+      }
+    },
+    {
+      "slice_type": "paragarph_text",
+      "slice_label": null,
+      "variation": "default",
+      "version": "initial",
+      "items": [],
+      "primary": {
+        "paragraph_text": [
+          {
+            "type": "heading2",
+            "text": "A case study: An entry-level teacher looking for a place to live",
+            "spans": [],
+            "direction": "ltr"
+          },
+          {
+            "type": "paragraph",
+            "text": "There are so many stories we want to tell from this visualization. And we will tell many of the over time. But for now, we will just present a single case study. This one come from the mind of Data 4 The People founding data architect, Amanda Sinton, who before she became a data scientist, was an elementary school teacher.",
+            "spans": [],
+            "direction": "ltr"
+          },
+          {
+            "type": "paragraph",
+            "text": "You live in Arizona and just graduated with your bachelors degree in education and are ready to go teach at an elementary school in Phoenix. But you need a place to live, and one that ideally you can pay for on 30% of your $53,000 pre-tax income. Your friend tells you about this neat new free tool at Data 4 The People, so you head over to the site, choose Arizona from the dropdown, plug your salary in (note: we have no access to any user entered data! It all lives in your browser) and study the data.",
+            "spans": [],
+            "direction": "ltr"
+          }
+        ]
+      }
+    },
+    {
+      "slice_type": "blog_body_content_image",
+      "slice_label": null,
+      "variation": "default",
+      "version": "initial",
+      "items": [],
+      "primary": {
+        "image": {
+          "alt": "Dark map of Arizona counties as bubbles sized by number of rentals and colored by the share a $53,000 income can afford in 2020-2024 at 30% of after-tax income. Maricopa County, outlined, is the largest bubble and is dark red, meaning under 30% within reach. Pima County is red. Smaller counties range from orange and yellow to light green.",
+          "copyright": null
+        },
+        "source_text": [
+          {
+            "type": "paragraph",
+            "text": "Arizona counties on a $53,000 income, 2020-2024, at 30% of after-tax income for a single person. Maricopa County is outlined.",
+            "spans": [
+              {
+                "start": 0,
+                "end": 125,
+                "type": "em"
+              }
+            ],
+            "direction": "ltr"
+          }
+        ]
+      }
+    },
+    {
+      "slice_type": "spacer",
+      "slice_label": null,
+      "variation": "default",
+      "version": "initial",
+      "items": [],
+      "primary": {
+        "spacer_value": "20px"
+      }
+    },
+    {
+      "slice_type": "paragarph_text",
+      "slice_label": null,
+      "variation": "default",
+      "version": "initial",
+      "items": [],
+      "primary": {
+        "paragraph_text": [
+          {
+            "type": "paragraph",
+            "text": "You find out that of the 583,955 rental units in Maricopa county, you can afford just 14% at 30% of your post-tax income.",
+            "spans": [],
+            "direction": "ltr"
+          }
+        ]
+      }
+    },
+    {
+      "slice_type": "blog_body_content_image",
+      "slice_label": null,
+      "variation": "default",
+      "version": "initial",
+      "items": [],
+      "primary": {
+        "image": {
+          "alt": "Bar chart of Maricopa County rentals by monthly gross rent, 2020-2024. A dashed line marks a $1,087 monthly ceiling. Only the short bars to the left of the line are green; the tallest bars, between about $1,250 and $2,500 a month, are gray and to the right of the line. 14% of 583,955 rentals fall under the ceiling.",
+          "copyright": null
+        },
+        "source_text": [
+          {
+            "type": "paragraph",
+            "text": "Maricopa County rentals by monthly rent. The dashed line is the $1,087 a month this income supports.",
+            "spans": [
+              {
+                "start": 0,
+                "end": 100,
+                "type": "em"
+              }
+            ],
+            "direction": "ltr"
+          }
+        ]
+      }
+    },
+    {
+      "slice_type": "spacer",
+      "slice_label": null,
+      "variation": "default",
+      "version": "initial",
+      "items": [],
+      "primary": {
+        "spacer_value": "20px"
+      }
+    },
+    {
+      "slice_type": "paragarph_text",
+      "slice_label": null,
+      "variation": "default",
+      "version": "initial",
+      "items": [],
+      "primary": {
+        "paragraph_text": [
+          {
+            "type": "paragraph",
+            "text": "But it gets worse you scroll down the right panel and learn that over the past 15 years the units that you could have afforded on this salary have declined 32%, despite overall units increasing by 39%! So, overall rental units are way up in your county\u2026just not ones you can afford.",
+            "spans": [],
+            "direction": "ltr"
+          }
+        ]
+      }
+    },
+    {
+      "slice_type": "blog_body_content_image",
+      "slice_label": null,
+      "variation": "default",
+      "version": "initial",
+      "items": [],
+      "primary": {
+        "image": {
+          "alt": "Two columns for Maricopa County, 2005-2009 to 2020-2024. All rentals rose by 162,376, or 39%, from 421,579 to 583,955. Rentals priced within reach of a $53,000 income, held in 2024 dollars, fell by 39,384, or 32%, from 121,440 to 82,056.",
+          "copyright": null
+        },
+        "source_text": [
+          {
+            "type": "paragraph",
+            "text": "From 2005-2009 to 2020-2024, Maricopa County added 162,376 rentals. The number priced within reach of this income fell by 39,384.",
+            "spans": [
+              {
+                "start": 0,
+                "end": 129,
+                "type": "em"
+              }
+            ],
+            "direction": "ltr"
+          }
+        ]
+      }
+    },
+    {
+      "slice_type": "spacer",
+      "slice_label": null,
+      "variation": "default",
+      "version": "initial",
+      "items": [],
+      "primary": {
+        "spacer_value": "20px"
+      }
+    },
+    {
+      "slice_type": "paragarph_text",
+      "slice_label": null,
+      "variation": "default",
+      "version": "initial",
+      "items": [],
+      "primary": {
+        "paragraph_text": [
+          {
+            "type": "paragraph",
+            "text": "And so what do you do? Do you decide to shell out 50% of your income for a fancy Pheonix rental? If so, now you can afford 57% of all units\u2026 but how is that going to set you up for the future?",
+            "spans": [],
+            "direction": "ltr"
+          }
+        ]
+      }
+    },
+    {
+      "slice_type": "blog_body_content_image",
+      "slice_label": null,
+      "variation": "default",
+      "version": "initial",
+      "items": [],
+      "primary": {
+        "image": {
+          "alt": "The same dark map of Arizona counties with the share of income for rent raised to 50%. Maricopa County's bubble changes from dark red to yellow, meaning between 50% and 65% of rentals are within reach, and most other Arizona counties turn light green or dark green.",
+          "copyright": null
+        },
+        "source_text": [
+          {
+            "type": "paragraph",
+            "text": "The same income at 50% of after-tax pay. The ceiling rises to $1,811 a month.",
+            "spans": [
+              {
+                "start": 0,
+                "end": 77,
+                "type": "em"
+              }
+            ],
+            "direction": "ltr"
+          }
+        ]
+      }
+    },
+    {
+      "slice_type": "spacer",
+      "slice_label": null,
+      "variation": "default",
+      "version": "initial",
+      "items": [],
+      "primary": {
+        "spacer_value": "20px"
+      }
+    },
+    {
+      "slice_type": "paragarph_text",
+      "slice_label": null,
+      "variation": "default",
+      "version": "initial",
+      "items": [],
+      "primary": {
+        "paragraph_text": [
+          {
+            "type": "paragraph",
+            "text": "Or, you could look a few counties away in Santa Cruz county. You may make just $45,000 per year there (pre-tax), but rental units are far cheaper. At your desired 30% of post-tax income level, 58% of the units there are in reach.",
+            "spans": [],
+            "direction": "ltr"
+          }
+        ]
+      }
+    },
+    {
+      "slice_type": "blog_body_content_image",
+      "slice_label": null,
+      "variation": "default",
+      "version": "initial",
+      "items": [],
+      "primary": {
+        "image": {
+          "alt": "County panel for Santa Cruz County, Arizona, 2020-2024, on a $45,000 income: $7,701 in income and payroll taxes, $37,299 after taxes, a rent ceiling of $932 a month, and 61% of rentals priced within reach. A bar chart of rentals by monthly rent shows most bars to the left of the ceiling line.",
+          "copyright": null
+        },
+        "source_text": [
+          {
+            "type": "paragraph",
+            "text": "Santa Cruz County, Arizona, on $45,000: a $932 monthly ceiling.",
+            "spans": [
+              {
+                "start": 0,
+                "end": 63,
+                "type": "em"
+              }
+            ],
+            "direction": "ltr"
+          }
+        ]
+      }
+    },
+    {
+      "slice_type": "spacer",
+      "slice_label": null,
+      "variation": "default",
+      "version": "initial",
+      "items": [],
+      "primary": {
+        "spacer_value": "20px"
+      }
+    },
+    {
+      "slice_type": "paragarph_text",
+      "slice_label": null,
+      "variation": "default",
+      "version": "initial",
+      "items": [],
+      "primary": {
+        "paragraph_text": [
+          {
+            "type": "paragraph",
+            "text": "This is how we understand Americans. We create the story and the tool to simulate their lives, and then see how it plays out. Are we missing elements of the story? Of course we are. These tools are not perfect. The only way to get to perfect is to actually live that other person\u2019s life. But we can at least gain an appreciation for what they must have to go through using the data.",
+            "spans": [],
+            "direction": "ltr"
+          },
+          {
+            "type": "paragraph",
+            "text": "So, take this tool for a spin and go learn about Americans who you have never met. We are going to come back to this tool many times in the coming months. We have identified several amazing stories, and will get them all in due time. But we\u2019d love to see what you find. Let us know if you come across a good story that opens you eyes to someone else\u2019s lived experience and we may just publish it (with credit to you of course!).",
+            "spans": [],
+            "direction": "ltr"
+          }
+        ]
+      }
+    }
+  ],
+  "schema": "{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Article\",\n  \"headline\": \"\",\n  \"description\": \"\",\n  \"datePublished\": \"2026-10-08T07:00:00-04:00\",\n  \"dateModified\": \"2026-10-08T07:00:00-04:00\",\n  \"articleSection\": \"Data 4 Thought\",\n  \"license\": \"https://www.data4thepeople.com/terms-of-use\",\n  \"inLanguage\": \"en-US\",\n  \"isAccessibleForFree\": true,\n  \"author\": {\n    \"@type\": \"Person\",\n    \"name\": \"Eric Pachman\",\n    \"url\": \"https://www.data4thepeople.com/authors/eric-pachman\"\n  },\n  \"publisher\": {\n    \"@type\": \"Organization\",\n    \"name\": \"Data 4 The People\",\n    \"url\": \"https://data4thepeople.com\"\n  },\n  \"mainEntityOfPage\": {\n    \"@type\": \"WebPage\",\n    \"@id\": \"https://www.data4thepeople.com/p/rentals-within-reach\"\n  }\n}"
+}

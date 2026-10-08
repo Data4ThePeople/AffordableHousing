@@ -91,3 +91,8 @@ None.
   set by Eric: household income on the national map, Florida, Play, Miami-Dade
   panel, Broward and Holmes from the rankings, reset, search New York County.
   Captions are Claude's and await Eric's review.
+- 2026-10-08 Step 2a: Eric's draft placed verbatim in POST.md with the viz
+  embed, five images made from the tool (scripts/11_post_images.py) and a
+  placeholder for the video. README.md written, since the draft sends readers
+  to GitHub for instructions and methodology. Proposed edits sent to Eric as
+  a numbered list; none applied.

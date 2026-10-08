@@ -448,7 +448,7 @@
     return `<h3>Rentals by monthly rent, ${flabel(S.fi)}</h3>`
       + `<svg class="ladder" viewBox="0 0 ${w} ${h}" role="img" aria-label="Rentals in each rent bucket, ${esc(u.n)}, with the rent ceiling at ${usd(c.ceil)}">`
       + `<line x1="${l}" x2="${w - rt}" y1="${h - b}" y2="${h - b}" stroke="var(--line)"/>${bars}${line}${ticks}</svg>`
-      + `<div class="src">Dark bars are within reach. Buckets are the Census Bureau's and are wider at higher rents.</div>`;
+      + `<div class="src">Green bars are within reach. Buckets are the Census Bureau's and are wider at higher rents.</div>`;
   }
   // Two columns: the change in all rentals paying cash rent, and in rentals priced within reach,
   // from the first period to the last. Both are counts of units on one axis.

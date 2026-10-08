@@ -62,6 +62,8 @@ That said, please meet the newest member of our visualization team – D4TP’s 
 
 ::: spacer 40px
 
+The map uses the Census Bureau’s American Community Survey 5-year estimates of gross rent and household income for every U.S. county, in four periods from 2005-2009 to 2020-2024. Rentals Within Reach is free to use, with no signup.
+
 ## How to use it
 
 That’s just the default view. But this visualization is loaded with different bells and whistles that can help you explore this topic and really get a sense for how difficult it is to find an affordable rental across America.

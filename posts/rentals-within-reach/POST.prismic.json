@@ -197,6 +197,33 @@
       "primary": {
         "paragraph_text": [
           {
+            "type": "paragraph",
+            "text": "The map uses the Census Bureau\u2019s American Community Survey 5-year estimates of gross rent and household income for every U.S. county, in four periods from 2005-2009 to 2020-2024. Rentals Within Reach is free to use, with no signup.",
+            "spans": [],
+            "direction": "ltr"
+          }
+        ]
+      }
+    },
+    {
+      "slice_type": "spacer",
+      "slice_label": null,
+      "variation": "default",
+      "version": "initial",
+      "items": [],
+      "primary": {
+        "spacer_value": "20px"
+      }
+    },
+    {
+      "slice_type": "paragarph_text",
+      "slice_label": null,
+      "variation": "default",
+      "version": "initial",
+      "items": [],
+      "primary": {
+        "paragraph_text": [
+          {
             "type": "heading2",
             "text": "How to use it",
             "spans": [],

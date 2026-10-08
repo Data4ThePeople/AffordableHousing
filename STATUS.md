@@ -118,3 +118,4 @@ None.
 - 2026-10-08 Step 2f: the video now uses Prismic's youtube_embed slice (full width, embed link and title), at Eric's direction. The importer learned a `::: youtube-full <link> <title>` fence; the draft was updated in place.
 - 2026-10-08 Step 2f: the limits section is now a highlighted page blurb titled "What this does not tell you" (Eric); draft updated in place.
 - 2026-10-08 Step 2f: Eric added a sentence to the limits blurb ("These limitations are why this is a thought experiment, not a perfect simulation."); draft updated.
+- 2026-10-08 Step 2f: Eric changed "simulate their lives" to "understand their lives" directly in Prismic; POST.md updated to match, not re-pushed.

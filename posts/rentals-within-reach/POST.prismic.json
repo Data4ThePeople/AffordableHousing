@@ -676,6 +676,12 @@
           },
           {
             "type": "paragraph",
+            "text": "These limitations are why this is a thought experiment, not a perfect simulation.",
+            "spans": [],
+            "direction": "ltr"
+          },
+          {
+            "type": "paragraph",
             "text": "The full list of limits, and the method, is on GitHub.",
             "spans": [
               {
@@ -720,7 +726,7 @@
           },
           {
             "type": "paragraph",
-            "text": "This is how we understand Americans. We create the story and the tool to simulate their lives, and then see how it plays out. Are we missing elements of the story? Of course we are. These tools are not perfect. The only way to get to perfect is to actually live that other person\u2019s life. But we can at least gain an appreciation for what they must have to go through using the data.",
+            "text": "This is how we understand Americans. We create the story and the tool to understand their lives, and then see how it plays out. Are we missing elements of the story? Of course we are. These tools are not perfect. The only way to get to perfect is to actually live that other person\u2019s life. But we can at least gain an appreciation for what they must have to go through using the data.",
             "spans": [],
             "direction": "ltr"
           },

@@ -121,7 +121,7 @@ The full list of limits, and the method, is on [GitHub](https://github.com/Data4
 
 ## Try it yourself
 
-This is how we understand Americans. We create the story and the tool to simulate their lives, and then see how it plays out. Are we missing elements of the story? Of course we are. These tools are not perfect. The only way to get to perfect is to actually live that other person’s life. But we can at least gain an appreciation for what they must have to go through using the data.
+This is how we understand Americans. We create the story and the tool to understand their lives, and then see how it plays out. Are we missing elements of the story? Of course we are. These tools are not perfect. The only way to get to perfect is to actually live that other person’s life. But we can at least gain an appreciation for what they must have to go through using the data.
 
 So, take this tool for a spin and go learn about Americans who you have never met. We are going to come back to this tool many times in the coming months. We have identified several amazing stories, and will get to them all in due time. But we’d love to see what you find first. Let us know if you come across a good story that opens your eyes to someone else’s lived experience and we may just publish it (with credit to you of course!).
 

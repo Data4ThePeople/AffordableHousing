@@ -6,7 +6,7 @@ Process: ~/.claude/d4tp-process/PROCESS.md
 ## Current
 
 Post: rentals-within-reach
-Step: 2f
+Step: 2g
 Since: 2026-10-08
 
 ## Steps
@@ -120,3 +120,4 @@ None.
 - 2026-10-08 Step 2f: Eric added a sentence to the limits blurb ("These limitations are why this is a thought experiment, not a perfect simulation."); draft updated.
 - 2026-10-08 Step 2f: Eric changed "simulate their lives" to "understand their lives" directly in Prismic; POST.md updated to match, not re-pushed.
 - 2026-10-08 Step 2f confirmed by Eric. Next: 2g, Mailchimp teaser.
+- 2026-10-08 Step 2g opened. EMAIL.md drafted from the post, using Eric's sentences as written; hero JPG exported for email. Awaiting approve or reject.

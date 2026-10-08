@@ -6,7 +6,7 @@ Process: ~/.claude/d4tp-process/PROCESS.md
 ## Current
 
 Post: rentals-within-reach
-Step: 2d
+Step: 2e
 Since: 2026-10-08
 
 ## Steps
@@ -17,7 +17,7 @@ Since: 2026-10-08
 | 2a | Draft with brackets resolved | 2026-10-08 | 12 edits accepted; title, subtitle, video embed set |
 | 2b | Eric's edit, Claude's look-over | 2026-10-08 | 7 look-over edits accepted; limits section added |
 | 2c | Slice markup | 2026-10-08 | Drop cap off, no dividers, 40px after both embeds |
-| 2d | Hero 1680x1080 + alt text | | |
+| 2d | Hero 1680x1080 + alt text | 2026-10-08 | Default map at hero scale; headline 1,960 of 3,141 counties; alt 496 characters |
 | 2e | SEO | | |
 | 2f | Pushed to Prismic (draft) | | |
 | 2g | Mailchimp teaser | | |
@@ -109,3 +109,4 @@ None.
 - 2026-10-08 Step 2c confirmed by Eric. Step 2d opened.
 - 2026-10-08 Step 2d: hero built from the default map at hero scale (scripts/12_hero.py), padded to 1680x1080; alt text written. Awaiting Eric.
 - 2026-10-08 Step 2d: Eric did not follow the 31% national figure on the hero, so the headline is now the count of counties under half (1,960 of 3,141), read from the page.
+- 2026-10-08 Step 2d confirmed by Eric. Step 2e opened.

@@ -114,3 +114,4 @@ None.
 - 2026-10-08 Step 2e: Eric accepted the data sentence, the free-to-use sentence and a Common questions section; the Dayton link is on hold. Both sentences added after the map. FAQ answers drafted for his review.
 - 2026-10-08 Step 2e: Eric accepted all eight Common questions answers; added at the end under divider dots, with the before-tax count (1,084 of 3,141) checked against the page.
 - 2026-10-08 Step 2e confirmed by Eric. Step 2f opened.
+- 2026-10-08 Step 2f: dry run clean, then pushed to Prismic as a draft: document asddnREAACsAEb9R, 50 slices, 5 images and the hero uploaded, in the Migration Release. Tags and author left empty. Awaiting Eric's check in Prismic.

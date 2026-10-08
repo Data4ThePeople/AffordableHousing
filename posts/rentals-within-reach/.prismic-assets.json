@@ -1,0 +1,44 @@
+{
+  "images/01-arizona-map-53k.png": {
+    "id": "zLUYtyTYQ9er4ec9",
+    "width": 1720,
+    "height": 1322,
+    "url": "https://images.prismic.io/data4thepeople/zLUYtyTYQ9er4ec9_01-arizona-map-53k.png?auto=format,compress",
+    "stamp": "213070:1791417863"
+  },
+  "images/02-maricopa-rents-by-price.png": {
+    "id": "RrxSs-BDOp5kSM-f",
+    "width": 740,
+    "height": 598,
+    "url": "https://images.prismic.io/data4thepeople/RrxSs-BDOp5kSM-f_02-maricopa-rents-by-price.png?auto=format,compress",
+    "stamp": "58170:1791417863"
+  },
+  "images/03-maricopa-change-in-rentals.png": {
+    "id": "LxXYeDc5P8cofhHe",
+    "width": 740,
+    "height": 674,
+    "url": "https://images.prismic.io/data4thepeople/LxXYeDc5P8cofhHe_03-maricopa-change-in-rentals.png?auto=format,compress",
+    "stamp": "64188:1791417863"
+  },
+  "images/04-arizona-map-53k-at-50-percent.png": {
+    "id": "vxn-oQIQjHSmQ9Gk",
+    "width": 1720,
+    "height": 1322,
+    "url": "https://images.prismic.io/data4thepeople/vxn-oQIQjHSmQ9Gk_04-arizona-map-53k-at-50-percent.png?auto=format,compress",
+    "stamp": "214364:1791417863"
+  },
+  "images/05-santa-cruz-45k.png": {
+    "id": "XWGX6vlHL5NKFw0I",
+    "width": 768,
+    "height": 1164,
+    "url": "https://images.prismic.io/data4thepeople/XWGX6vlHL5NKFw0I_05-santa-cruz-45k.png?auto=format,compress",
+    "stamp": "132761:1791417863"
+  },
+  "images/rentals-within-reach-hero-1680x1080.png": {
+    "id": "vXsnibE2UwWWDkto",
+    "width": 1680,
+    "height": 1080,
+    "url": "https://images.prismic.io/data4thepeople/vXsnibE2UwWWDkto_rentals-within-reach-hero-1680x1080.png?auto=format,compress",
+    "stamp": "707371:1791419862"
+  }
+}

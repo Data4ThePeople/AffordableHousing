@@ -105,8 +105,7 @@ Or, you could look a few counties away in Santa Cruz County. You may make just $
 ![County panel for Santa Cruz County, Arizona, 2020-2024, on a $45,000 income: $7,701 in income and payroll taxes, $37,299 after taxes, a rent ceiling of $932 a month, and 61% of rentals priced within reach. A bar chart of rentals by monthly rent shows most bars to the left of the ceiling line.](images/05-santa-cruz-45k.png)
 *Santa Cruz County, Arizona, on $45,000: a $932 monthly ceiling.*
 
-## What this does not tell you
-
+::: blurb What this does not tell you
 The teacher's search would be harder than the map suggests in some ways, and the tool leaves some things out.
 
 - **It counts rentals people live in now, not vacancies.** The Census Bureau records what current tenants pay. A unit rented at a low price for many years counts the same as one on the market today. The share a new arrival can find is very likely lower than the share shown.
@@ -116,6 +115,7 @@ The teacher's search would be harder than the map suggests in some ways, and the
 - **Small counties are less certain.** Santa Cruz County has 4,690 rentals. Maricopa County has 583,955. Figures for small counties rest on fewer survey responses.
 
 The full list of limits, and the method, is on [GitHub](https://github.com/Data4ThePeople/AffordableHousing).
+:::
 
 ## Try it yourself
 

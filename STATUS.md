@@ -19,7 +19,7 @@ Since: 2026-10-08
 | 2c | Slice markup | 2026-10-08 | Drop cap off, no dividers, 40px after both embeds |
 | 2d | Hero 1680x1080 + alt text | 2026-10-08 | Default map at hero scale; headline 1,960 of 3,141 counties; alt 496 characters |
 | 2e | SEO | 2026-10-08 | Dataset schema; 8 FAQ entries; meta title 52, description 151 characters; Dayton link on hold |
-| 2f | Pushed to Prismic (draft) | | |
+| 2f | Pushed to Prismic (draft) | 2026-10-08 | Draft asddnREAACsAEb9R in the Migration Release; video in youtube_embed slice; limits as a blurb; one wording change made by Eric in Prismic and mirrored in POST.md |
 | 2g | Mailchimp teaser | | |
 
 ## Stale
@@ -119,3 +119,4 @@ None.
 - 2026-10-08 Step 2f: the limits section is now a highlighted page blurb titled "What this does not tell you" (Eric); draft updated in place.
 - 2026-10-08 Step 2f: Eric added a sentence to the limits blurb ("These limitations are why this is a thought experiment, not a perfect simulation."); draft updated.
 - 2026-10-08 Step 2f: Eric changed "simulate their lives" to "understand their lives" directly in Prismic; POST.md updated to match, not re-pushed.
+- 2026-10-08 Step 2f confirmed by Eric. Next: 2g, Mailchimp teaser.

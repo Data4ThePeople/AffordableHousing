@@ -6,7 +6,7 @@ Process: ~/.claude/d4tp-process/PROCESS.md
 ## Current
 
 Post: rentals-within-reach
-Step: 2e
+Step: 2f
 Since: 2026-10-08
 
 ## Steps
@@ -18,7 +18,7 @@ Since: 2026-10-08
 | 2b | Eric's edit, Claude's look-over | 2026-10-08 | 7 look-over edits accepted; limits section added |
 | 2c | Slice markup | 2026-10-08 | Drop cap off, no dividers, 40px after both embeds |
 | 2d | Hero 1680x1080 + alt text | 2026-10-08 | Default map at hero scale; headline 1,960 of 3,141 counties; alt 496 characters |
-| 2e | SEO | | |
+| 2e | SEO | 2026-10-08 | Dataset schema; 8 FAQ entries; meta title 52, description 151 characters; Dayton link on hold |
 | 2f | Pushed to Prismic (draft) | | |
 | 2g | Mailchimp teaser | | |
 
@@ -113,3 +113,4 @@ None.
 - 2026-10-08 Step 2e: meta title, description, keywords and dataset schema fields drafted in the front matter on the pattern of the earlier visualization posts. Target searches and proposed page text sent to Eric.
 - 2026-10-08 Step 2e: Eric accepted the data sentence, the free-to-use sentence and a Common questions section; the Dayton link is on hold. Both sentences added after the map. FAQ answers drafted for his review.
 - 2026-10-08 Step 2e: Eric accepted all eight Common questions answers; added at the end under divider dots, with the before-tax count (1,084 of 3,141) checked against the page.
+- 2026-10-08 Step 2e confirmed by Eric. Step 2f opened.
